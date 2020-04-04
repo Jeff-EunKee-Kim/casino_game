@@ -15,7 +15,11 @@
 ### DATA FILE 2: GAME DATA (loc: src/view/resources/RouletteWheel.txt)
 
 
-### DATA FILE 3: GAME IMAGES (loc: src/view/resources/background.jpg)
+### DATA FILE 3: GAME IMAGES (loc: src/view/resources/bluechip.jpg)
+   Blue chip Image:
+  
+  ![Blue Chip Picture](bluechip.jpg "Blue chip")
+    
     
 
 ### DATA FILE 4: CSS FILE (loc: src/view/resources/main.css)
