@@ -14,7 +14,7 @@
 
     
 
-### DATA FILE 4: CSS FILE (loc: src/view/resources/main.css)
+### DATA FILE 2: CSS FILE (loc: src/view/resources/main.css)
     .root{
         -fx-background-color: blue;
         -fx-font-size: 14pt;
