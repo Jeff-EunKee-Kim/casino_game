@@ -66,3 +66,28 @@
     - Blackjack: Draw next card
     - Roulette: Run the roulette
     - Slot: Run the slot 
+    
+# API Examples
+
+- Exchange money for tokens at the exchange booth
+```java
+buyChips(int amount)
+```
+
+- Quit current game for new game
+```java
+stopGame()
+selectGame()
+startGame()
+```
+
+- There should be 3 types of chips, $1, $5, and $10 which user can use to bet
+```java
+placeBet(int one, int five, int ten)
+```
+
+- The user can win money if all images are the same in the slot machine game
+```java
+runRound()
+// victory conditions and earning tokens should be built-in
+```
