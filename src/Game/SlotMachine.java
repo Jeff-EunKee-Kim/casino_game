@@ -3,6 +3,8 @@ package Game;
 import Casino.RandomValueSelector;
 import View.FrontEnd;
 
+import java.util.Objects;
+
 public class SlotMachine {
     public static final int WIN_BY_WIN = 500;
     public static final int LOSE_BY_LOSS = 100;
@@ -40,5 +42,29 @@ public class SlotMachine {
 
     public int getCurrentMoney(){
         return CURRENT_MONEY;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SlotMachine that = (SlotMachine) o;
+        return BET_BY_PLAYER == that.BET_BY_PLAYER &&
+                MACHINE_CHOSEN_VALUE == that.MACHINE_CHOSEN_VALUE &&
+                CURRENT_MONEY == that.CURRENT_MONEY;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(BET_BY_PLAYER, MACHINE_CHOSEN_VALUE, CURRENT_MONEY);
+    }
+
+    @Override
+    public String toString() {
+        return "SlotMachine{" +
+                "BET_BY_PLAYER=" + BET_BY_PLAYER +
+                ", MACHINE_CHOSEN_VALUE=" + MACHINE_CHOSEN_VALUE +
+                ", CURRENT_MONEY=" + CURRENT_MONEY +
+                '}';
     }
 }

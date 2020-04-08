@@ -3,6 +3,8 @@ package Game;
 import Casino.RandomValueSelector;
 import View.FrontEnd;
 
+import java.util.Objects;
+
 public class Roulette {
     public static final int WIN_BLACK_OR_RED = 200;
     public static final int WIN_SINGLE_NUMBER = 500;
@@ -54,5 +56,29 @@ public class Roulette {
 
     public int getCurrentMoney(){
         return CURRENT_MONEY;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Roulette roulette = (Roulette) o;
+        return BET_BY_PLAYER == roulette.BET_BY_PLAYER &&
+                MACHINE_CHOSEN_VALUE == roulette.MACHINE_CHOSEN_VALUE &&
+                CURRENT_MONEY == roulette.CURRENT_MONEY;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(BET_BY_PLAYER, MACHINE_CHOSEN_VALUE, CURRENT_MONEY);
+    }
+
+    @Override
+    public String toString() {
+        return "Roulette{" +
+                "BET_BY_PLAYER=" + BET_BY_PLAYER +
+                ", MACHINE_CHOSEN_VALUE=" + MACHINE_CHOSEN_VALUE +
+                ", CURRENT_MONEY=" + CURRENT_MONEY +
+                '}';
     }
 }
