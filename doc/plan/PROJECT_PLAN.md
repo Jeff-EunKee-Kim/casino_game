@@ -30,7 +30,7 @@
         - UI and functionality for another game
         
 - Celine
-    - Primary Responsibility: Game module
+    - Primary Responsibility: game module
     - Secondary: Help whenever needed
     - Sprint 1: 
        - Implement abstract game to be extended by other games

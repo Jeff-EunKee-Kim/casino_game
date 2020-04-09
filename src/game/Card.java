@@ -1,12 +1,15 @@
-package Game;
+package game;
 
-import java.util.Objects;
 
 /**
  * @author Celine Murugi
  * started 4/7/20
  */
 
+
+import enums.Rank;
+import enums.Suite;
+import java.util.Objects;
 
 
 public class Card {

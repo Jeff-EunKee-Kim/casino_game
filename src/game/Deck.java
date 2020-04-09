@@ -1,14 +1,20 @@
-package Game;
+package game;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
 
 /**
  * @author Celine Murugi
  * started 4/7/20
  */
+
+
+
+import enums.Rank;
+import enums.Suite;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+
 
 public class Deck {
 
@@ -57,17 +63,6 @@ public class Deck {
 
 
     /**
-     * Method defining the generation for the hashcode
-     * for the Deck
-     * @return a hashcode value of the Deck
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(cardDeck);
-    }
-
-
-    /**
      * Method that determines the String value of the Deck
      * @return the String Value of the Deck
      */
@@ -78,15 +73,6 @@ public class Deck {
                 '}';
     }
 
-
-
-
-
-    public static void main(String[] args) {
-        Deck myDeck = new Deck();
-        myDeck.shuffle();
-        System.out.println(myDeck);
-    }
 
 
 }

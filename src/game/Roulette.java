@@ -1,14 +1,10 @@
-package Game;
+package game;
 
 /**
  * @author Celine Murugi
  * started 4/6/20
  */
 
-import Casino.RandomValueSelector;
-import View.FrontEnd;
-
-import java.util.Objects;
 
 public class Roulette {
     public static final int WIN_BLACK_OR_RED = 20;
@@ -24,15 +20,13 @@ public class Roulette {
      * and uses these to get their input so as to compare input by user versus random value
      * from casino
      */
-    public Roulette() { // 0 and -1 = Black and Red Bets respectively; 1-36 = Single Number Bets
-        FrontEnd frontEnd = new FrontEnd();
-        BET_BY_PLAYER = frontEnd.betByPlayer(); // a number between -1 and 36
-        CURRENT_MONEY= frontEnd.getCurrentMoney(); // gets the amount of money displayed on screen
+    public Roulette(int betByPlayer, int machineChosenValue, int currentMoney) {
+        // 0 and -1 = Black and Red Bets respectively; 1-36 = Single Number Bets
 
-        RandomValueSelector randomValueSelector = new RandomValueSelector();
-        MACHINE_CHOSEN_VALUE = randomValueSelector.chosenValue(); // from the casino module
+        BET_BY_PLAYER = betByPlayer;
+        MACHINE_CHOSEN_VALUE = machineChosenValue;
+        CURRENT_MONEY = currentMoney;
     }
-
 
 
     private void checkIfWon(){
@@ -87,17 +81,6 @@ public class Roulette {
         return BET_BY_PLAYER == roulette.BET_BY_PLAYER &&
                 MACHINE_CHOSEN_VALUE == roulette.MACHINE_CHOSEN_VALUE &&
                 CURRENT_MONEY == roulette.CURRENT_MONEY;
-    }
-
-
-    /**
-     * Method defining the generation for the hashcode
-     * for the Roulette
-     * @return a hashcode value of the Roulette
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(BET_BY_PLAYER, MACHINE_CHOSEN_VALUE, CURRENT_MONEY);
     }
 
 

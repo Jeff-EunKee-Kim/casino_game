@@ -1,14 +1,10 @@
-package Game;
+package game;
 
 /**
  * @author Celine Murugi
  * started 4/6/20
  */
 
-import Casino.RandomValueSelector;
-import View.FrontEnd;
-
-import java.util.Objects;
 
 public class SlotMachine {
     public static final int WIN_BY_WIN = 500;
@@ -19,13 +15,10 @@ public class SlotMachine {
     private int MACHINE_CHOSEN_VALUE;
     private int CURRENT_MONEY;
 
-    public SlotMachine() { // three-digit number guessed by user
-        FrontEnd frontEnd = new FrontEnd();
-        BET_BY_PLAYER = frontEnd.betByPlayer(); // a three digit number
-        CURRENT_MONEY= frontEnd.getCurrentMoney(); // gets the amount of money displayed on screen
-
-        RandomValueSelector randomValueSelector = new RandomValueSelector();
-        MACHINE_CHOSEN_VALUE = randomValueSelector.chosenValue(); // from the casino module
+    public SlotMachine(int betByPlayer, int machineChosenValue, int currentMoney) { // three-digit number guessed by user
+        BET_BY_PLAYER = betByPlayer;
+        MACHINE_CHOSEN_VALUE = machineChosenValue;
+        CURRENT_MONEY = currentMoney;
     }
 
 
@@ -70,17 +63,6 @@ public class SlotMachine {
         return BET_BY_PLAYER == that.BET_BY_PLAYER &&
                 MACHINE_CHOSEN_VALUE == that.MACHINE_CHOSEN_VALUE &&
                 CURRENT_MONEY == that.CURRENT_MONEY;
-    }
-
-
-    /**
-     * Method defining the generation for the hashcode
-     * for the SlotMachine
-     * @return a hashcode value of the SlotMachine
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(BET_BY_PLAYER, MACHINE_CHOSEN_VALUE, CURRENT_MONEY);
     }
 
 
