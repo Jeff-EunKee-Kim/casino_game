@@ -8,30 +8,30 @@ import exception.InsufficientBalanceException;
  */
 public class Player {
     private final String name;
-    private double balance;
+    private int balance;
 
-    public Player(String name, double balance) {
+    public Player(String name, int balance) {
         this.name = name;
         this.balance = balance;
     }
 
     public Player(String name) {
-        this(name, 0.0);
+        this(name, 0);
     }
 
     public String getName() {
         return name;
     }
 
-    public double getBalance() {
+    public int getBalance() {
         return balance;
     }
 
-    public void addBalance(double debitMoney) {
+    public void addBalance(int debitMoney) {
         balance += debitMoney;
     }
 
-    public void subtractBalance(double creditMoney) {
+    public void subtractBalance(int creditMoney) {
         if (balance < creditMoney) {
             String errMsg = "Insufficient balance of: ";
             errMsg += balance - creditMoney;
