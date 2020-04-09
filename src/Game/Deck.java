@@ -2,6 +2,7 @@ package Game;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 
 /**
@@ -24,6 +25,10 @@ public class Deck {
                 cardDeck.add(new Card(rank, suite));
             }
         }
+    }
+
+    private void shuffle(){
+        Collections.shuffle(cardDeck);
     }
 
     @Override
@@ -55,6 +60,7 @@ public class Deck {
     public static void main(String[] args) {
         Deck myDeck = new Deck();
         myDeck.makeDeck();
+        myDeck.shuffle();
         System.out.println(myDeck);
     }
 
