@@ -16,16 +16,13 @@ public class Deck {
 
     public Deck(){
         this.cardDeck = new ArrayList<>();
-    }
-
-
-    private void makeDeck(){
         for (Rank rank: Rank.values()){
             for (Suite suite: Suite.values()){
                 cardDeck.add(new Card(rank, suite));
             }
         }
     }
+
 
     private void shuffle(){
         Collections.shuffle(cardDeck);
@@ -59,7 +56,6 @@ public class Deck {
 
     public static void main(String[] args) {
         Deck myDeck = new Deck();
-        myDeck.makeDeck();
         myDeck.shuffle();
         System.out.println(myDeck);
     }
