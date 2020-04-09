@@ -27,6 +27,7 @@ public class Card {
     }
 
 
+
     /**
      * A getter method for the card's number
      * @return the number value of the card
@@ -34,6 +35,7 @@ public class Card {
     public Rank getMyRank(){
         return myRank;
     }
+
 
 
     /**
@@ -44,6 +46,14 @@ public class Card {
         return mySuite;
     }
 
+
+
+    /**
+     * An equals method that determines if another object is
+     * equal to a Card
+     * @param o other object to be compared
+     * @return a true or false boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,12 +63,24 @@ public class Card {
                 mySuite == card.mySuite;
     }
 
+
+
+    /**
+     * Method defining the generation for the hashcode
+     * for the Card
+     * @return a hashcode value of the Card
+     */
     @Override
     public int hashCode() {
         return Objects.hash(myRank, mySuite);
     }
 
 
+
+    /**
+     * Method that determines the String value of the Card
+     * @return the String Value of the Card
+     */
     @Override
     public String toString() {
         return "Card{" + myRank +

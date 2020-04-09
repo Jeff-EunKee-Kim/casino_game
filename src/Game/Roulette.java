@@ -62,10 +62,23 @@ public class Roulette {
     }
 
 
+    /**
+     * a getter method for the current money; to be passed
+     * to the front end as the updated value
+     * @return the value of the current amount of money
+     */
     public int getCurrentMoney(){
         return CURRENT_MONEY;
     }
 
+
+
+    /**
+     * An equals method that determines if another object is
+     * equal to a Roulette
+     * @param o other object to be compared
+     * @return a true or false boolean
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,11 +89,22 @@ public class Roulette {
                 CURRENT_MONEY == roulette.CURRENT_MONEY;
     }
 
+
+    /**
+     * Method defining the generation for the hashcode
+     * for the Roulette
+     * @return a hashcode value of the Roulette
+     */
     @Override
     public int hashCode() {
         return Objects.hash(BET_BY_PLAYER, MACHINE_CHOSEN_VALUE, CURRENT_MONEY);
     }
 
+
+    /**
+     * Method that determines the String value of the Roulette
+     * @return the String Value of the Roulette
+     */
     @Override
     public String toString() {
         return "Roulette{" +
