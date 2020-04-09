@@ -62,7 +62,7 @@ public class Card {
         return mySuit;
     }
 
-
+    public int getNumber() { return myNumber; }
 
     /**
      * An equals method that determines if another object is
