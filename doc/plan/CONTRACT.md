@@ -7,7 +7,7 @@
 -	Zoom video
 
 #### When do we meet? 
--	Every week on Sunday at 8PM EST
+-	Every week on Sunday at 1PM EST
    
 #### Who makes the big decisions like designing? 
 -	By majority voting and through cooperative thinking!
