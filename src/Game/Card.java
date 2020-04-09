@@ -61,10 +61,9 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "myRank=" + myRank +
-                ", mySuite=" + mySuite +
-                '}';
+        return "Card{" + myRank +
+                " of " + mySuite +
+                '}' + "\n";
     }
 
 

@@ -20,8 +20,8 @@ public class Deck {
 
 
     private void makeDeck(){
-        for (Suite suite: Suite.values()){
-            for (Rank rank: Rank.values()){
+        for (Rank rank: Rank.values()){
+            for (Suite suite: Suite.values()){
                 cardDeck.add(new Card(rank, suite));
             }
         }
@@ -49,7 +49,7 @@ public class Deck {
     @Override
     public String toString() {
         return "Deck{" +
-                "cardDeck=" + cardDeck +
+                "cardDeck=" + "\n" + cardDeck +
                 '}';
     }
 
