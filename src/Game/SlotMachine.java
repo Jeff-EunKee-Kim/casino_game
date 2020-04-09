@@ -1,5 +1,10 @@
 package Game;
 
+/**
+ * @author Celine Murugi
+ * started 4/6/20
+ */
+
 import Casino.RandomValueSelector;
 import View.FrontEnd;
 
@@ -16,7 +21,7 @@ public class SlotMachine {
 
     public SlotMachine() { // three-digit number guessed by user
         FrontEnd frontEnd = new FrontEnd();
-        BET_BY_PLAYER = frontEnd.betByPlayer(); // a number between -1 and 36
+        BET_BY_PLAYER = frontEnd.betByPlayer(); // a three digit number
         CURRENT_MONEY= frontEnd.getCurrentMoney(); // gets the amount of money displayed on screen
 
         RandomValueSelector randomValueSelector = new RandomValueSelector();

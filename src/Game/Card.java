@@ -2,20 +2,27 @@ package Game;
 
 import java.util.Objects;
 
+/**
+ * @author Celine Murugi
+ * started 4/7/20
+ */
+
+
+
 public class Card {
-    private int myNumber;
+    private Rank myRank;
     private Suite mySuite;
 
 
     /**
      * The Card constructor
-     * @param number a number between 2 and 10, and inclusive of
+     * @param rank a number between 2 and 10, and inclusive of
      *               Jack, Queen, King, and Ace
      * @param suite the suite of the card, that is, Heart, Diamond,
      *              Club, and Spade
      */
-    public Card (int number,  Suite suite){
-        this.myNumber = number;
+    public Card (Rank rank,  Suite suite){
+        this.myRank = rank;
         this.mySuite = suite;
     }
 
@@ -24,8 +31,8 @@ public class Card {
      * A getter method for the card's number
      * @return the number value of the card
      */
-    public int getMyNumber(){
-        return myNumber;
+    public Rank getMyRank(){
+        return myRank;
     }
 
 
@@ -37,27 +44,28 @@ public class Card {
         return mySuite;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return myNumber == card.myNumber &&
+        return myRank == card.myRank &&
                 mySuite == card.mySuite;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(myNumber, mySuite);
+        return Objects.hash(myRank, mySuite);
     }
 
 
     @Override
     public String toString() {
         return "Card{" +
-                "myNumber=" + myNumber +
+                "myRank=" + myRank +
                 ", mySuite=" + mySuite +
                 '}';
     }
+
+
 }

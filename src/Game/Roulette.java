@@ -1,21 +1,29 @@
 package Game;
 
+/**
+ * @author Celine Murugi
+ * started 4/6/20
+ */
+
 import Casino.RandomValueSelector;
 import View.FrontEnd;
 
 import java.util.Objects;
 
 public class Roulette {
-    public static final int WIN_BLACK_OR_RED = 200;
-    public static final int WIN_SINGLE_NUMBER = 500;
-    public static final int LOSE_BY_LOSS = 100;
+    public static final int WIN_BLACK_OR_RED = 20;
+    public static final int WIN_SINGLE_NUMBER = 50;
 
 
     private int BET_BY_PLAYER;
     private int MACHINE_CHOSEN_VALUE;
     private int CURRENT_MONEY;
 
-
+    /**
+     * Constructor for roulette. Creates a new instance of the front end and the casino
+     * and uses these to get their input so as to compare input by user versus random value
+     * from casino
+     */
     public Roulette() { // 0 and -1 = Black and Red Bets respectively; 1-36 = Single Number Bets
         FrontEnd frontEnd = new FrontEnd();
         BET_BY_PLAYER = frontEnd.betByPlayer(); // a number between -1 and 36
@@ -32,7 +40,7 @@ public class Roulette {
             addMoneyToPlayer();
 
         }else{
-            CURRENT_MONEY -= LOSE_BY_LOSS;
+            CURRENT_MONEY -= BET_BY_PLAYER;
         }
     }
 
@@ -46,10 +54,10 @@ public class Roulette {
 
     private void addMoneyToPlayer(){
         if (BET_BY_PLAYER == 0 || BET_BY_PLAYER == -1){
-            CURRENT_MONEY += WIN_BLACK_OR_RED;
+            CURRENT_MONEY += (WIN_BLACK_OR_RED * BET_BY_PLAYER);
 
         }else{
-            CURRENT_MONEY += WIN_SINGLE_NUMBER;
+            CURRENT_MONEY += (WIN_SINGLE_NUMBER * BET_BY_PLAYER);
         }
     }
 
