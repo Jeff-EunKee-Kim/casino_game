@@ -16,6 +16,7 @@ public class Bet {
     public Bet(Player player, int bet) {
         this.player = player;
         this.bet = bet;
+        player.subtractBalance(bet);
     }
 
     /**
