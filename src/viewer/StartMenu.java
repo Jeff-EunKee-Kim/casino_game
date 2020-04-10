@@ -3,106 +3,69 @@ package viewer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
+import javafx.scene.text.TextAlignment;
+import javafx.scene.image.Image;
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
 public class StartMenu {
 
     private Text title;
-    private VBox layout;
+    private VBox innerbtns;
+    private BorderPane layout;
+    //private Game game;
 
-    /**
-     * Constructs the first scene in the simulation which is a start menu, giving the user options to make a new simulation or load an existing one from the
-     * saved files
-     */
     public StartMenu() {
-       // ResourceBundle mybundle = ResourceBundle.getBundle("data.Styling.Main");
-       // System.out.println(System.getProperty("user.dir"));
-        Button start = new Button("New");
-        Button load = new Button("Load");
-        load.setId("ldbtn");
-        start.setId("strbtn");
+        //game = new Game();
+        Button roulette_btn = new Button("Roulette");
+        Button blackjack_btn = new Button("Blackjack");
+        Button slots_btn = new Button("Slots");
+        blackjack_btn.setId("ldbtn");
+        roulette_btn.setId("strbtn");
+        slots_btn.setId("sltsbtn");
         title = new Text();
         title.setId("ttl");
-        title.setText("Welcome to simulation");
+        title.setText("Amicorum Spectaculum");
         title.getStyleClass().add("txt");
-        start.setOnAction(e -> {
-            layout.getChildren().removeAll(start,load);
-            selectionMenu("data/Configurations");
+        roulette_btn.setOnAction(e -> {
+            innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
+            //game.start(0);
         });
-        load.setOnAction(e -> {
-            layout.getChildren().removeAll(start,load);
-            selectionMenu("data/SaveFiles");
-
+        blackjack_btn.setOnAction(e -> {
+            innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
+            //game.start(1);
         });
-        layout = new VBox();
-        layout.setPadding(new Insets(10, 50, 50, 50));
-        layout.setSpacing(25);
-        start.getStyleClass().add("rect");
-        load.getStyleClass().add("rect");
-        layout.getChildren().addAll(title, start,load);
-        layout.setAlignment(Pos.CENTER);
+        slots_btn.setOnAction(e -> {
+            innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
+            //game.start(2);
+        });
+        innerbtns = new VBox();
+        layout = new BorderPane();
+        HBox header = new HBox();
+        innerbtns.setPadding(new Insets(10, 50, 50, 50));
+        innerbtns.setSpacing(25);
+        roulette_btn.getStyleClass().add("rect");
+        blackjack_btn.getStyleClass().add("rect");
+        slots_btn.getStyleClass().add("rect");
+        innerbtns.getChildren().addAll( roulette_btn,blackjack_btn,slots_btn);
+        innerbtns.setAlignment(Pos.CENTER);
+        innerbtns.getStyleClass().add("bggg-2");
+        header.getChildren().add(title);
+        header.setAlignment(Pos.CENTER);
+        header.setPadding(new Insets(30, 0, 30, 0));
         layout.getStylesheets().add("Styling/Main.css");
+        layout.getStyleClass().add("bggg");
+        layout.setTop(header);
+        layout.setCenter(innerbtns);
     }
 
-    /**
-     *
-     * @return returns layout of this startmenu object
-     */
-    public VBox getLayout() {
+    public BorderPane getLayout() {
         return layout;
-    }
-
-    /**
-     * Generates a list of available files that can be used to run a simulation. Its abstraction allows for it to be
-     * used with both new file templates and also old saves.
-     * @param path gives a directory from which to list out possible configs/saves to run
-     */
-
-    private void selectionMenu(String path){
-        title.setText("Select a simulation to run");
-        File folder = new File(path);
-        File[] listOfFiles = folder.listFiles();
-
-        ArrayList<HBox> files = new ArrayList<>();
-
-        int size = listOfFiles.length;
-            files.add(new HBox());
-            if (size>4) {
-                size=size/4;
-                for (int i = 0; i <size;i++){
-                    files.add(new HBox());
-                }
-            }
-        ArrayList<Button> options = new ArrayList<>();
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                String filename = file.getName();
-                Button toAdd = new Button(filename.split("\\.")[0]);
-                toAdd.getStyleClass().add("rect");
-                toAdd.setOnAction(e -> {
-                    layout.getChildren().clear();
-                  //  Main.initSimulation(path+"/"+filename);
-                });
-                options.add(toAdd);
-            }
-        }
-        int iter = 0;
-        int total = options.size();
-        int flag = 0;
-        if (total%4!=0) flag = 1;
-        int cont = 4;
-        for(HBox row : files){
-            if (flag == 1&&total<4) cont = total;
-            for(int i = iter ;i < iter +cont;i++)
-                row.getChildren().add(options.get(i));
-            iter+=4; total-=4;
-            row.setAlignment(Pos.CENTER); row.setSpacing(20);
-            layout.getChildren().add(row);
-        }
     }
 }

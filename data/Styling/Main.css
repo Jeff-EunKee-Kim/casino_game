@@ -2,9 +2,12 @@
 
     -fx-padding: 10px;
     -fx-min-width: 120px;
-    -fx-background-color: #cecece;
-    -fx-background-radius: 0px;
-    -fx-border-radius: 0px;
+    -fx-background-color: rgba(255,255,255,.3);
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+    -fx-border-width: 3px;
+    -fx-border-color: #9400FF;
+    -fx-text-fill: #9400FF;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 10, 0, 2, 2);
     -fx-font-weight: 100;
     -fx-font-size:  15px;
@@ -16,9 +19,12 @@
 }
 
 .txt{
-    -fx-font-size:  40px;
-    -fx-font-family: Montserrat;
+    -fx-font-size:  90px;
+    -fx-font-family: "Selznick Normal NF";
     -fx-font-weight: 100;
+    -fx-fill:#9400FF;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(227, 182, 255, 0.87), 2, 2, 2, 2);
 }
 .blank{
     -fx-fill: transparent;
@@ -51,3 +57,20 @@
     -fx-fill: skyblue;
 
 }
+.bggg{
+    -fx-background-image: url("https://www.oilpaintingfactory.com/pic/Oil%20Painting%20Styles%20on%20Canvas/Fantasy/Popular%20Fantasy/9-Casino-Last-Supper-Fantasy.jpg");
+
+}
+.bggg-2 {
+    -fx-padding: 10px;
+    -fx-max-width: 400px;
+    -fx-background-radius: 100px 100px 0px 0px;
+    -fx-border-radius: 100px 100px 0px 0px;
+    -fx-border-width: 6px 6px 0px 6px;
+    -fx-border-color: #9400FF;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 2, 2);
+    -fx-font-weight: 100;
+    -fx-font-size:  15px;
+    -fx-background-color: rgba(255,255,255,.5);
+   }

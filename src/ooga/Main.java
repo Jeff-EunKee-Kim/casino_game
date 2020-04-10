@@ -23,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         myStage = primaryStage;
-        myStage.setTitle("Simulation");
+        myStage.setTitle("Casino Amicorum Spectaculum");
         TIMESTEP = 1;
         StartMenu startMenu = new StartMenu();
         Scene firstscene = new Scene(startMenu.getLayout(),850,600);
