@@ -8,4 +8,7 @@
 2. Our plan and actual for our sprint
     - What we learned
     - What could have been better
-    - Who will work on which feature
+    - Who will work on which feature for the next sprint
+        - TJ: Full UI for the roulette and animations of the game
+        - Vincent, Celine: Integration of the backend and frontend
+        - Jeff: Implement an AI that can play buy itself with betting. 
