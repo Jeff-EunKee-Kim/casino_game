@@ -45,11 +45,18 @@ public class Player {
 
     /**
      * Get balance of the player
-     *
      * @return Balance of the player
      */
     public int getBalance() {
         return balance;
+    }
+
+    /**
+     * Get chips of the player
+     * @return Chips of the player
+     */
+    public int[] getChips() {
+        return chips;
     }
 
     /**
