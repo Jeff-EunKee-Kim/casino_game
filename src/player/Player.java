@@ -16,7 +16,8 @@ public class Player {
 
     /**
      * Constructor for the player
-     * @param name: Name of the player
+     *
+     * @param name:    Name of the player
      * @param balance: Balance of the player
      */
     public Player(String name, int balance) {
@@ -26,6 +27,7 @@ public class Player {
 
     /**
      * Constructor for the player
+     *
      * @param name: name of the player
      */
     public Player(String name) {
@@ -34,6 +36,7 @@ public class Player {
 
     /**
      * Get name of the player
+     *
      * @return Name of the player
      */
     public String getName() {
@@ -49,7 +52,16 @@ public class Player {
     }
 
     /**
+     * Get chips of the player
+     * @return Chips of the player
+     */
+    public int[] getChips() {
+        return chips;
+    }
+
+    /**
      * Add balance to the player
+     *
      * @param debitMoney: Money that is being added to the account
      */
     public void addBalance(int debitMoney) {
@@ -58,6 +70,7 @@ public class Player {
 
     /**
      * Subtract balance to the player
+     *
      * @param creditMoney: Money that is taken out of the account
      */
     public void subtractBalance(int creditMoney) {
@@ -71,6 +84,7 @@ public class Player {
 
     /**
      * Buy red chips, cost $1 each and saved in 0th index
+     *
      * @param redChips Number of red chips to buy
      */
     public void buyRedChips(int redChips) {
@@ -85,6 +99,7 @@ public class Player {
 
     /**
      * Buy blue chips, cost $5 each and saved in 0th index
+     *
      * @param blueChips Number of blue chips to buy
      */
     public void buyBlueChips(int blueChips) {
@@ -99,6 +114,7 @@ public class Player {
 
     /**
      * Buy green chips, cost $1 each and saved in 0th index
+     *
      * @param greenChips Number of red chips to buy
      */
     public void buyGreenChips(int greenChips) {
@@ -113,8 +129,9 @@ public class Player {
 
     /**
      * Exchange chips to money
-     * @param redChips: number of red chips to exchange
-     * @param blueChips Number of blue chips to exchange
+     *
+     * @param redChips:  number of red chips to exchange
+     * @param blueChips  Number of blue chips to exchange
      * @param greenChips Number of green chips to exchange
      */
     public void exchangeMoneyFromChips(int redChips, int blueChips, int greenChips) {
