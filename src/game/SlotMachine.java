@@ -49,30 +49,14 @@ public class SlotMachine {
     }
 
 
-    /**
-     * An equals method that determines if another object is
-     * equal to a SlotMachine
-     * @param o other object to be compared
-     * @return a true or false boolean
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SlotMachine that = (SlotMachine) o;
-        return BET_BY_PLAYER == that.BET_BY_PLAYER &&
-                MACHINE_CHOSEN_VALUE == that.MACHINE_CHOSEN_VALUE &&
-                CURRENT_MONEY == that.CURRENT_MONEY;
-    }
-
 
     /**
-     * Method that determines the String value of the SlotMachine
-     * @return the String Value of the SlotMachine
+     * Method that determines the String value of the SlotMachineWinning
+     * @return the String Value of the SlotMachineWinning
      */
     @Override
     public String toString() {
-        return "SlotMachine{" +
+        return "SlotMachineWinning{" +
                 "BET_BY_PLAYER=" + BET_BY_PLAYER +
                 ", MACHINE_CHOSEN_VALUE=" + MACHINE_CHOSEN_VALUE +
                 ", CURRENT_MONEY=" + CURRENT_MONEY +

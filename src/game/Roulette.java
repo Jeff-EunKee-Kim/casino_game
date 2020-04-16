@@ -16,9 +16,9 @@ public class Roulette {
     private int CURRENT_MONEY;
 
     /**
-     * Constructor for roulette. Creates a new instance of the front end and the casino
+     * Constructor for roulette. Creates a new instance of the front end and the Casino
      * and uses these to get their input so as to compare input by user versus random value
-     * from casino
+     * from Casino
      */
     public Roulette(int betByPlayer, int machineChosenValue, int currentMoney) {
         // 0 and -1 = Black and Red Bets respectively; 1-36 = Single Number Bets
@@ -69,7 +69,7 @@ public class Roulette {
 
     /**
      * An equals method that determines if another object is
-     * equal to a Roulette
+     * equal to a BlackJackWinning
      * @param o other object to be compared
      * @return a true or false boolean
      */
@@ -85,12 +85,12 @@ public class Roulette {
 
 
     /**
-     * Method that determines the String value of the Roulette
-     * @return the String Value of the Roulette
+     * Method that determines the String value of the BlackJackWinning
+     * @return the String Value of the BlackJackWinning
      */
     @Override
     public String toString() {
-        return "Roulette{" +
+        return "BlackJackWinning{" +
                 "BET_BY_PLAYER=" + BET_BY_PLAYER +
                 ", MACHINE_CHOSEN_VALUE=" + MACHINE_CHOSEN_VALUE +
                 ", CURRENT_MONEY=" + CURRENT_MONEY +

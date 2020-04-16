@@ -6,7 +6,7 @@ package player;
  */
 public class Bet {
     private final Player player;
-    private int bet;
+    private static int bet;
 
     /**
      * Constructor for betting
@@ -31,7 +31,7 @@ public class Bet {
      * Gets the amount of bet
      * @return Amount of bet
      */
-    public int getBet() {
+    public static int getBet() {
         return bet;
     }
 
@@ -52,4 +52,12 @@ public class Bet {
         bet -= reduce;
         player.addBalance(reduce);
     }
+
+    // TODO: complete this method and let it return true if user's bet is inside bet and false otherwise (false = outside bet)
+    public static boolean insideBet(){return false; }
+
+
+    // TODO: complete this method and let it return true if the outside bet is evenOdd and false otherwise
+    public static boolean evenOdd(){return false; }
+
 }

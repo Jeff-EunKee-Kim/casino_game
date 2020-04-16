@@ -23,7 +23,7 @@ public class StartMenu {
 
     public StartMenu() {
         //game = new Game();
-        Button roulette_btn = new Button("Roulette");
+        Button roulette_btn = new Button("BlackJackWinning");
         Button blackjack_btn = new Button("Blackjack");
         Button slots_btn = new Button("Slots");
         blackjack_btn.setId("ldbtn");
