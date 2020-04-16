@@ -21,8 +21,9 @@ public class WheelTest{
     @Test
     public void testWheelSpin(){
         Wheel wheel = new Wheel();
+        Wheel wheel2 = new Wheel();
         wheel.spin();
-
+        assertNotEquals(wheel2, wheel);
     }
 
 }
