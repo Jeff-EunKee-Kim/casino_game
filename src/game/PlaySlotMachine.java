@@ -4,20 +4,14 @@ package game;
  * @author Celine Murugi
  */
 
-import casino.Casino;
+
 import player.Bet;
-import viewer.StartMenu;
-import winnings.RouletteWinning;
 import winnings.SlotMachineWinning;
 
 
 
-public class PlaySlotMachine {
+public class PlaySlotMachine extends AbstractGame{
 
-
-    private int CURRENT_MONEY;
-    private int playerChosenValue;
-    private int casinoChosenValue;
 
     /**
      * Constructor for slot machine. Calling it from the front end starts
@@ -25,8 +19,7 @@ public class PlaySlotMachine {
      */
     public PlaySlotMachine() {
 
-        playerChosenValue = StartMenu.getPlayerChosenValue();
-        casinoChosenValue = Casino.casinoChosenCombination();
+
 
         if (playerChosenValue == casinoChosenValue){
             CURRENT_MONEY = SlotMachineWinning.getReward();
