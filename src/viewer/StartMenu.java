@@ -68,4 +68,6 @@ public class StartMenu {
     public BorderPane getLayout() {
         return layout;
     }
+
+    public static int getPlayerChosenValue(){ return 0;}
 }

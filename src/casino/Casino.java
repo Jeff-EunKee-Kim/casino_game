@@ -2,5 +2,5 @@ package casino;
 
 public class Casino {
 
-    public static int playerChosenCombination(){ return 0;}
+    public static int casinoChosenCombination(){ return 0;}
 }

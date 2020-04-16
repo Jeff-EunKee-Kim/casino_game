@@ -15,7 +15,7 @@ public class SlotMachineWinning extends AbstractWinnings{
     public static final int SEVEN_HUNDRED_SEVENTY_SEVEN_REWARD = 40;
     public static final int HUNDRED_THIRTY_FIVE_REWARD = 30;
     public static final int TWO_HUNDRED_FORTY_SIX_REWARD = 20;
-    private final int playerChosenCombination = Casino.playerChosenCombination();
+    private final int playerChosenCombination = Casino.casinoChosenCombination();
 
 
     protected void determineRewardAmount(){

@@ -1,4 +1,4 @@
-package updatesIGNOREFORNOW;
+package game;
 
 /**
  * @author Celine Murugi
@@ -6,7 +6,7 @@ package updatesIGNOREFORNOW;
  */
 
 
-public class SlotMachine {
+public class PlaySlotMachine {
     public static final int WIN_BY_WIN = 500;
     public static final int LOSE_BY_LOSS = 100;
 
@@ -15,7 +15,7 @@ public class SlotMachine {
     private int MACHINE_CHOSEN_VALUE;
     private int CURRENT_MONEY;
 
-    public SlotMachine(int betByPlayer, int machineChosenValue, int currentMoney) { // three-digit number guessed by user
+    public PlaySlotMachine(int betByPlayer, int machineChosenValue, int currentMoney) { // three-digit number guessed by user
         BET_BY_PLAYER = betByPlayer;
         MACHINE_CHOSEN_VALUE = machineChosenValue;
         CURRENT_MONEY = currentMoney;
