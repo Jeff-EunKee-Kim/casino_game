@@ -1,5 +1,9 @@
 package winnings;
 
+/**
+ * @author Celine Murugi
+ */
+
 import player.Bet;
 
 public abstract class AbstractWinnings {
