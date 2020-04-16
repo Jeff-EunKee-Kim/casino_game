@@ -1,6 +1,7 @@
 package slots;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,5 +23,14 @@ public class Reel {
         myReel.add(new Cell(7, Icon.BELL));
         myReel.add(new Cell(8, Icon.BAR));
         myReel.add(new Cell(9, Icon.SEVEN));
+        Collections.shuffle(myReel);
+    }
+
+    public Reel(List<Cell> list){
+        myReel = list;
+    }
+
+    public List<Cell> getReel(){
+        return myReel;
     }
 }
