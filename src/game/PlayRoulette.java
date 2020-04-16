@@ -1,23 +1,23 @@
 package game;
 
+/**
+ * @author Celine Murugi
+ */
+
 import casino.Casino;
 import player.Bet;
 import player.Player;
 import viewer.StartMenu;
 import winnings.RouletteWinning;
 
-/**
- * @author Celine Murugi
- * started 4/6/20
- */
 
 
 public class PlayRoulette {
-    public static final int WIN_BLACK_OR_RED = 20;
-    public static final int WIN_SINGLE_NUMBER = 50;
 
     private int CURRENT_MONEY;
-    private int reward;
+
+    private int playerChosenValue;
+    private int casinoChosenValue;
 
     /**
      * Constructor for roulette. Calling it from the front end starts
@@ -25,17 +25,15 @@ public class PlayRoulette {
      */
     public PlayRoulette() {
 
-        int playerChosenValue = StartMenu.getPlayerChosenValue();
-        int casinoChosenValue = Casino.casinoChosenCombination();
+        playerChosenValue = StartMenu.getPlayerChosenValue();
+        casinoChosenValue = Casino.casinoChosenCombination();
 
         if (playerChosenValue == casinoChosenValue){
-            reward = RouletteWinning.getReward();
+            CURRENT_MONEY = RouletteWinning.getReward();
         }
         else {
-            reward = Bet.getBet() * -1;
+            CURRENT_MONEY = Bet.getBet() * -1;
         }
-
-        CURRENT_MONEY += reward;
     }
 
 

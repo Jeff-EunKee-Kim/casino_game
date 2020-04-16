@@ -2,41 +2,39 @@ package game;
 
 /**
  * @author Celine Murugi
- * started 4/6/20
  */
+
+import casino.Casino;
+import player.Bet;
+import viewer.StartMenu;
+import winnings.RouletteWinning;
+import winnings.SlotMachineWinning;
+
 
 
 public class PlaySlotMachine {
-    public static final int WIN_BY_WIN = 500;
-    public static final int LOSE_BY_LOSS = 100;
 
 
-    private int BET_BY_PLAYER;
-    private int MACHINE_CHOSEN_VALUE;
     private int CURRENT_MONEY;
+    private int playerChosenValue;
+    private int casinoChosenValue;
 
-    public PlaySlotMachine(int betByPlayer, int machineChosenValue, int currentMoney) { // three-digit number guessed by user
-        BET_BY_PLAYER = betByPlayer;
-        MACHINE_CHOSEN_VALUE = machineChosenValue;
-        CURRENT_MONEY = currentMoney;
-    }
+    /**
+     * Constructor for slot machine. Calling it from the front end starts
+     * the slot machine game
+     */
+    public PlaySlotMachine() {
 
+        playerChosenValue = StartMenu.getPlayerChosenValue();
+        casinoChosenValue = Casino.casinoChosenCombination();
 
-    private void checkIfWon(){
-        if (playerHasWon() == true) {
-            CURRENT_MONEY += WIN_BY_WIN;
-
-        }else{
-            CURRENT_MONEY -= LOSE_BY_LOSS;
+        if (playerChosenValue == casinoChosenValue){
+            CURRENT_MONEY = SlotMachineWinning.getReward();
+        }
+        else {
+            CURRENT_MONEY = Bet.getBet() * -1;
         }
     }
-
-
-
-    private boolean playerHasWon(){
-        return (BET_BY_PLAYER == MACHINE_CHOSEN_VALUE);
-    }
-
 
 
     /**
@@ -49,17 +47,4 @@ public class PlaySlotMachine {
     }
 
 
-
-    /**
-     * Method that determines the String value of the SlotMachineWinning
-     * @return the String Value of the SlotMachineWinning
-     */
-    @Override
-    public String toString() {
-        return "SlotMachineWinning{" +
-                "BET_BY_PLAYER=" + BET_BY_PLAYER +
-                ", MACHINE_CHOSEN_VALUE=" + MACHINE_CHOSEN_VALUE +
-                ", CURRENT_MONEY=" + CURRENT_MONEY +
-                '}';
-    }
 }
