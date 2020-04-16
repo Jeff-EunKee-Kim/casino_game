@@ -69,7 +69,10 @@ public class StartMenu {
         return layout;
     }
 
+
+    //TODO: Complete this here or switch; method returns the combo inputted by player
     public static int getPlayerChosenValue(){ return 0;}
 
+    //TODO: Complete this here or switch; method is for black jack and returns if player wants to Stand or Hit
     public static char playerHitOrStand(){return 'H';}
 }
