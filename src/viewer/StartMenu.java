@@ -70,4 +70,6 @@ public class StartMenu {
     }
 
     public static int getPlayerChosenValue(){ return 0;}
+
+    public static char playerHitOrStand(){return 'H';}
 }

@@ -23,8 +23,11 @@ public class PlayBlackJack {
      * the black jack game
      */
     public PlayBlackJack(){
-        if (BlackJackWinning.PLAYER_WINS == true){
+        if (BlackJackWinning.PlayerWins() == true && BlackJackWinning.ItsATie() == false){
             CURRENT_MONEY += BlackJackWinning.getReward();
+        }
+        else if (BlackJackWinning.ItsATie() == true){
+            CURRENT_MONEY += 0;
         }
         else {
             CURRENT_MONEY += Bet.getBet() * -1;
