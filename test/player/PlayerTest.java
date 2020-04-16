@@ -2,8 +2,10 @@ package player;
 
 import exception.InsufficientBalanceException;
 import exception.InsufficientChipsException;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**

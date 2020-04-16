@@ -17,8 +17,7 @@ public class WheelTest{
 
     }
 
-    @Test
-    public void testWheelSpin(){
+    @Test public void testWheelSpin(){
         Wheel wheel = new Wheel();
         wheel.spin();
 

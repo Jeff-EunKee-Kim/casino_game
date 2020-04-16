@@ -35,14 +35,17 @@ public class StartMenu {
         title.getStyleClass().add("txt");
         roulette_btn.setOnAction(e -> {
             innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
+
             //game.start(0);
         });
         blackjack_btn.setOnAction(e -> {
             innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
+
             //game.start(1);
         });
         slots_btn.setOnAction(e -> {
             innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
+
             //game.start(2);
         });
         innerbtns = new VBox();
