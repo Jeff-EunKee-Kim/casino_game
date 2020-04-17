@@ -23,7 +23,7 @@ public class StartMenu {
 
     public StartMenu() {
         //game = new Game();
-        Button roulette_btn = new Button("Roulette");
+        Button roulette_btn = new Button("BlackJackWinning");
         Button blackjack_btn = new Button("Blackjack");
         Button slots_btn = new Button("Slots");
         blackjack_btn.setId("ldbtn");
@@ -68,4 +68,11 @@ public class StartMenu {
     public BorderPane getLayout() {
         return layout;
     }
+
+
+    //TODO: Complete this here or switch; method returns the combo inputted by player
+    public static int getPlayerChosenValue(){ return 0;}
+
+    //TODO: Complete this here or switch; method is for black jack and returns if player wants to Stand or Hit
+    public static char playerHitOrStand(){return 'H';}
 }
