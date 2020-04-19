@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.image.Image;
+import ooga.Main;
+
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -34,17 +36,15 @@ public class StartMenu {
         title.setText("Amicorum Spectaculum");
         title.getStyleClass().add("txt");
         roulette_btn.setOnAction(e -> {
-            innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
-
+            Main.gameStart(0);
             //game.start(0);
         });
         blackjack_btn.setOnAction(e -> {
-            innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
-
+            Main.gameStart(1);
             //game.start(1);
         });
         slots_btn.setOnAction(e -> {
-            innerbtns.getChildren().removeAll(roulette_btn,blackjack_btn,slots_btn);
+            Main.gameStart(2);
 
             //game.start(2);
         });
