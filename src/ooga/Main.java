@@ -1,6 +1,8 @@
 package ooga;
 
 
+import game.AbstractGame;
+import game.PlayRoulette;
 import javafx.animation.KeyFrame;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -22,6 +24,7 @@ public class Main extends Application {
     private static Stage myStage;
     private Timeline myAnimation;
     private StartMenu startMenu;
+    private static AbstractGame currentGame;
 
     public static void main(String[] args) {
         launch(args);
@@ -39,10 +42,17 @@ public class Main extends Application {
     }
 
     public static void gameStart(int gametype){
-        GridPane main = new GridPane();
-       // switch(gametype){
-        //    case 0 :
-       // }
+      = new GridPane();
+       switch (gametype) {
+           case 0:
+               currentGame = new PlayRoulette();
+               GridPane main = new RouletteViewport();
+               break;
+
+           default:
+               System.out.println("uWu something went woopsy");
+               break;
+       }
 
         Scene mains = new Scene(main,950 ,700);
         myStage.setScene(mains);

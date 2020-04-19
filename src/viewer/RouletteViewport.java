@@ -1,5 +1,10 @@
 package viewer;
 
-public class RouletteViewport {
+import javafx.scene.layout.GridPane;
+
+public class RouletteViewport extends GridPane {
+
+    public RouletteViewport(){
+    }
 
 }
