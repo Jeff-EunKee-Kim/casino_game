@@ -97,6 +97,27 @@ public class Player {
         }
     }
 
+    public void refundChips(int[] chips) {
+        this.chips[0] += chips[0];
+        this.chips[1] += chips[1];
+        this.chips[2] += chips[2];
+    }
+
+    public void useChips(int[] chips) {
+        if (this.chips[0] < chips[0]) {
+            throw new InsufficientChipsException("Not enough red chips");
+        }
+        if (this.chips[1] < chips[1]) {
+            throw new InsufficientChipsException("Not enough blue chips");
+        }
+        if (this.chips[2] < chips[2]) {
+            throw new InsufficientChipsException("Not enough green chips");
+        }
+        this.chips[0] -= chips[0];
+        this.chips[1] -= chips[1];
+        this.chips[2] -= chips[2];
+    }
+
     /**
      * Buy blue chips, cost $5 each and saved in 0th index
      *

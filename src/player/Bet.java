@@ -1,12 +1,14 @@
 package player;
 
+import enums.Chip;
+
 /**
  * @author Jeff Kim
  * started 4/8/20
  */
 public class Bet {
     private final Player player;
-    private int bet;
+    private static int bet;
 
     /**
      * Constructor for betting
@@ -31,25 +33,31 @@ public class Bet {
      * Gets the amount of bet
      * @return Amount of bet
      */
-    public int getBet() {
+    public static int getBet() {
         return bet;
     }
 
     /**
      * Raise the bet placed
-     * @param raise: Amount that is going to be raised
+     * @param chips: Amount of chips that is going to be raised
      */
-    public void increaseBet(int raise) {
+    public void increaseBet(int[] chips) {
+        int raise = chips[0] + chips[1] * 5 + chips[2] * 10;
         bet += raise;
         player.subtractBalance(raise);
+        player.useChips(chips);
     }
 
     /**
      * Decrease the bet placed
-     * @param reduce: Amount that is going to be decreased
+     * @param chips: Amount of chips is going to be decreased
      */
-    public void decreaseBet(int reduce) {
+    public void decreaseBet(int[] chips) {
+        int reduce = chips[0] + chips[1] * 5 + chips[2] * 10;
         bet -= reduce;
         player.addBalance(reduce);
+        player.refundChips(chips);
     }
+
+
 }

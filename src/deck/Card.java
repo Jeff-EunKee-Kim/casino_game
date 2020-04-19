@@ -17,13 +17,7 @@ public class Card {
     private Suit mySuit;
     private int myNumber;
 
-    /**
-     * The Card constructor
-     * @param rank a number between 2 and 10, and inclusive of
-     *               Jack, Queen, King, and Ace
-     * @param suite the suite of the card, that is, Heart, Diamond,
-     *              Club, and Spade
-     */
+
     public Card(){
         myRank = Rank.ACE;
         mySuit = Suit.CLUBS;

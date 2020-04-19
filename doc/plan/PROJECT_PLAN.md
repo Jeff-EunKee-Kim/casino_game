@@ -34,12 +34,12 @@
     - Secondary: Help whenever needed
     - Sprint 1: 
        - Implement abstract game to be extended by other games
-       - Start roulette rules
+       - Start roulette winnings
        - Determine if the player has won or lost
        - Update both player and casino modules
-       - Start roulette rules
+       - Start roulette winnings
     - Sprint 2:
-       - Complete roulette, black jack, and slot machine rules
+       - Complete roulette, black jack, and slot machine winnings
        - Complete interaction between game and front end
 
 

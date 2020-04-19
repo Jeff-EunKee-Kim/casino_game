@@ -20,13 +20,20 @@ class BetTest {
 
     @Test
     void increaseBet() {
-        b.increaseBet(200);
-        assertEquals(100, p.getBalance());
+        int[] chips = {1,1,1};
+        p.buyRedChips(1);
+        p.buyBlueChips(1);
+        p.buyGreenChips(1);
+        b.increaseBet(chips);
+        assertEquals(216, b.getBet());
+        assertEquals(500, p.getBalance());
     }
 
     @Test
     void decreaseBet() {
-        b.decreaseBet(300);
-        assertEquals(600, p.getBalance());
+        int[] chips = {1,1,1};
+        b.decreaseBet(chips);
+        assertEquals(184, b.getBet());
+        assertEquals(316, p.getBalance());
     }
 }
