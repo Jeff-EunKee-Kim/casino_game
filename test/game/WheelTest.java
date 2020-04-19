@@ -18,8 +18,7 @@ public class WheelTest{
         assertEquals(Color.GREEN, wheel.getTickerColor());
     }
 
-    @Test
-    public void testWheelSpin(){
+    @Test public void testWheelSpin(){
         Wheel wheel = new Wheel();
         Wheel wheel2 = new Wheel();
         wheel.spin();
