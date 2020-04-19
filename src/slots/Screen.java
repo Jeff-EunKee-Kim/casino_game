@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class represents the screen of a 3x3 slot machine. The number of lines bet changes how each screen will be scored.
+ * @author Vincent Sinfeugo
+ */
 public class Screen {
 
     private Reel[] reels;
@@ -22,6 +26,10 @@ public class Screen {
         updateScreen();
     }
 
+    /**
+     * This method spins the reels, then returns the total point scoring of the icons on screen.
+     * @return the total value of the screen, counting up all of the icons.
+     */
     public int spinReels(){
         for (int k = 0; k < reels.length; k++){
             List<Cell> myReel = reels[k].getReel();
@@ -79,7 +87,7 @@ public class Screen {
         }
     }
 
-    private void setLines(int lines){
+    public void setLines(int lines){
         linesBet = lines;
     }
 
