@@ -4,15 +4,15 @@ package winnings;
  * @author Celine Murugi
  */
 
-import player.Bet;
+import viewer.StartMenu;
 
 public class RouletteWinning extends AbstractWinnings {
 
     public static final int INSIDE_BET_REWARD = 50;
     public static final int OUTSIDE_BET_EVEN_ODD_REWARD = 30;
     public static final int OUTSIDE_BET_HIGH_LOW_REWARD = 20;
-    private final boolean insideBet = Bet.insideBet();
-    private final boolean evenOdd = Bet.evenOdd();
+    private final boolean insideBet = StartMenu.insideBet();
+    private final boolean evenOdd = StartMenu.evenOdd();
 
 
 

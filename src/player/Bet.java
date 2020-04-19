@@ -59,11 +59,5 @@ public class Bet {
         player.refundChips(chips);
     }
 
-    // TODO: complete this method and let it return true if user's bet is inside bet and false otherwise (false = outside bet)
-    public static boolean insideBet(){return false; }
-
-
-    // TODO: complete this method and let it return true if the outside bet is evenOdd and false otherwise
-    public static boolean evenOdd(){return false; }
 
 }

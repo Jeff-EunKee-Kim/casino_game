@@ -1,11 +1,11 @@
 package game;
 
-import casino.Casino;
-import viewer.StartMenu;
-
 /**
  * @author Celine Murugi
  */
+
+import casino.Casino;
+import viewer.StartMenu;
 
 public abstract class AbstractGame {
 
