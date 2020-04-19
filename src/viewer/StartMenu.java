@@ -80,3 +80,4 @@ public class StartMenu {
     public static int inputBetFromPlayer(){return 'H';}
 
 }
+
