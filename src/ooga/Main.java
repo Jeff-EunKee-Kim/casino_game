@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.io.File;
 
 /**
- * Feel free to completely change this code or delete it entirely. 
+ * Feel free to completely change this code or delete it entirely.
  */
 public class Main extends Application {
 
@@ -42,20 +42,20 @@ public class Main extends Application {
     }
 
     public static void gameStart(int gametype){
-      = new GridPane();
-       switch (gametype) {
-           case 0:
-               currentGame = new PlayRoulette();
-               GridPane main = new RouletteViewport();
-               break;
-
-           default:
-               System.out.println("uWu something went woopsy");
-               break;
-       }
-
-        Scene mains = new Scene(main,950 ,700);
-        myStage.setScene(mains);
+//      = new GridPane();
+//       switch (gametype) {
+//           case 0:
+//               currentGame = new PlayRoulette();
+//               GridPane main = new RouletteViewport();
+//               break;
+//
+//           default:
+//               System.out.println("uWu something went woopsy");
+//               break;
+//       }
+//
+//        Scene mains = new Scene(main,950 ,700);
+//        myStage.setScene(mains);
     }
 
 }
