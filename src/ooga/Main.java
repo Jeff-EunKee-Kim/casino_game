@@ -40,9 +40,9 @@ public class Main extends Application {
 
     public static void gameStart(int gametype){
         GridPane main = new GridPane();
-        switch(gametype){
-            case 0 :
-        }
+       // switch(gametype){
+        //    case 0 :
+       // }
 
         Scene mains = new Scene(main,950 ,700);
         myStage.setScene(mains);
