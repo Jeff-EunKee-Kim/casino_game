@@ -70,9 +70,13 @@ public class StartMenu {
     }
 
 
-    //TODO: Complete this here or switch; method returns the combo inputted by player
+    //TODO: Complete this here or switch; method returns the combo inputted by player for Slot machine - 3 digits
     public static int getPlayerChosenValue(){ return 0;}
 
-    //TODO: Complete this here or switch; method is for black jack and returns if player wants to Stand or Hit
+    //TODO: Complete this here or switch; method is for black jack and returns if player wants to Stand 'S' or Hit 'H'
     public static char playerHitOrStand(){return 'H';}
+
+    //TODO: Complete this here or switch; method returns the number representing the bet chosen by player; 1, 2, 3, 4
+    public static int inputBetFromPlayer(){return 'H';}
+
 }
