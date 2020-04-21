@@ -37,7 +37,6 @@ public class ScreenTest{
         Reel reel3 = new Reel(list);
         Screen screen = new Screen(reel1, reel2, reel3);
         assertEquals(1, screen.totalPoints());
-
     }
 
     @Test

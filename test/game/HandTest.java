@@ -3,6 +3,9 @@ package game;
 import deck.Card;
 import deck.Deck;
 import deck.Hand;
+import deck.blackJackHand;
+import enums.Rank;
+import enums.Suit;
 import org.junit.jupiter.api.Test;
 import roulette.Color;
 import roulette.Wheel;
@@ -27,5 +30,20 @@ public class HandTest{
         Hand hand = new Hand();
         hand.addCard(card);
         assertEquals(1, hand.handSize());
+    }
+
+    @Test
+    public void testBJHandTotal(){
+        Card card = new Card(Rank.ACE, Suit.DIAMONDS);
+        Card card2 = new Card(Rank.JACK, Suit.CLUBS);
+        Card card3 = new Card(Rank.THREE, Suit.DIAMONDS);
+        Card card4 = new Card(Rank.NINE, Suit.HEARTS);
+        blackJackHand hand = new blackJackHand();
+        hand.addCard(card);
+        hand.addCard(card2);
+        hand.addCard(card3);
+        hand.addCard(card4);
+        assertEquals(4, hand.handSize());
+        assertEquals(23, hand.getPoints());
     }
 }
