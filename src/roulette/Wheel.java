@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Wheel {
 
-    public static final int NUMBEROFSLICES = 38;
+    public static final int NUMBEROFSLICES = 37;
     private WheelSlice[] slices;
     private WheelSlice tickerOn;
     private Random spinner;
@@ -51,7 +51,6 @@ public class Wheel {
                 new WheelSlice(34, Color.RED),
                 new WheelSlice(35, Color.BLACK),
                 new WheelSlice(36, Color.RED),
-                new WheelSlice(37, Color.BLACK),
         };
         spinner = new Random();
         tickerOn = new WheelSlice(0, Color.GREEN);
