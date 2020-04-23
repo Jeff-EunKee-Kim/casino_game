@@ -42,7 +42,6 @@ public class Main extends Application {
     }
 
     public static void gameStart(int gametype){
-<<<<<<< HEAD
         GridPane main;
        switch (gametype) {
            case 0 :
@@ -57,7 +56,7 @@ public class Main extends Application {
 
         Scene mains = new Scene(main,950 ,700);
         myStage.setScene(mains);
-=======
+
 //      = new GridPane();
 //       switch (gametype) {
 //           case 0:
@@ -72,7 +71,7 @@ public class Main extends Application {
 //
 //        Scene mains = new Scene(main,950 ,700);
 //        myStage.setScene(mains);
->>>>>>> 33ba815e296402ef8052e9dd291f916ec051c57e
+
     }
 
 }
