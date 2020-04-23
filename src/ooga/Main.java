@@ -7,6 +7,7 @@ import javafx.animation.KeyFrame;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
+import player.Player;
 import viewer.*;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -25,8 +26,10 @@ public class Main extends Application {
     private Timeline myAnimation;
     private StartMenu startMenu;
     private static AbstractGame currentGame;
+    private static Player player;
 
     public static void main(String[] args) {
+        player = new Player("Chiskai",100);
         launch(args);
     }
 
@@ -46,7 +49,8 @@ public class Main extends Application {
        switch (gametype) {
            case 0 :
                currentGame = new PlayRoulette();
-               main = new RouletteViewport();
+
+               main = new RouletteViewport(currentGame, player);
                break;
 
            default:
