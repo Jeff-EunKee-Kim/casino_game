@@ -6,7 +6,6 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -14,7 +13,7 @@ public class RouletteViewport extends GridPane {
 
     public RouletteViewport(){
         this.getStylesheets().add("Styling/Main.css");
-        Bet bet = new Bet();
+        UserBet bet = new UserBet();
         int count = 1;
         int size = 3;
         for (int y = 0; y < 3 ; y++){
@@ -37,23 +36,23 @@ public class RouletteViewport extends GridPane {
                             node.getStyleClass().add("betted");
                             stack.getStyleClass().add("betted");
                         }else if(button==MouseButton.SECONDARY){
-                            node.getStyleClass().add("roul");
-                            stack.getStyleClass().add("roul");
+                            node.getStyleClass().add("fixer");
+                            stack.getStyleClass().add("fixer");
                         }else if(button==MouseButton.MIDDLE){
                             System.out.print("MIDDLE button clicked on button");
                         }
                     }
                 });
-
-
-
                 count++;
                 this.add(stack, x , y  ,  1, 1);
             }
         }
+        this.add(, x , y  ,  1, 1);
 
         Button submit = new Button("submit");
         submit.setOnMouseClicked(e -> {
+
+
 
         });
         this.add(submit, 0 , 4  ,  2, 1);

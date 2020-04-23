@@ -48,6 +48,7 @@ public class Main extends Application {
                currentGame = new PlayRoulette();
                main = new RouletteViewport();
                break;
+
            default:
                System.out.println("uWu something went woopsy");
                main = new GridPane();
