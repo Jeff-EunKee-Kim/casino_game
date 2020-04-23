@@ -4,9 +4,13 @@ package game;
  * @author Celine Murugi, Jeff Kim
  */
 
+import Result.RouletteResult;
+import Result.SlotResult;
 import player.Bet;
+import player.Player;
 import winnings.SlotMachineWinning;
 
+import java.util.HashMap;
 
 
 public class PlaySlotMachine extends AbstractGame{
@@ -23,6 +27,12 @@ public class PlaySlotMachine extends AbstractGame{
         else {
             CURRENT_MONEY = Bet.getBet() * -1;
         }
+    }
+
+    public SlotResult playSlotMachine() {
+        SlotResult res = new SlotResult(0, 0, 0);
+
+        return res;
     }
 
 
