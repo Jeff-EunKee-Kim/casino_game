@@ -4,7 +4,8 @@ package winnings;
  * @author Celine Murugi
  */
 
-import casino.Casino;
+
+import slots.Screen;
 
 public class SlotMachineWinning extends AbstractWinnings{
 
@@ -15,7 +16,14 @@ public class SlotMachineWinning extends AbstractWinnings{
     public static final int SEVEN_HUNDRED_SEVENTY_SEVEN_REWARD = 40;
     public static final int HUNDRED_THIRTY_FIVE_REWARD = 30;
     public static final int TWO_HUNDRED_FORTY_SIX_REWARD = 20;
-    private final int playerChosenCombination = Casino.casinoChosenCombination();
+    private final int playerChosenCombination;
+
+
+
+    public SlotMachineWinning(){
+        Screen screen = new Screen();
+        playerChosenCombination = screen.spinReels();
+    }
 
 
     protected void determineRewardAmount(){

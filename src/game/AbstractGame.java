@@ -4,7 +4,7 @@ package game;
  * @author Celine Murugi
  */
 
-import casino.Casino;
+import slots.Screen;
 import viewer.StartMenu;
 
 public abstract class AbstractGame {
@@ -15,9 +15,11 @@ public abstract class AbstractGame {
 
 
     protected void assignValues(){
+        Screen screen = new Screen();
         playerChosenValue = StartMenu.getPlayerChosenValue();
-        casinoChosenValue = Casino.casinoChosenCombination();
+        casinoChosenValue = screen.spinReels();
     }
+
 
     /**
      * a getter method for the current money; to be passed

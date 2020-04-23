@@ -19,10 +19,10 @@ public class PlayRoulette extends AbstractGame{
      */
     public PlayRoulette() {
         if (playerChosenValue == casinoChosenValue){
-            CURRENT_MONEY = RouletteWinning.getReward();
+            CURRENT_MONEY += RouletteWinning.getReward();
         }
         else {
-            CURRENT_MONEY = Bet.getBet() * -1;
+            CURRENT_MONEY += Bet.getBet() * -1;
         }
     }
 }
