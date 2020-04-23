@@ -4,8 +4,11 @@ package game;
  * @author Celine Murugi
  */
 
+import player.Player;
 import slots.Screen;
 import viewer.StartMenu;
+
+import java.util.HashMap;
 
 public abstract class AbstractGame {
 
@@ -18,6 +21,10 @@ public abstract class AbstractGame {
         Screen screen = new Screen();
         playerChosenValue = StartMenu.getPlayerChosenValue();
         casinoChosenValue = screen.spinReels();
+    }
+
+    public void rouletteRound(HashMap<Integer,Integer> bets, Player player){
+
     }
 
 
