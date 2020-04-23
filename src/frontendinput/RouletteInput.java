@@ -8,11 +8,10 @@ import viewer.StartMenu;
 
 public class RouletteInput {
 
-<<<<<<< HEAD
    // private static boolean insideBet(){
    //      StartMenu
    // }
-=======
+
     public static final int INSIDE_BET_INTEGER = 1;
     public static final int OUTSIDE_BET_INTEGER = 2;
     public static final int OUTSIDE_BET_EVEN_ODD_INTEGER = 3;
@@ -52,5 +51,4 @@ public class RouletteInput {
         return evenOdd;
     }
 
->>>>>>> 33ba815e296402ef8052e9dd291f916ec051c57e
 }
