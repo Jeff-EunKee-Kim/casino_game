@@ -1,9 +1,8 @@
 package game;
 
 /**
- * @author Celine Murugi
+ * @author Celine Murugi, Jeff Kim
  */
-
 
 import player.Bet;
 import winnings.SlotMachineWinning;
@@ -18,9 +17,6 @@ public class PlaySlotMachine extends AbstractGame{
      * the slot machine game
      */
     public PlaySlotMachine() {
-
-
-
         if (playerChosenValue == casinoChosenValue){
             CURRENT_MONEY = SlotMachineWinning.getReward();
         }
