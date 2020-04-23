@@ -8,6 +8,7 @@ public abstract class GameResult {
     private boolean winStatus;
     private int amountWon;
     private int playerBalance;
+
     public GameResult(boolean winStatus, int amountWon, int playerBalance) {
         this.winStatus = winStatus;
         this.amountWon = amountWon;

@@ -50,7 +50,7 @@ public class Main extends Application {
            case 0 :
                currentGame = new PlayRoulette();
 
-               main = new RouletteViewport(currentGame, player);
+               main = new RouletteViewport((PlayRoulette) currentGame, player);
                break;
 
            default:

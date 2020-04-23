@@ -1,7 +1,7 @@
 package game;
 
 /**
- * @author Celine Murugi
+ * @author Celine Murugi, Jeff Kim
  */
 
 import player.Player;
@@ -23,9 +23,7 @@ public abstract class AbstractGame {
         casinoChosenValue = screen.spinReels();
     }
 
-    public void rouletteRound(HashMap<Integer,Integer> bets, Player player){
-
-    }
+//    public abstract void playRouletteRound(HashMap<Integer,Integer> bets, Player player);
 
 
     /**

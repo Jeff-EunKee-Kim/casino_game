@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class RouletteViewport extends GridPane {
 
-    public RouletteViewport(AbstractGame game, Player player){
+    public RouletteViewport(PlayRoulette game, Player player){
         this.getStylesheets().add("Styling/Main.css");
         HashMap<Integer,Integer> betStruct = new HashMap<>();
         for(int i = 0; i< 41;i++)
@@ -97,7 +97,7 @@ public class RouletteViewport extends GridPane {
         Button submit = new Button("submit");
         submit.setOnMouseClicked(e -> {
 
-            game.rouletteRound(betStruct,player);
+            game.playRouletteRound(betStruct,player);
 
         });
         this.add(submit, 0 , 5  ,  2, 1);

@@ -7,8 +7,8 @@ package Result;
 public class SlotResult extends GameResult {
     private int[] icons;
 
-    public SlotResult(boolean win, int amountWon) {
-        super(win, amountWon);
+    public SlotResult(boolean win, int amountWon, int playerBalance) {
+        super(win, amountWon, playerBalance);
         setIcons();
     }
 
