@@ -42,15 +42,15 @@ public class Main extends Application {
     }
 
     public static void gameStart(int gametype){
-      = new GridPane();
+        GridPane main;
        switch (gametype) {
-           case 0:
+           case 0 :
                currentGame = new PlayRoulette();
-               GridPane main = new RouletteViewport();
+               main = new RouletteViewport();
                break;
-
            default:
                System.out.println("uWu something went woopsy");
+               main = new GridPane();
                break;
        }
 

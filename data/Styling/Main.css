@@ -17,6 +17,26 @@
     -fx-background-color: #000000;
     -fx-text-fill: rgba(255, 255, 255, 0.78);
 }
+.roul{
+    -fx-text-fill: #9400FF;
+    -fx-border-color: #9400FF;
+    -fx-border-width: 3px;
+    -fx-padding: 2px;
+    -fx-fill: #e5ffea;
+}
+.betted{
+    -fx-border-width: 3px;
+    -fx-padding: 2px;
+    -fx-fill: #e5ffea;
+    -fx-border-color: #ff4031;
+}
+.fixer{
+    -fx-border-width: 3px;
+    -fx-padding: 2px;
+    -fx-fill: #e5ffea;
+    -fx-border-color: #f9ff33;
+}
+
 
 .txt{
     -fx-font-size:  90px;
