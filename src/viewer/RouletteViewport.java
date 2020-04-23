@@ -47,7 +47,7 @@ public class RouletteViewport extends GridPane {
                 this.add(stack, x , y  ,  1, 1);
             }
         }
-        this.add(, x , y  ,  1, 1);
+        //this.add(, x , y  ,  1, 1);
 
         Button submit = new Button("submit");
         submit.setOnMouseClicked(e -> {
