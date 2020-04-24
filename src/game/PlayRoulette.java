@@ -37,7 +37,7 @@ public class PlayRoulette extends AbstractGame{
         }
 
         if (totalBet > player.getBalance() || totalBet == 0) {
-            return new RouletteResult(false,false,0,0,-1);
+            return new RouletteResult(false,0,0,0,-1);
         }
 
         WheelModel wheelModel = new WheelModel();
@@ -49,9 +49,11 @@ public class PlayRoulette extends AbstractGame{
         player.subtractBalance(totalBet);
         if (winStatus) {
             player.addBalance(amountWon);
+            return new RouletteResult(true,1, amountWon, player.getBalance(), wheelModel.getTickerNumber());
         }
-
-        return new RouletteResult(true, winStatus,amountWon, player.getBalance(), wheelModel.getTickerNumber());
+        else{
+            return new RouletteResult(true, 0, amountWon, player.getBalance(), wheelModel.getTickerNumber());
+        }
     }
 
 }
