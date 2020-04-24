@@ -5,6 +5,8 @@ import game.PlayBlackJack;
 import game.PlaySlotMachine;
 import blackjack.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
@@ -23,6 +25,7 @@ public class BlackjackViewport extends GridPane {
     Player player;
     int flag ;
     Text numberref;
+    int amount;
     HashMap<Integer,blackJackHand> betStruct;
     public BlackjackViewport(PlayBlackJack game, Player player) {
         this.getStylesheets().add("Styling/Main.css");
@@ -30,10 +33,37 @@ public class BlackjackViewport extends GridPane {
         this.player = player;
         this.game = game;
         flag = 1;
-        render();
+        setup();
 
 
     }
+    private void setup(){
+        this.getChildren().clear();
+        Label title = new Label("amount bet :");
+        Label err = new Label("");
+        title.getStyleClass().add("liltxt");
+        err.getStyleClass().add("liltxt");
+        this.add(title, 0, 0);
+        this.add(err, 0, 1);
+        TextField titleTextField = new TextField();
+        this.add(titleTextField, 1, 0,2,1);
+        Button submit = new Button("Submit");
+        submit.getStyleClass().add("rect");
+        this.add(submit,0,2,2,1);
+        submit.setOnAction(e -> {
+            String exptitle = titleTextField.getText();
+            int bet = Integer.parseInt(exptitle);
+            if(player.validate(bet)){
+                amount = bet;
+                render();
+            }
+            else {
+                err.setText("INVALD");
+            }
+        });
+    }
+
+
     private void next(){
        betStruct = result.getMap();
        System.out.println(result.getWinStatus());
@@ -48,6 +78,7 @@ public class BlackjackViewport extends GridPane {
 
            Button newround = new Button("newround");
             newround.setOnMouseClicked(e -> {
+                flag =1;
                 betStruct = game.startBlackjackRound();
                 render();
             });

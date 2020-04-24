@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.PublicKey;
 
 /**
  * @author Jeff Kim
@@ -49,6 +50,10 @@ public class Player {
         this.name = jsonObject.get("name").toString();
         long t = (long) jsonObject.get("balance");
         this.balance = (int) t;
+    }
+
+    public boolean validate(int bal){
+        return bal<=this.balance;
     }
 
     /**
