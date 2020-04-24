@@ -14,6 +14,7 @@ public class BlackjackResult extends GameResult {
 
     public BlackjackResult(boolean isValidBet, int winStatus, int amountWon, int playerBalance, blackJackHand player, blackJackHand dealer) {
         super(isValidBet, winStatus, amountWon, playerBalance);
+        map = new HashMap<>();
         map.put(0, dealer);
         map.put(1, player);
     }
