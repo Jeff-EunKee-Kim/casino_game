@@ -28,6 +28,8 @@ public class PlayBlackJack extends AbstractGame{
     blackJackHand myHand;
     blackJackHand dealerHand;
 
+    int myBet;
+
     /**
      * Constructor for black jack. Calling it from the front end starts
      * the black jack game
@@ -46,8 +48,9 @@ public class PlayBlackJack extends AbstractGame{
     }
 
 
-    public List<Integer> playBlackjackRound(Player p, int bet) {
-        if (p.getBalance() < bet) {
+    public List<Integer> startBlackjackRound(Player p, int bet) {
+        myBet = bet;
+        if (p.getBalance() < myBet) {
             return null;
         }
 
@@ -71,11 +74,49 @@ public class PlayBlackJack extends AbstractGame{
         }
 
         return cardList;
-
     }
 
-    public void playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player player, int hitOrMiss ) {
-
+    public BlackjackResult playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player p, int hitOrMiss) {
+        int winStatus;
+        boolean playerBust = false;
+        boolean dealerBust = false;
+        if (hitOrMiss == 0){
+            myHand.addCard(myDeck.dealTopCard());
+            if (myHand.getPoints() > 21){
+                playerBust = true;
+            }
+            if (dealerHand.getPoints() < 17){
+                dealerHand.addCard(myDeck.dealTopCard());
+                if (dealerHand.getPoints() > 21){
+                    dealerBust = true;
+                }
+            }
+            if (playerBust == true && dealerBust == true){
+                winStatus = 2;
+            }
+            else if (playerBust == true && dealerBust == false){
+                winStatus = 0;
+            }
+            else if (playerBust == false && dealerBust == true){
+                winStatus = 1;
+            }
+            else{
+                winStatus = 3;
+            }
+            return new BlackjackResult(true, winStatus, myBet, p.getBalance(), myHand, dealerHand);
+        }
+        else{
+            if (myHand.getPoints() < dealerHand.getPoints()){
+                winStatus = 0;
+            }
+            else if (myHand.getPoints() > dealerHand.getPoints()){
+                winStatus = 1;
+            }
+            else if (myHand.getPoints() == dealerHand.getPoints()){
+                winStatus = 2;
+            }
+            return new BlackjackResult(true, winStatus, myBet, p.getBalance(), myHand, dealerHand);
+        }
     }
 
 }

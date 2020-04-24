@@ -1,6 +1,6 @@
 package result;
 
-import deck.blackJackHand;
+import blackjack.blackJackHand;
 import player.Player;
 
 import java.util.HashMap;
@@ -10,10 +10,10 @@ import java.util.HashMap;
  * started 4/24/20
  */
 public class BlackjackResult extends GameResult {
-    private blackJackHand myHand = new blackJackHand();
-    private blackJackHand dealerHand = new blackJackHand();
+    private blackJackHand myHand;
+    private blackJackHand dealerHand;
 
-    public BlackjackResult(boolean isValidBet, boolean winStatus, int amountWon, int playerBalance, blackJackHand player, blackJackHand dealer) {
+    public BlackjackResult(boolean isValidBet, int winStatus, int amountWon, int playerBalance, blackJackHand player, blackJackHand dealer) {
         super(isValidBet, winStatus, amountWon, playerBalance);
         myHand = player;
         dealerHand = dealer;
