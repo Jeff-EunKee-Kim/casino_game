@@ -83,14 +83,25 @@ public class PlayBlackJack extends AbstractGame{
             }
         }
         else{
-            if (myHand.getPoints() < dealerHand.getPoints()){
-                winStatus = 0;
+            if (dealerHand.getPoints() < 17){
+                dealerHand.addCard(myDeck.dealTopCard());
+                if (dealerHand.getPoints() > 21){
+                    winStatus = 1;
+                }
+                else{
+                    winStatus = 3;
+                }
             }
-            else if (myHand.getPoints() > dealerHand.getPoints()){
-                winStatus = 1;
-            }
-            else if (myHand.getPoints() == dealerHand.getPoints()) {
-                winStatus = 2;
+            else{
+                if (myHand.getPoints() < dealerHand.getPoints()){
+                    winStatus = 0;
+                }
+                else if (myHand.getPoints() > dealerHand.getPoints()){
+                    winStatus = 1;
+                }
+                else if (myHand.getPoints() == dealerHand.getPoints()) {
+                    winStatus = 2;
+                }
             }
         }
         return new BlackjackResult(true, winStatus, myBet, p.getBalance(), myHand, dealerHand);
