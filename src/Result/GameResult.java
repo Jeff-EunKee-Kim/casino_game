@@ -28,4 +28,5 @@ public abstract class GameResult {
 
     public int getPlayerBalance() { return playerBalance; }
 
+    public boolean getIsValidBet(){ return isValidBet;}
 }

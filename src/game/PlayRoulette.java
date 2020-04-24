@@ -33,10 +33,10 @@ public class PlayRoulette extends AbstractGame{
     public RouletteResult playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
         int totalBet = 0;
         for (int bet : bets.keySet()) {
-            totalBet += bet;
+            totalBet += bets.get(bet);
         }
 
-        if (totalBet > player.getBalance()) {
+        if (totalBet > player.getBalance() || totalBet == 0) {
             return new RouletteResult(false,false,0,0,-1);
         }
 

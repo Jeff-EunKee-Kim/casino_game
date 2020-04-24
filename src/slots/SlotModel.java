@@ -14,7 +14,7 @@ public class SlotModel {
     private Column[] reels;
     private int[][] screen = new int[3][3];
     private Random r = new Random();
-    private int[] winnings = {10, 10, 20, 20, 30, 50, 100};
+    private int[] winnings = {50, 50, 100, 100, 150, 150, 10000};
 
     public SlotModel(){
         reels = new Column[]{new Column(), new Column(), new Column()};

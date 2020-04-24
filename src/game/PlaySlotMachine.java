@@ -14,18 +14,11 @@ import java.util.Map;
 
 
 public class PlaySlotMachine extends AbstractGame{
-    private final int pullLeverCost = 5;
+    private final int lineCost = 1;
     /**
-     * Constructor for slot machine. Calling it from the front end starts
-     * the slot machine game
+     * Constructor for slot machine.
      */
     public PlaySlotMachine() {
-        if (playerChosenValue == casinoChosenValue){
-            CURRENT_MONEY = SlotMachineWinning.getReward();
-        }
-        else {
-            CURRENT_MONEY = Bet.getBet() * -1;
-        }
     }
 
     /**
@@ -34,7 +27,12 @@ public class PlaySlotMachine extends AbstractGame{
      * @return SlotResult class that contains win status, amountwon, player balance, and screen after game
      */
     public SlotResult playSlotsRound(Map<Integer, Integer> lines, Player p) {
-        if (p.getBalance() < pullLeverCost) {
+        int totalBetCost = 0;
+        for (int line : lines.keySet()) {
+            totalBetCost += lines.get(line) * lineCost;
+        }
+
+        if (p.getBalance() < totalBetCost) {
             return new SlotResult(false, false, 0, 0, new int[3][3]);
         }
 
@@ -44,7 +42,8 @@ public class PlaySlotMachine extends AbstractGame{
         int amountWon = slotModel.calculateWinAmount(lines);
         boolean winStatus = amountWon != 0;
 
-        p.subtractBalance(pullLeverCost);
+
+        p.subtractBalance(totalBetCost);
         if (winStatus) {
             p.addBalance(amountWon);
         }

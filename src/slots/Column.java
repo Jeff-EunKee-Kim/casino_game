@@ -10,7 +10,7 @@ import java.util.List;
 public class Column {
     private final int NUMBER_OF_ICONS = 7;
     List<Integer> myReel;
-    private final int[] frequency = {25, 25, 15, 15, 10, 7, 3};
+    private final int[] frequency = {40, 40, 20, 20, 10, 7, 3};
 
 
     public Column(){
