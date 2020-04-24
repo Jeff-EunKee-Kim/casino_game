@@ -1,4 +1,4 @@
-package Result;
+package result;
 
 import deck.blackJackHand;
 import player.Player;

@@ -4,11 +4,9 @@ package game;
  * @author Celine Murugi, Jeff Kim
  */
 
-import Result.SlotResult;
-import player.Bet;
+import result.SlotResult;
 import player.Player;
 import slots.SlotModel;
-import winnings.SlotMachineWinning;
 
 import java.util.Map;
 
