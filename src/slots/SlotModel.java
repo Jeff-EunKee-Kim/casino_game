@@ -88,7 +88,7 @@ public class SlotModel {
         return screen[2][0] == screen[1][1] && screen[1][1] == screen[0][2];
     }
 
-    public int calculateScore(Map<Integer, Integer> lines) {
+    public int calculateWinAmount(Map<Integer, Integer> lines) {
         int winAmount = 0;
         for (int line : lines.keySet()) {
             if (line == 0 && checkTopLine()) {
