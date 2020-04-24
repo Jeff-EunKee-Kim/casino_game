@@ -9,9 +9,11 @@ import result.RouletteResult;
 import player.Bet;
 import player.Player;
 import roulette.WheelModel;
+import roulette.WheelSlice;
 import winnings.RouletteWinning;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class PlayRoulette extends AbstractGame{
@@ -22,22 +24,16 @@ public class PlayRoulette extends AbstractGame{
      * the roulette game
      */
     public PlayRoulette() {
-        if (playerChosenValue == casinoChosenValue){
-            CURRENT_MONEY += RouletteWinning.getReward();
-        }
-        else {
-            CURRENT_MONEY += Bet.getBet() * -1;
-        }
     }
 
-    public RouletteResult playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
+    public RouletteResult playRouletteRound(Map<Integer,Integer> bets, Player player) {
         int totalBet = 0;
         for (int bet : bets.keySet()) {
             totalBet += bets.get(bet);
         }
 
         if (totalBet > player.getBalance() || totalBet == 0) {
-            return new RouletteResult(false,0,0,0,-1);
+            return new RouletteResult(false,0,0,0,new WheelSlice());
         }
 
         WheelModel wheelModel = new WheelModel();
@@ -49,10 +45,10 @@ public class PlayRoulette extends AbstractGame{
         player.subtractBalance(totalBet);
         if (winStatus) {
             player.addBalance(amountWon);
-            return new RouletteResult(true,1, amountWon, player.getBalance(), wheelModel.getTickerNumber());
+            return new RouletteResult(true,1, amountWon, player.getBalance(), wheelModel.getTickerOn());
         }
         else{
-            return new RouletteResult(true, 0, amountWon, player.getBalance(), wheelModel.getTickerNumber());
+            return new RouletteResult(true, 0, amountWon, player.getBalance(), wheelModel.getTickerOn());
         }
     }
 

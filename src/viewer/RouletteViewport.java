@@ -17,32 +17,38 @@ import ooga.Main;
 import player.Player;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class RouletteViewport extends GridPane {
     RouletteResult result;
     PlayRoulette game;
     Player player;
     HashMap<Integer,Integer> betStruct;
+    Text sts;
     public RouletteViewport(PlayRoulette game, Player player){
+        sts  = new Text("[-]");
         this.game = game;
         this.player = player;
         this.getStylesheets().add("Styling/Main.css");
         betStruct = new HashMap<>();
-        for(int i = 0; i< 41;i++)
-            betStruct.put(i,0);
+
         render();
     }
 
     private void next(){
 
+        render();
+
     }
     private void render(){
+        for(int i = 0; i< 41;i++)
+            betStruct.put(i,0);
+        this.getChildren().clear();
         int count = 1;
         int size = 4;
         Text numbere = new Text("Bal :" + player.getBalance());
-        Text sts  = new Text();
-        this.add(numbere,14,0,2,1);
-        this.add(sts,14,1,2,1);
+        this.add(numbere,18,0,2,1);
+        this.add(sts,18,1,2,1);
         for (int y = 0; y < 12 ; y++){
             for(int x = 0; x < 3 ;x++){
                 Rectangle node = new Rectangle();
@@ -102,7 +108,7 @@ public class RouletteViewport extends GridPane {
                     node.getStyleClass().add("betted");
                     stack.getStyleClass().add("betted");
                 }
-                System.out.println(betStruct);
+
                 //game.start(2);
             });
             count++;
@@ -115,8 +121,12 @@ public class RouletteViewport extends GridPane {
         submit.setOnMouseClicked(e -> {
             System.out.println(betStruct);
             result =  game.playRouletteRound(betStruct,player);
-            if(result.getIsValidBet())
+            if(result.getIsValidBet()) {
+                String resulter  = result.getTickerPosition().getNumber() + " " + result.getTickerPosition().getColor();
+                sts.setText(resulter);
+
                 next();
+            }
             else
                 sts.setText("INVALID");
         });
