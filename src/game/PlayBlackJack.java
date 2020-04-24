@@ -89,7 +89,20 @@ public class PlayBlackJack extends AbstractGame{
                     winStatus = 1;
                 }
                 else{
-                    winStatus = 3;
+                    if (dealerHand.getPoints() < 17){
+                        winStatus = 3;
+                    }
+                    else{
+                        if (myHand.getPoints() < dealerHand.getPoints()){
+                            winStatus = 0;
+                        }
+                        else if (myHand.getPoints() > dealerHand.getPoints()){
+                            winStatus = 1;
+                        }
+                        else if (myHand.getPoints() == dealerHand.getPoints()) {
+                            winStatus = 2;
+                        }
+                    }
                 }
             }
             else{
