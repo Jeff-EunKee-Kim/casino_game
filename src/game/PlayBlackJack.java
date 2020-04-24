@@ -52,6 +52,7 @@ public class PlayBlackJack extends AbstractGame{
         }
 
         myDeck = new Deck();
+        myDeck.shuffle();
 
         myHand = new blackJackHand();
         myHand.addCard(myDeck.dealTopCard());
