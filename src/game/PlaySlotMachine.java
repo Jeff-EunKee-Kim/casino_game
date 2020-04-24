@@ -34,7 +34,7 @@ public class PlaySlotMachine extends AbstractGame{
      * @return SlotResult class that contains win status, amountwon, player balance, and screen after game
      */
     public SlotResult playSlotsRound(Map<Integer, Integer> lines, Player p) {
-        if (p.getBalance() < pullLeverCost>) {
+        if (p.getBalance() < pullLeverCost) {
             return new SlotResult(false, false, 0, 0, new int[3][3]);
         }
 
