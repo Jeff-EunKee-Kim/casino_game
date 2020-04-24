@@ -31,7 +31,14 @@ public class Main extends Application {
     private static Player player;
 
     public static void main(String[] args) {
-        player = new Player("Chiskai",100);
+        try{
+            File testFile = new File("./data/playerData/player.json");
+            //  player = new Player(testFile);
+        }
+        catch (Exception e){
+            player = new Player("Chiskai",500);
+        }
+
         launch(args);
     }
 
@@ -70,21 +77,6 @@ public class Main extends Application {
 
         Scene mains = new Scene(main,950 ,700);
         myStage.setScene(mains);
-
-//      = new GridPane();
-//       switch (gametype) {
-//           case 0:
-//               currentGame = new PlayRoulette();
-//               GridPane main = new RouletteViewport();
-//               break;
-//
-//           default:
-//               System.out.println("uWu something went woopsy");
-//               break;
-//       }
-//
-//        Scene mains = new Scene(main,950 ,700);
-//        myStage.setScene(mains);
 
     }
 
