@@ -34,17 +34,21 @@ public class PlaySlotMachine extends AbstractGame{
      * @return SlotResult class that contains win status, amountwon, player balance, and screen after game
      */
     public SlotResult playSlotsRound(Map<Integer, Integer> lines, Player p) {
-        SlotModel slotDisplay = new SlotModel();
-        slotDisplay.spinReels();
+        if (p.getBalance() < pullLeverCost) {
+            return new SlotResult(false, false, 0, 0, new int[3][3]);
+        }
 
-        int amountWon = slotDisplay.calculateScore(lines);
+        SlotModel slotModel = new SlotModel();
+        slotModel.spinReels();
+
+        int amountWon = slotModel.calculateWinAmount(lines);
         boolean winStatus = amountWon != 0;
         p.subtractBalance(pullLeverCost);
         if (winStatus) {
             p.addBalance(amountWon);
         }
 
-        SlotResult res = new SlotResult(winStatus, amountWon, p.getBalance(), slotDisplay.getScreen());
+        SlotResult res = new SlotResult(true, winStatus, amountWon, p.getBalance(), slotModel.getScreen());
 
         return res;
     }

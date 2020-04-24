@@ -9,8 +9,8 @@ import java.util.HashMap;
  * started 4/24/20
  */
 public class BlackjackResult extends GameResult {
-    public BlackjackResult(boolean winStatus, int amountWon, int playerBalance) {
-        super(winStatus, amountWon, playerBalance);
+    public BlackjackResult(boolean isValidBet, boolean winStatus, int amountWon, int playerBalance) {
+        super(isValidBet, winStatus, amountWon, playerBalance);
     }
 
 }
