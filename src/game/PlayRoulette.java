@@ -5,6 +5,7 @@ package game;
  */
 
 
+import Result.RouletteResult;
 import player.Bet;
 import player.Player;
 import winnings.RouletteWinning;
@@ -28,8 +29,9 @@ public class PlayRoulette extends AbstractGame{
         }
     }
 
-    public void playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
-
+    public RouletteResult playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
+        RouletteResult res = new RouletteResult(0, 0, 0);
+        return res;
     }
 
 

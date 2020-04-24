@@ -23,9 +23,6 @@ public abstract class AbstractGame {
         casinoChosenValue = screen.spinReels();
     }
 
-
-
-
     /**
      * a getter method for the current money; to be passed
      * to the front end as the updated value
