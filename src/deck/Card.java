@@ -16,24 +16,28 @@ public class Card {
     private Rank myRank;
     private Suit mySuit;
     private int myNumber;
+    private boolean faceUp;
 
 
     public Card(){
         myRank = Rank.ACE;
         mySuit = Suit.CLUBS;
         myNumber = 1;
+        faceUp = true;
     }
 
     public Card(Rank rank, Suit suit){
         myRank = rank;
         mySuit = suit;
         myNumber = myRank.getValue();
+        faceUp = true;
     }
 
     public Card(Rank rank, Suit suit, int number){
         myRank = rank;
         mySuit = suit;
         myNumber = number;
+        faceUp = true;
     }
 
 
@@ -57,6 +61,10 @@ public class Card {
     }
 
     public int getNumber() { return myNumber; }
+
+    public void flip(){
+        faceUp ^= true;
+    }
 
     /**
      * An equals method that determines if another object is
