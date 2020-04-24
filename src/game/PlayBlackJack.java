@@ -36,7 +36,7 @@ public class PlayBlackJack extends AbstractGame{
 
 
     public BlackjackResult playBlackjackRound(HashMap<Integer,Integer> bets, Player player) {
-        BlackjackResult res = new BlackjackResult(0, 0, 0);
+        BlackjackResult res = new BlackjackResult(false, 0, 0);
         return res;
 
     }

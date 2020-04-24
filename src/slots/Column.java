@@ -5,25 +5,29 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author Vincent Sinfeugo
+ * @author Vincent Sinfeugo, Jeff Kim
  */
 public class Column {
-
+    private final int NUMBER_OF_ICONS = 7;
     List<Integer> myReel;
+    private final int[] frequency = {25, 25, 15, 15, 10, 7, 3};
+
 
     public Column(){
         myReel = new ArrayList<>();
-        myReel.add(1);
-        myReel.add(1);
-        myReel.add(1);
-        myReel.add(2);
-        myReel.add(2);
-        myReel.add(3);
-        myReel.add(4);
-        myReel.add(5);
-        myReel.add(6);
-        myReel.add(7);
+        generateReelProbability();
         Collections.shuffle(myReel);
+    }
+
+    /**
+     * Generating the probability for each number to appear
+     */
+    public void generateReelProbability() {
+        for (int i = 0; i < NUMBER_OF_ICONS; i++) {
+            for (int j = 0; j< frequency[i]; j++) {
+                myReel.add(i);
+            }
+        }
     }
 
     public Column(List<Integer> list){

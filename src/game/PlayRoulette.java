@@ -30,7 +30,7 @@ public class PlayRoulette extends AbstractGame{
     }
 
     public RouletteResult playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
-        RouletteResult res = new RouletteResult(0, 0, 0);
+        RouletteResult res = new RouletteResult(false, 0, 0);
         return res;
     }
 
