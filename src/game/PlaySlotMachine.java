@@ -29,7 +29,7 @@ public class PlaySlotMachine extends AbstractGame{
     public SlotResult playSlotsRound(Map<Integer, Integer> lines, Player p) {
         int totalBetCost = 0;
         for (int line : lines.keySet()) {
-            totalBetCost += lines.get(line);
+            totalBetCost += lines.get(line) * lineCost;
         }
 
         if (p.getBalance() < totalBetCost) {
