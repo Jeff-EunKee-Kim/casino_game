@@ -1,7 +1,7 @@
 package viewer;
 
-import Result.RouletteResult;
-import Result.SlotResult;
+import result.RouletteResult;
+import result.SlotResult;
 import game.AbstractGame;
 import game.PlayRoulette;
 import game.PlaySlotMachine;
