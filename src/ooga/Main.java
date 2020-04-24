@@ -56,6 +56,7 @@ public class Main extends Application {
            case 2:
                currentGame = new PlaySlotMachine();
                main = new SlotsViewport((PlaySlotMachine) currentGame, player);
+               break;
            default:
                System.out.println("uWu something went woopsy");
                main = new GridPane();

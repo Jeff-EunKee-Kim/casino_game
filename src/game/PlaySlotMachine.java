@@ -5,8 +5,10 @@ package game;
  */
 
 import player.Bet;
+import player.Player;
 import winnings.SlotMachineWinning;
 
+import java.util.HashMap;
 
 
 public class PlaySlotMachine extends AbstractGame{
@@ -25,7 +27,9 @@ public class PlaySlotMachine extends AbstractGame{
         }
     }
 
+    public void playSlotsRound(HashMap<Integer,Integer> betStruct, Player player){
 
+    }
     /**
      * a getter method for the current money; to be passed
      * to the front end as the updated value
