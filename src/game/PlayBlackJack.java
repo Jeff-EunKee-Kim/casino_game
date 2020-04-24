@@ -21,56 +21,35 @@ import java.util.List;
 
 public class PlayBlackJack extends AbstractGame{
 
-    Deck myDeck;
-    blackJackHand myHand;
-    blackJackHand dealerHand;
-
+    private Deck myDeck;
+    private blackJackHand myHand;
+    private blackJackHand dealerHand;
     int myBet;
-
+    private HashMap<Integer,blackJackHand> hands;
     /**
      * Constructor for black jack. Calling it from the front end starts
      * the black jack game
      */
     public PlayBlackJack(){
-
-        if (BlackJackWinning.PlayerWins() == true && BlackJackWinning.ItsATie() == false){
-            CURRENT_MONEY += BlackJackWinning.getReward();
-        }
-        else if (BlackJackWinning.ItsATie() == true){
-            CURRENT_MONEY += 0;
-        }
-        else {
-            CURRENT_MONEY += Bet.getBet() * -1;
-        }
+    hands = startBlackjackRound();
     }
 
+    public HashMap<Integer, blackJackHand> getHands() {
+        return hands;
+    }
 
-    public List<Integer> startBlackjackRound(Player p, int bet) {
-        myBet = bet;
-        if (p.getBalance() < myBet) {
-            return null;
-        }
-
+    public HashMap<Integer,blackJackHand> startBlackjackRound() {
         myDeck = new Deck();
-
         myHand = new blackJackHand();
         myHand.addCard(myDeck.dealTopCard());
         myHand.addCard(myDeck.dealTopCard());
-
         dealerHand = new blackJackHand();
         dealerHand.addCard(myDeck.dealTopCard());
         dealerHand.addCard(myDeck.dealTopCard());
-        dealerHand.getCard(0).flip();
-
-        List<Integer> cardList = new ArrayList<>();
-        for (Card card : myHand.getCards()){
-            cardList.add(card.getNumber());
-        }
-        for (Card card : dealerHand.getCards()){
-            cardList.add(card.getNumber());
-        }
-
-        return cardList;
+        HashMap<Integer,blackJackHand> ret = new HashMap<>();
+        ret.put(0,dealerHand);
+        ret.put(1,myHand);
+        return ret;
     }
 
     public BlackjackResult playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player p, int hitOrMiss) {
