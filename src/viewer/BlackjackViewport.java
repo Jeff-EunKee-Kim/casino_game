@@ -18,12 +18,19 @@ public class BlackjackViewport extends GridPane {
 
     SlotResult result;
     int[][] screen;
-    PlaySlotMachine game;
+    PlayBlackJack game;
     Player player;
     HashMap<Integer,blackJackHand> betStruct;
     public BlackjackViewport(PlayBlackJack game, Player player) {
         this.getStylesheets().add("Styling/Main.css");
         betStruct = game.getHands();
+        this.player = player;
+        this.game = game;
+        render();
+
+    }
+
+    private void render(){
         int size = 10;
         Text numbere = new Text("Bal :" + player.getBalance());
         this.add(numbere,10,0,2,1);
@@ -55,7 +62,7 @@ public class BlackjackViewport extends GridPane {
         Button submit = new Button("hit");
         submit.setOnMouseClicked(e -> {
             System.out.println(betStruct);
-           game.playBlackJackRound(betStruct,player,0);
+            game.playBlackJackRound(betStruct,player,0);
 
         });
         this.add(submit, 0 , 7  ,  2, 1);
