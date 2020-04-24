@@ -32,7 +32,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         try{
-            File testFile = new File("./data/playerData/Jeff.json");
+            File testFile = new File("./data/playerData/player.json");
             //  player = new Player(testFile);
         }
         catch (Exception e){
