@@ -3,36 +3,56 @@ final
 
 This project implements a player for multiple related games.
 
-Names:
+Names: \
+Jeff Kim \
+Vincent Sinfuego \
+Aparimeya Taneja \
+Celine Murugi \
 
 
 ### Timeline
 
-Start Date: 
+Start Date: April 1st, 2020
 
-Finish Date: 
+Finish Date: April 24th, 2020
 
-Hours Spent:
+Hours Spent: 100 hours 
 
 ### Primary Roles
-
+1. Jeff Kim
+    - Implementing the Player class to keep track of the balance and save/load data
+    - Implementing the backend functionalities of Slot machine and Roulette game
+2. Vincent Sinfuego
+3. Aparimeya Taneja
+4. Celine Murugi
 
 ### Resources Used
-
+- Google Simple-json library to read JSON files
+    - https://code.google.com/archive/p/json-simple/
 
 ### Running the Program
-
-Main class:
+1. Add dependencies
+    - Project Settings -> Libraries -> from maven -> 
+        - com.googlecode.json-simple:json-simple:1.1.1
+        - org.junit.vintage:junit-vintage-engine:5.2.0
+2. Run Main class from ooga package
 
 Data files needed: 
+- Player data to load player data. 
 
 Features implemented:
-
+1. Load/Save player data
+2. Play Roulette game
+3. Play Blackjack Game
+4. Play Slot machine Game
+5. Place bets and win/lose money based on the game results 
+6. Keep track of the player balance throughout the game 
 
 
 ### Notes/Assumptions
 
 Assumptions or Simplifications:
+- Instead of having animations, we treat each round as a step and update each round when the user plays the round. 
 
 Interesting data files:
 
@@ -42,4 +62,8 @@ Extra credit:
 
 
 ### Impressions
-
+Jeff
+- It was interesting to work on this project fully remote. Although it was hard at first to plan and start the work, we soon got used to it 
+and utilized online communications effectively to make it work. I realized how important to set up the API documents as thoroughly as possible 
+for the development cycle to be smooth, including the functionality of the API, input types, and output types. If the API documents are 
+well-written, we barely even need human to human communications. 
