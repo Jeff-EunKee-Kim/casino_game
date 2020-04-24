@@ -14,16 +14,30 @@ import java.util.concurrent.TimeUnit;
 
 public class SlotsViewport extends GridPane {
     SlotResult result;
+    int[][] screen;
+    PlaySlotMachine game;
+    Player player;
+    HashMap<Integer,Integer> betStruct;
     public SlotsViewport(PlaySlotMachine game, Player player) {
+        betStruct = new HashMap<>();
+        this.game = game;
+        this.player = player;
         this.getStylesheets().add("Styling/Main.css");
-        render(game,player);
+        screen = new int[3][3];
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                int rand =  (int) (Math.random() * 7);
+                screen[x][y] = rand;
+            }
+        }
+        render();
     }
     private void next(){
-        int[][] grid = result.getScreen();
-
+        screen= result.getScreen();
+        render();
     }
-    private void render(PlaySlotMachine game, Player player){
-        HashMap<Integer,Integer> betStruct = new HashMap<>();
+    private void render(){
+        this.getChildren().clear();
         for(int i = 0; i< 5;i++)
             betStruct.put(i,0);
         int size = 5;
@@ -37,7 +51,7 @@ public class SlotsViewport extends GridPane {
                 node.getStyleClass().add("roul");
                 node.setWidth(size * 10);
                 node.setHeight(size * 10);
-                Text number = new Text(Integer.toString(((int) (Math.random() * 7))));
+                Text number = new Text(Integer.toString(screen[x][i]));
                 StackPane stack = new StackPane();
                 stack.getStyleClass().add("roul");
                 stack.getChildren().addAll(node, number);
@@ -78,7 +92,12 @@ public class SlotsViewport extends GridPane {
         submit.setOnMouseClicked(e -> {
             System.out.println(betStruct);
             result = game.playSlotsRound(betStruct,player);
-            TimeUnit.SECONDS.sleep(1);
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            }
+            catch (Exception ex){
+                System.out.println("something went wrong woops : " + ex.getLocalizedMessage());
+            }
             if(result.getIsValidBet())
                 next();
             else
@@ -86,4 +105,5 @@ public class SlotsViewport extends GridPane {
         });
         this.add(submit, 0 , 7  ,  2, 1);
     }
+
 }
