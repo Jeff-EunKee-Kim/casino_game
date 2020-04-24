@@ -123,6 +123,9 @@ public class PlayBlackJack extends AbstractGame{
             cashEarned = amount;
             p.addBalance(cashEarned);
         }
+        else if (winStatus == 0){
+            p.subtractBalance(amount);
+        }
         return new BlackjackResult(true, winStatus, cashEarned, p.getBalance(), myHand, dealerHand);
     }
 }
