@@ -37,6 +37,7 @@ public class Main extends Application {
         }
         catch (Exception e){
             player = new Player("Chiskai",100);
+            System.out.println(e);
         }
 
         launch(args);
