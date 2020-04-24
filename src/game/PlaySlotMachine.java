@@ -31,7 +31,7 @@ public class PlaySlotMachine extends AbstractGame{
         }
 
         if (p.getBalance() < totalBetCost) {
-            return new SlotResult(false, false, 0, 0, new int[3][3]);
+            return new SlotResult(false, 0, 0, 0, new int[3][3]);
         }
 
         SlotModel slotModel = new SlotModel();
@@ -44,9 +44,11 @@ public class PlaySlotMachine extends AbstractGame{
         p.subtractBalance(totalBetCost);
         if (winStatus) {
             p.addBalance(amountWon);
+            return new SlotResult(true, 1, amountWon, p.getBalance(), slotModel.getScreen());
         }
-
-        return new SlotResult(true, winStatus, amountWon, p.getBalance(), slotModel.getScreen());
+        else{
+            return new SlotResult(true, 0, amountWon, p.getBalance(), slotModel.getScreen());
+        }
     }
 
 }

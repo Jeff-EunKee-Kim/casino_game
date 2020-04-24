@@ -7,9 +7,6 @@ package game;
 
 
 import result.BlackjackResult;
-import result.BlackjackResult;
-import result.RouletteResult;
-import result.SlotResult;
 import blackjack.Card;
 import blackjack.Deck;
 import blackjack.blackJackHand;
@@ -77,7 +74,7 @@ public class PlayBlackJack extends AbstractGame{
     }
 
     public BlackjackResult playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player p, int hitOrMiss) {
-        int winStatus;
+        int winStatus = 0;
         boolean playerBust = false;
         boolean dealerBust = false;
         if (hitOrMiss == 0){
@@ -103,7 +100,6 @@ public class PlayBlackJack extends AbstractGame{
             else{
                 winStatus = 3;
             }
-            return new BlackjackResult(true, winStatus, myBet, p.getBalance(), myHand, dealerHand);
         }
         else{
             if (myHand.getPoints() < dealerHand.getPoints()){
@@ -112,11 +108,11 @@ public class PlayBlackJack extends AbstractGame{
             else if (myHand.getPoints() > dealerHand.getPoints()){
                 winStatus = 1;
             }
-            else if (myHand.getPoints() == dealerHand.getPoints()){
+            else if (myHand.getPoints() == dealerHand.getPoints()) {
                 winStatus = 2;
             }
-            return new BlackjackResult(true, winStatus, myBet, p.getBalance(), myHand, dealerHand);
         }
+        return new BlackjackResult(true, winStatus, myBet, p.getBalance(), myHand, dealerHand);
     }
 
 }
