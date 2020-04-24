@@ -47,7 +47,8 @@ public class Player {
         jsonObject = (JSONObject) data;
 
         this.name = jsonObject.get("name").toString();
-        this.balance = (int) jsonObject.get("balance");
+        long t = (long) jsonObject.get("balance");
+        this.balance = (int) t;
     }
 
     /**
