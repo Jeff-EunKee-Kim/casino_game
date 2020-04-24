@@ -40,6 +40,8 @@ public class PlayBlackJack extends AbstractGame{
 
     public HashMap<Integer,blackJackHand> startBlackjackRound() {
         myDeck = new Deck();
+        myDeck.shuffle();
+
         myHand = new blackJackHand();
         myHand.addCard(myDeck.dealTopCard());
         myHand.addCard(myDeck.dealTopCard());
