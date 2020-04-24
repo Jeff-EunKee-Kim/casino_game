@@ -1,9 +1,9 @@
 package game;
 
-import deck.Card;
-import deck.Deck;
-import deck.Hand;
-import deck.blackJackHand;
+import blackjack.Card;
+import blackjack.Deck;
+import blackjack.Hand;
+import blackjack.blackJackHand;
 import enums.Rank;
 import enums.Suit;
 import org.junit.jupiter.api.Test;

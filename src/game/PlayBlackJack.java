@@ -6,8 +6,7 @@ package game;
  */
 
 
-import Result.BlackjackResult;
-import Result.RouletteResult;
+import result.BlackjackResult;
 import player.Bet;
 import player.Player;
 import winnings.BlackJackWinning;
