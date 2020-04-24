@@ -22,12 +22,6 @@ public class PlayRoulette extends AbstractGame{
      * the roulette game
      */
     public PlayRoulette() {
-        if (playerChosenValue == casinoChosenValue){
-            CURRENT_MONEY += RouletteWinning.getReward();
-        }
-        else {
-            CURRENT_MONEY += Bet.getBet() * -1;
-        }
     }
 
     public RouletteResult playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
