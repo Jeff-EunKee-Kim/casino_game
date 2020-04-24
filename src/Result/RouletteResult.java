@@ -6,7 +6,7 @@ package Result;
  */
 public class RouletteResult extends GameResult {
     private int ballPosition;
-    public RouletteResult(int winStatus, int amountWon, int playerBalance) {
+    public RouletteResult(boolean winStatus, int amountWon, int playerBalance) {
         super(winStatus, amountWon, playerBalance);
 //        setBallPosition();
     }

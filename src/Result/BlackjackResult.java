@@ -9,7 +9,7 @@ import java.util.HashMap;
  * started 4/24/20
  */
 public class BlackjackResult extends GameResult {
-    public BlackjackResult(int winStatus, int amountWon, int playerBalance) {
+    public BlackjackResult(boolean winStatus, int amountWon, int playerBalance) {
         super(winStatus, amountWon, playerBalance);
     }
 

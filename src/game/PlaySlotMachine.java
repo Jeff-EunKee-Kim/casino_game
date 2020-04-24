@@ -38,7 +38,7 @@ public class PlaySlotMachine extends AbstractGame{
         slotDisplay.spinReels();
 
         int amountWon = slotDisplay.calculateScore(lines);
-        boolean winStatus = amountWon == 0;
+        boolean winStatus = amountWon != 0;
         p.subtractBalance(pullLeverCost);
         if (winStatus) {
             p.addBalance(amountWon);
