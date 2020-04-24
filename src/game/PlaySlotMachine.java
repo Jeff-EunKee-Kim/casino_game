@@ -43,14 +43,13 @@ public class PlaySlotMachine extends AbstractGame{
 
         int amountWon = slotModel.calculateWinAmount(lines);
         boolean winStatus = amountWon != 0;
+
         p.subtractBalance(pullLeverCost);
         if (winStatus) {
             p.addBalance(amountWon);
         }
 
-        SlotResult res = new SlotResult(true, winStatus, amountWon, p.getBalance(), slotModel.getScreen());
-
-        return res;
+        return new SlotResult(true, winStatus, amountWon, p.getBalance(), slotModel.getScreen());
     }
 
 }
