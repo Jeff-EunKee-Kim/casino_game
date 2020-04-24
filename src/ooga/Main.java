@@ -33,12 +33,12 @@ public class Main extends Application {
     public static void main(String[] args) {
         try{
             File testFile = new File("./data/playerData/player.json");
-            //  player = new Player(testFile);
+             player = new Player(testFile);
         }
         catch (Exception e){
-
+            player = new Player("Chiskai",100);
         }
-        player = new Player("Chiskai",500);
+
         launch(args);
     }
 
