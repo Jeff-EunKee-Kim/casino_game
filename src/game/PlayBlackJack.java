@@ -7,7 +7,10 @@ package game;
 
 
 import player.Bet;
+import player.Player;
 import winnings.BlackJackWinning;
+
+import java.util.HashMap;
 
 
 public class PlayBlackJack extends AbstractGame{
@@ -28,4 +31,8 @@ public class PlayBlackJack extends AbstractGame{
             CURRENT_MONEY += Bet.getBet() * -1;
         }
     }
+    public void playBlackJackRound(HashMap<Integer, Integer[]> bet, Player player){
+
+    }
+
 }
