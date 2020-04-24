@@ -12,6 +12,8 @@ import blackjack.Deck;
 import blackjack.blackJackHand;
 import player.Bet;
 import player.Player;
+import result.RouletteResult;
+import roulette.WheelSlice;
 import winnings.BlackJackWinning;
 
 import java.util.ArrayList;
@@ -24,7 +26,6 @@ public class PlayBlackJack extends AbstractGame{
     private Deck myDeck;
     private blackJackHand myHand;
     private blackJackHand dealerHand;
-    int myBet;
     private HashMap<Integer,blackJackHand> hands;
     /**
      * Constructor for black jack. Calling it from the front end starts
@@ -54,8 +55,9 @@ public class PlayBlackJack extends AbstractGame{
         return ret;
     }
 
-    public BlackjackResult playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player p, int hitOrMiss) {
+    public BlackjackResult playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player p, int hitOrMiss, int amount) {
         int winStatus = 3;
+        int cashEarned = 0;
         boolean playerBust = false;
         boolean dealerBust = false;
         if (hitOrMiss == 0){
@@ -117,7 +119,10 @@ public class PlayBlackJack extends AbstractGame{
                 }
             }
         }
-        return new BlackjackResult(true, winStatus, myBet, p.getBalance(), myHand, dealerHand);
+        if (winStatus == 1){
+            cashEarned = amount;
+            p.addBalance(cashEarned);
+        }
+        return new BlackjackResult(true, winStatus, cashEarned, p.getBalance(), myHand, dealerHand);
     }
-
 }
