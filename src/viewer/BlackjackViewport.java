@@ -21,18 +21,40 @@ public class BlackjackViewport extends GridPane {
     int[][] screen;
     PlayBlackJack game;
     Player player;
+    int flag ;
+    Text numberref;
     HashMap<Integer,blackJackHand> betStruct;
     public BlackjackViewport(PlayBlackJack game, Player player) {
         this.getStylesheets().add("Styling/Main.css");
         betStruct = game.getHands();
         this.player = player;
         this.game = game;
+        flag = 1;
         render();
+
 
     }
     private void next(){
        betStruct = result.getMap();
-       render();
+       System.out.println(result.getWinStatus());
+        render();
+       if(result.getWinStatus()==1)
+        System.out.println("win");
+        else if(result.getWinStatus()==0)
+            System.out.println("loose");
+        else if(result.getWinStatus()==2)
+            System.out.println("tie");
+        if(result.getWinStatus()!=3){
+
+           Button newround = new Button("newround");
+            newround.setOnMouseClicked(e -> {
+                betStruct = game.startBlackjackRound();
+                render();
+            });
+            this.add(newround, 2 , 7  ,  2, 1);
+        }
+
+
     }
 
     private void render(){
@@ -49,10 +71,14 @@ public class BlackjackViewport extends GridPane {
                 Text number = new Text();
                 Card val = betStruct.get(x).getCard(i);
                 Rank num = val.getMyRank();
-                if(x==0&&i==0)
+                if(flag==1){
+                    numberref = number;
                     number.setText("hIdden");
-                else
+                    flag++;
+                }
+                else{
                     number.setText(num.toString());
+                }
                 System.out.println(num);
                 StackPane stack = new StackPane();
                 stack.getStyleClass().add("roul");
@@ -68,7 +94,7 @@ public class BlackjackViewport extends GridPane {
         Button submit = new Button("hit");
         submit.setOnMouseClicked(e -> {
 
-           result =  game.playBlackJackRound(betStruct,player,0);
+           result =  game.playBlackJackRound(betStruct,player,0,amount);
             System.out.println(result);
             next();
         });
@@ -76,13 +102,13 @@ public class BlackjackViewport extends GridPane {
         Button submit2 = new Button("stay");
         submit2.setOnMouseClicked(e -> {
 
-            result =   game.playBlackJackRound(betStruct,player,1);
+            result =   game.playBlackJackRound(betStruct,player,1,amount);
             System.out.println(result);
             next();
 
 
         });
-        this.add(submit2, 2 , 7  ,  2, 1);
+        this.add(submit2, 4 , 7  ,  2, 1);
     }
 
 }
