@@ -6,24 +6,19 @@ import player.Player;
 import java.util.HashMap;
 
 /**
- * @author Jeff Kim, Celine Murugi
+ * @author Jeff Kim, Celine Murugi, Vincent Sinfuego
  * started 4/24/20
  */
 public class BlackjackResult extends GameResult {
-    private blackJackHand myHand;
-    private blackJackHand dealerHand;
+    private HashMap<Integer, blackJackHand> map;
 
     public BlackjackResult(boolean isValidBet, int winStatus, int amountWon, int playerBalance, blackJackHand player, blackJackHand dealer) {
         super(isValidBet, winStatus, amountWon, playerBalance);
-        myHand = player;
-        dealerHand = dealer;
+        map.put(0, dealer);
+        map.put(1, player);
     }
 
-    public blackJackHand getMyHand(){
-        return myHand;
-    }
-
-    public blackJackHand getDealerHand(){
-        return dealerHand;
+    public HashMap<Integer, blackJackHand> getMap(){
+        return map;
     }
 }
