@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author Vincent Sinfuego
  */
-public class Hand {
+public abstract class Hand {
 
     protected List<Card> myHand;
 
@@ -14,11 +14,11 @@ public class Hand {
         myHand = new ArrayList<>();
     }
 
-    public int handSize(){
-        return myHand.size();
-    }
+    public abstract int handSize();
 
-    public void addCard(Card card){
-        myHand.add(card);
-    }
+    public abstract void addCard(Card card);
+
+    public abstract Card getCard(int index);
+
+    public abstract List<Card> getCards();
 }

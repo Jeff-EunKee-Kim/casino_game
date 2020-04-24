@@ -14,7 +14,7 @@ import java.util.Map;
 
 
 public class PlaySlotMachine extends AbstractGame{
-    private final int lineCost = 10;
+    private final int lineCost = 1;
     /**
      * Constructor for slot machine.
      */
