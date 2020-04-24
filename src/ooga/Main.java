@@ -3,6 +3,7 @@ package ooga;
 
 import game.AbstractGame;
 import game.PlayRoulette;
+import game.PlaySlotMachine;
 import javafx.animation.KeyFrame;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -52,7 +53,10 @@ public class Main extends Application {
 
                main = new RouletteViewport((PlayRoulette) currentGame, player);
                break;
-
+           case 2:
+               currentGame = new PlaySlotMachine();
+               main = new SlotsViewport((PlaySlotMachine) currentGame, player);
+               break;
            default:
                System.out.println("uWu something went woopsy");
                main = new GridPane();

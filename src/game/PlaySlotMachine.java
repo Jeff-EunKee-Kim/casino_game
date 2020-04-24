@@ -33,7 +33,7 @@ public class PlaySlotMachine extends AbstractGame{
      * @param lines : key is line, value is betting
      * @return SlotResult class that contains win status, amountwon, player balance, and screen after game
      */
-    public SlotResult playSlotMachine(Map<Integer, Integer> lines, Player p) {
+    public SlotResult playSlotsRound(Map<Integer, Integer> lines, Player p) {
         SlotModel slotDisplay = new SlotModel();
         slotDisplay.spinReels();
 
@@ -48,16 +48,5 @@ public class PlaySlotMachine extends AbstractGame{
 
         return res;
     }
-
-
-    /**
-     * a getter method for the current money; to be passed
-     * to the front end as the updated value
-     * @return the value of the current amount of money
-     */
-    public int getCurrentMoney(){
-        return CURRENT_MONEY;
-    }
-
 
 }
