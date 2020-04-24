@@ -74,14 +74,14 @@ public class BlackjackViewport extends GridPane {
         Button submit = new Button("hit");
         submit.setOnMouseClicked(e -> {
             System.out.println(betStruct);
-            game.playBlackJackRound(betStruct,player);
+            game.playBlackJackRound(betStruct,player,0);
 
         });
         this.add(submit, 0 , 7  ,  2, 1);
         Button submit2 = new Button("stay");
         submit2.setOnMouseClicked(e -> {
             System.out.println(betStruct);
-            game.playBlackJackRound(betStruct,player);
+            game.playBlackJackRound(betStruct,player,1);
 
         });
         this.add(submit2, 2 , 7  ,  2, 1);

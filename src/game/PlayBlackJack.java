@@ -73,11 +73,7 @@ public class PlayBlackJack extends AbstractGame{
 
     }
 
-    public BlackjackResult hitBlackJack(){
-
-    }
-
-    public BlackjackResult stopBlackJackRound(){
+    public void playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player player, int hitOrMiss ) {
 
     }
 

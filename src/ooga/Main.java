@@ -36,9 +36,9 @@ public class Main extends Application {
             //  player = new Player(testFile);
         }
         catch (Exception e){
-            player = new Player("Chiskai",500);
-        }
 
+        }
+        player = new Player("Chiskai",500);
         launch(args);
     }
 
