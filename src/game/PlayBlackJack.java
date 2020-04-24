@@ -6,12 +6,13 @@ package game;
  */
 
 
-import Result.BlackjackResult;
-import Result.RouletteResult;
-import Result.SlotResult;
-import deck.Card;
-import deck.Deck;
-import deck.blackJackHand;
+import result.BlackjackResult;
+import result.BlackjackResult;
+import result.RouletteResult;
+import result.SlotResult;
+import blackjack.Card;
+import blackjack.Deck;
+import blackjack.blackJackHand;
 import player.Bet;
 import player.Player;
 import winnings.BlackJackWinning;

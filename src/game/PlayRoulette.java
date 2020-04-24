@@ -5,7 +5,7 @@ package game;
  */
 
 
-import Result.RouletteResult;
+import result.RouletteResult;
 import player.Bet;
 import player.Player;
 import roulette.WheelModel;

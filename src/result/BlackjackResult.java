@@ -1,8 +1,4 @@
-package Result;
-
-import player.Player;
-
-import java.util.HashMap;
+package result;
 
 /**
  * @author Jeff Kim, Celine Murugi

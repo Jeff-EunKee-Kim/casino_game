@@ -6,9 +6,9 @@ package winnings;
  */
 
 
-import deck.Card;
-import deck.Deck;
-import deck.blackJackHand;
+import blackjack.Card;
+import blackjack.Deck;
+import blackjack.blackJackHand;
 import viewer.StartMenu;
 
 
