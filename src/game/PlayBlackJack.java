@@ -7,14 +7,26 @@ package game;
 
 
 import result.BlackjackResult;
+import result.BlackjackResult;
+import result.RouletteResult;
+import result.SlotResult;
+import blackjack.Card;
+import blackjack.Deck;
+import blackjack.blackJackHand;
 import player.Bet;
 import player.Player;
 import winnings.BlackJackWinning;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class PlayBlackJack extends AbstractGame{
+
+    Deck myDeck;
+    blackJackHand myHand;
+    blackJackHand dealerHand;
 
     /**
      * Constructor for black jack. Calling it from the front end starts
@@ -34,9 +46,39 @@ public class PlayBlackJack extends AbstractGame{
     }
 
 
-    public BlackjackResult playBlackJackRound(HashMap<Integer,Integer[]> bets, Player player) {
-        BlackjackResult res = new BlackjackResult(false,false, 0, 0);
-        return res;
+    public List<Integer> playBlackjackRound(Player p, int bet) {
+        if (p.getBalance() < bet) {
+            return null;
+        }
+
+        myDeck = new Deck();
+
+        myHand = new blackJackHand();
+        myHand.addCard(myDeck.dealTopCard());
+        myHand.addCard(myDeck.dealTopCard());
+
+        dealerHand = new blackJackHand();
+        dealerHand.addCard(myDeck.dealTopCard());
+        dealerHand.addCard(myDeck.dealTopCard());
+        dealerHand.getCard(0).flip();
+
+        List<Integer> cardList = new ArrayList<>();
+        for (Card card : myHand.getCards()){
+            cardList.add(card.getNumber());
+        }
+        for (Card card : dealerHand.getCards()){
+            cardList.add(card.getNumber());
+        }
+
+        return cardList;
+
+    }
+
+    public BlackjackResult hitBlackJack(){
+
+    }
+
+    public BlackjackResult stopBlackJackRound(){
 
     }
 

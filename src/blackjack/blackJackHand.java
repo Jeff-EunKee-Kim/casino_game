@@ -2,6 +2,8 @@ package blackjack;
 
 import enums.Rank;
 
+import java.util.List;
+
 /**
  * @author Vincent Sinfuego
  */
@@ -19,7 +21,7 @@ public class blackJackHand extends Hand{
 
     @Override
     public void addCard(Card card){
-        super.addCard(card);
+        myHand.add(card);
         if (card.getMyRank().equals(Rank.ACE)){
             aceCount++;
         }
@@ -52,5 +54,17 @@ public class blackJackHand extends Hand{
 
     public int getPoints(){
         return pointTotal;
+    }
+
+    public int handSize(){
+        return myHand.size();
+    }
+
+    public Card getCard(int index){
+        return myHand.get(index);
+    }
+
+    public List<Card> getCards(){
+        return myHand;
     }
 }
