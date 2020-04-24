@@ -13,6 +13,7 @@ import roulette.WheelSlice;
 import winnings.RouletteWinning;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class PlayRoulette extends AbstractGame{
@@ -25,7 +26,7 @@ public class PlayRoulette extends AbstractGame{
     public PlayRoulette() {
     }
 
-    public RouletteResult playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
+    public RouletteResult playRouletteRound(Map<Integer,Integer> bets, Player player) {
         int totalBet = 0;
         for (int bet : bets.keySet()) {
             totalBet += bets.get(bet);

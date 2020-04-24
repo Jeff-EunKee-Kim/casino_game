@@ -78,20 +78,25 @@ public class WheelModel {
         int tickerNumber = getTickerNumber();
 
         if (tickerNumber >= 0 && tickerNumber <= 36) {
-            winAmount += 36 * bets.get(tickerNumber);
+            winAmount += 36 * bets.getOrDefault(tickerNumber, 0);
         }
         if (getTickerColor().equals(Color.RED)) {
-            winAmount += 2 * bets.get(37);
+            winAmount += 2 * bets.getOrDefault(37,0);
         } else if (getTickerColor().equals(Color.BLACK)) {
-            winAmount += 2 * bets.get(38);
+            winAmount += 2 * bets.getOrDefault(38,0);
         }
 
         if (tickerNumber % 2 == 1) {
-            winAmount += 2 * bets.get(39);
+            winAmount += 2 * bets.getOrDefault(39,0);
         } else if (tickerNumber % 2 == 0) {
-            winAmount += 2 * bets.get(40);
+            winAmount += 2 * bets.getOrDefault(40, 0);
         }
 
         return winAmount;
     }
+
+    public void setTickerOn(WheelSlice tickerOn) {
+        this.tickerOn = tickerOn;
+    }
+
 }
