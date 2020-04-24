@@ -1,18 +1,19 @@
 package roulette;
 
+import java.util.Map;
 import java.util.Random;
 
 /**
- * @author Vincent Sinfuego
+ * @author Vincent Sinfuego, Jeff Kim
  */
-public class Wheel {
+public class WheelModel {
 
     public static final int NUMBEROFSLICES = 37;
     private WheelSlice[] slices;
     private WheelSlice tickerOn;
     private Random spinner;
 
-    public Wheel(){
+    public WheelModel(){
         slices = new WheelSlice[]{
                 new WheelSlice(0, Color.GREEN),
                 new WheelSlice(1, Color.RED),
@@ -66,5 +67,27 @@ public class Wheel {
 
     public Color getTickerColor(){
         return tickerOn.getColor();
+    }
+
+    public int calculateWinAmount(Map<Integer, Integer> bets) {
+        int winAmount = 0;
+        int tickerNumber = getTickerNumber();
+
+        if (tickerNumber >= 0 && tickerNumber <= 36) {
+            winAmount += 36 * bets.get(tickerNumber);
+        }
+        if (getTickerColor().equals(Color.RED)) {
+            winAmount += 2 * bets.get(37);
+        } else if (getTickerColor().equals(Color.BLACK)) {
+            winAmount += 2 * bets.get(38);
+        }
+
+        if (tickerNumber % 2 == 1) {
+            winAmount += 2 * bets.get(39);
+        } else if (tickerNumber % 2 == 0) {
+            winAmount += 2 * bets.get(40);
+        }
+
+        return winAmount;
     }
 }

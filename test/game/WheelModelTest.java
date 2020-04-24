@@ -2,25 +2,25 @@ package game;
 
 import org.junit.jupiter.api.Test;
 import roulette.Color;
-import roulette.Wheel;
+import roulette.WheelModel;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Vincent Sinfuego
  */
-public class WheelTest{
+public class WheelModelTest {
 
     @Test
     public void testWheelCreation(){
-        Wheel wheel = new Wheel();
+        WheelModel wheel = new WheelModel();
         assertEquals(0, wheel.getTickerNumber());
         assertEquals(Color.GREEN, wheel.getTickerColor());
     }
 
     @Test public void testWheelSpin(){
-        Wheel wheel = new Wheel();
-        Wheel wheel2 = new Wheel();
+        WheelModel wheel = new WheelModel();
+        WheelModel wheel2 = new WheelModel();
         wheel.spin();
         assertNotEquals(wheel2, wheel);
     }
