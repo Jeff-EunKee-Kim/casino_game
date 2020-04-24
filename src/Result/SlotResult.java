@@ -11,4 +11,8 @@ public class SlotResult extends GameResult {
         super(isValidBet, winStatus, amountWon, playerBalance);
         this.screen = screen;
     }
+
+    public int[][] getScreen() {
+        return screen;
+    }
 }

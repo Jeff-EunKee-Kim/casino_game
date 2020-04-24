@@ -1,5 +1,6 @@
 package viewer;
 
+import Result.SlotResult;
 import game.PlaySlotMachine;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -9,17 +10,27 @@ import javafx.scene.text.Text;
 import player.Player;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 public class SlotsViewport extends GridPane {
-
+    SlotResult result;
     public SlotsViewport(PlaySlotMachine game, Player player) {
         this.getStylesheets().add("Styling/Main.css");
+        render(game,player);
+    }
+    private void next(){
+        int[][] grid = result.getScreen();
+
+    }
+    private void render(PlaySlotMachine game, Player player){
         HashMap<Integer,Integer> betStruct = new HashMap<>();
         for(int i = 0; i< 5;i++)
             betStruct.put(i,0);
         int size = 5;
         Text numbere = new Text("Bal :" + player.getBalance());
+        Text sts  = new Text();
         this.add(numbere,10,0,2,1);
+        this.add(sts,10,1,2,1);
         for (int x = 0; x < 3; x++) {
             for (int i = 0; i < 3; i++) {
                 Rectangle node = new Rectangle();
@@ -66,8 +77,12 @@ public class SlotsViewport extends GridPane {
         Button submit = new Button("submit");
         submit.setOnMouseClicked(e -> {
             System.out.println(betStruct);
-            game.playSlotsRound(betStruct,player);
-
+            result = game.playSlotsRound(betStruct,player);
+            TimeUnit.SECONDS.sleep(1);
+            if(result.getIsValidBet())
+                next();
+            else
+                sts.setText("INVALID");
         });
         this.add(submit, 0 , 7  ,  2, 1);
     }
