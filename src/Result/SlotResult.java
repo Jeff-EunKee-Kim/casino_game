@@ -5,15 +5,10 @@ package Result;
  * started 4/24/20
  */
 public class SlotResult extends GameResult {
-    private int[] icons;
+    private int[][] screen;
 
-    public SlotResult(int win, int amountWon, int playerBalance) {
-        super(win, amountWon, playerBalance);
-        setIcons();
+    public SlotResult(boolean winStatus, int amountWon, int playerBalance, int[][] screen) {
+        super(winStatus, amountWon, playerBalance);
+        this.screen = screen;
     }
-
-    public void setIcons() {
-
-    }
-
 }
