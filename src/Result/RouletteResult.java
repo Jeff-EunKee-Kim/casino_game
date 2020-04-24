@@ -5,10 +5,10 @@ package Result;
  * started 4/24/20
  */
 public class RouletteResult extends GameResult {
-    private int ballPosition;
-    public RouletteResult(boolean winStatus, int amountWon, int playerBalance) {
-        super(winStatus, amountWon, playerBalance);
-//        setBallPosition();
+    private int tickerPosition;
+    public RouletteResult(boolean isValidBet, boolean winStatus, int amountWon, int playerBalance, int tickerPosition) {
+        super(isValidBet, winStatus, amountWon, playerBalance);
+        this.tickerPosition = tickerPosition;
     }
 
 
