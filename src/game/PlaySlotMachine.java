@@ -29,13 +29,12 @@ public class PlaySlotMachine extends AbstractGame{
         }
     }
 
-    public SlotResult playSlotMachine() {
-        SlotResult res = new SlotResult(0, 0, 0);
 
-        return res;
+
+    public void playSlotsRound(HashMap<Integer,Integer> betStruct, Player player){
+
+
     }
-
-
     /**
      * a getter method for the current money; to be passed
      * to the front end as the updated value
