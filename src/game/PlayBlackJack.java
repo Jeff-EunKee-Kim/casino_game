@@ -55,7 +55,7 @@ public class PlayBlackJack extends AbstractGame{
     }
 
     public BlackjackResult playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player p, int hitOrMiss) {
-        int winStatus = 0;
+        int winStatus = 3;
         boolean playerBust = false;
         boolean dealerBust = false;
         if (hitOrMiss == 0){
