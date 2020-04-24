@@ -3,6 +3,14 @@ package player;
 import enums.Chip;
 import exception.InsufficientBalanceException;
 import exception.InsufficientChipsException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * @author Jeff Kim
@@ -23,6 +31,23 @@ public class Player {
     public Player(String name, int balance) {
         this.name = name;
         this.balance = balance;
+    }
+
+    /**
+     * Constructor to read from a file
+     * @param file: file directory 
+     * @throws IOException
+     * @throws ParseException
+     */
+    public Player(File file) throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject = new JSONObject();
+        FileReader reader = new FileReader(file.toString());
+        Object data = jsonParser.parse(reader);
+        jsonObject = (JSONObject) data;
+
+        this.name = jsonObject.get("name").toString();
+        this.balance = (int) jsonObject.get("balance");
     }
 
     /**
