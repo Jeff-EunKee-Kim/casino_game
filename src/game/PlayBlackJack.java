@@ -2,7 +2,7 @@ package game;
 
 
 /**
- * @author Celine Murugi
+ * @author Celine Murugi, Vincent Sinfuego
  */
 
 
@@ -73,12 +73,10 @@ public class PlayBlackJack extends AbstractGame{
 
     }
 
-    public BlackjackResult hitBlackJack(){
+    public BlackjackResult playBlackJackAction(int signal){
+        if (signal == 0){
 
-    }
-
-    public BlackjackResult stopBlackJackRound(){
-
+        }
     }
 
 }
