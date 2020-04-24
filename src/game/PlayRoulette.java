@@ -9,9 +9,11 @@ import result.RouletteResult;
 import player.Bet;
 import player.Player;
 import roulette.WheelModel;
+import roulette.WheelSlice;
 import winnings.RouletteWinning;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class PlayRoulette extends AbstractGame{
@@ -22,15 +24,9 @@ public class PlayRoulette extends AbstractGame{
      * the roulette game
      */
     public PlayRoulette() {
-        if (playerChosenValue == casinoChosenValue){
-            CURRENT_MONEY += RouletteWinning.getReward();
-        }
-        else {
-            CURRENT_MONEY += Bet.getBet() * -1;
-        }
     }
 
-    public RouletteResult playRouletteRound(HashMap<Integer,Integer> bets, Player player) {
+    public RouletteResult playRouletteRound(Map<Integer,Integer> bets, Player player) {
         int totalBet = 0;
         for (int bet : bets.keySet()) {
             totalBet += bets.get(bet);

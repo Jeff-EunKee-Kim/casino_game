@@ -1,5 +1,7 @@
 package result;
 
+import roulette.WheelSlice;
+
 /**
  * @author Jeff Kim, Celine Murugi
  * started 4/24/20
@@ -11,5 +13,8 @@ public class RouletteResult extends GameResult {
         this.tickerPosition = tickerPosition;
     }
 
+    public WheelSlice getTickerPosition() {
+        return tickerPosition;
+    }
 
 }
