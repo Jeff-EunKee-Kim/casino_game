@@ -69,6 +69,10 @@ public class WheelModel {
         return tickerOn.getColor();
     }
 
+    public WheelSlice getTickerOn() {
+        return tickerOn;
+    }
+
     public int calculateWinAmount(Map<Integer, Integer> bets) {
         int winAmount = 0;
         int tickerNumber = getTickerNumber();

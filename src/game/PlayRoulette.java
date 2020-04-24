@@ -9,6 +9,7 @@ import result.RouletteResult;
 import player.Bet;
 import player.Player;
 import roulette.WheelModel;
+import roulette.WheelSlice;
 import winnings.RouletteWinning;
 
 import java.util.HashMap;
@@ -31,7 +32,7 @@ public class PlayRoulette extends AbstractGame{
         }
 
         if (totalBet > player.getBalance() || totalBet == 0) {
-            return new RouletteResult(false,false,0,0,-1);
+            return new RouletteResult(false,false,0,0,new WheelSlice());
         }
 
         WheelModel wheelModel = new WheelModel();
@@ -45,7 +46,7 @@ public class PlayRoulette extends AbstractGame{
             player.addBalance(amountWon);
         }
 
-        return new RouletteResult(true, winStatus,amountWon, player.getBalance(), wheelModel.getTickerNumber());
+        return new RouletteResult(true, winStatus,amountWon, player.getBalance(), wheelModel.getTickerOn());
     }
 
 }
