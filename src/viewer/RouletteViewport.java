@@ -1,7 +1,10 @@
 package viewer;
 
+import Result.RouletteResult;
+import Result.SlotResult;
 import game.AbstractGame;
 import game.PlayRoulette;
+import game.PlaySlotMachine;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
@@ -16,16 +19,30 @@ import player.Player;
 import java.util.HashMap;
 
 public class RouletteViewport extends GridPane {
-
+    RouletteResult result;
+    PlayRoulette game;
+    Player player;
+    HashMap<Integer,Integer> betStruct;
     public RouletteViewport(PlayRoulette game, Player player){
+        this.game = game;
+        this.player = player;
         this.getStylesheets().add("Styling/Main.css");
-        HashMap<Integer,Integer> betStruct = new HashMap<>();
+        betStruct = new HashMap<>();
         for(int i = 0; i< 41;i++)
             betStruct.put(i,0);
+        render();
+    }
+
+    private void next(){
+
+    }
+    private void render(){
         int count = 1;
         int size = 4;
         Text numbere = new Text("Bal :" + player.getBalance());
-        this.add(numbere,13,0,2,1);
+        Text sts  = new Text();
+        this.add(numbere,14,0,2,1);
+        this.add(sts,14,1,2,1);
         for (int y = 0; y < 12 ; y++){
             for(int x = 0; x < 3 ;x++){
                 Rectangle node = new Rectangle();
@@ -50,7 +67,7 @@ public class RouletteViewport extends GridPane {
                         node.getStyleClass().add("betted");
                         stack.getStyleClass().add("betted");
                     }
-                    System.out.println(betStruct);
+
                     //game.start(2);
                 });
                 count++;
@@ -96,14 +113,16 @@ public class RouletteViewport extends GridPane {
 
         Button submit = new Button("submit");
         submit.setOnMouseClicked(e -> {
-
-            game.playRouletteRound(betStruct,player);
-
+            System.out.println(betStruct);
+            result =  game.playRouletteRound(betStruct,player);
+            if(result.getIsValidBet())
+                next();
+            else
+                sts.setText("INVALID");
         });
         this.add(submit, 0 , 5  ,  2, 1);
 
     }
-
 
 
 }
