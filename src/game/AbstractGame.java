@@ -23,9 +23,6 @@ public abstract class AbstractGame {
         casinoChosenValue = screen.spinReels();
     }
 
-//    public abstract void playRouletteRound(HashMap<Integer,Integer> bets, Player player);
-
-
     /**
      * a getter method for the current money; to be passed
      * to the front end as the updated value

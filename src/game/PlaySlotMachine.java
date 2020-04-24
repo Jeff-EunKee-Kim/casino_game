@@ -4,6 +4,8 @@ package game;
  * @author Celine Murugi, Jeff Kim
  */
 
+import Result.RouletteResult;
+import Result.SlotResult;
 import player.Bet;
 import player.Player;
 import winnings.SlotMachineWinning;
@@ -27,7 +29,10 @@ public class PlaySlotMachine extends AbstractGame{
         }
     }
 
+
+
     public void playSlotsRound(HashMap<Integer,Integer> betStruct, Player player){
+
 
     }
     /**

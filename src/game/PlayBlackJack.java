@@ -6,6 +6,8 @@ package game;
  */
 
 
+import Result.BlackjackResult;
+import Result.RouletteResult;
 import player.Bet;
 import player.Player;
 import winnings.BlackJackWinning;
@@ -31,7 +33,11 @@ public class PlayBlackJack extends AbstractGame{
             CURRENT_MONEY += Bet.getBet() * -1;
         }
     }
-    public void playBlackJackRound(HashMap<Integer, Integer[]> bet, Player player){
+
+
+    public BlackjackResult playBlackjackRound(HashMap<Integer,Integer> bets, Player player) {
+        BlackjackResult res = new BlackjackResult(0, 0, 0);
+        return res;
 
     }
 
