@@ -23,7 +23,7 @@ public abstract class AbstractGame {
         casinoChosenValue = screen.spinReels();
     }
 
-//    public abstract void playRouletteRound(HashMap<Integer,Integer> bets, Player player);
+
 
 
     /**

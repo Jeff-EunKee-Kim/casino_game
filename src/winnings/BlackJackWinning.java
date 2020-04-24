@@ -26,7 +26,7 @@ public class BlackJackWinning extends AbstractWinnings{
 
 
 
-    private void firstRoundGameStarter(){
+    public void startBlackJack(){
         deck.shuffle();
         playerHand.addCard(deck.dealTopCard());
         casinoHand.addCard(deck.dealTopCard());
