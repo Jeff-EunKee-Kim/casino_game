@@ -37,7 +37,7 @@ public class PlayerUtility {
         data.put("chips", chipsArray);
 
         try {
-            FileWriter file = new FileWriter(playerDataDirectory + player.getName() + ".json");
+            FileWriter file = new FileWriter(playerDataDirectory + "player.json");
             file.write(data.toJSONString());
             file.close();
         } catch (IOException e) {
