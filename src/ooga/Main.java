@@ -2,6 +2,7 @@ package ooga;
 
 
 import game.AbstractGame;
+import game.PlayBlackJack;
 import game.PlayRoulette;
 import game.PlaySlotMachine;
 import javafx.animation.KeyFrame;
@@ -52,6 +53,10 @@ public class Main extends Application {
                currentGame = new PlayRoulette();
 
                main = new RouletteViewport((PlayRoulette) currentGame, player);
+               break;
+           case 1:
+               currentGame =  new PlayBlackJack();
+               main = new BlackjackViewport((PlayBlackJack) currentGame, player);
                break;
            case 2:
                currentGame = new PlaySlotMachine();
