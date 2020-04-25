@@ -58,7 +58,6 @@ public class SlotsViewport extends GridPane {
         for(int i = 0; i < 5; i++){
             int val = i;
             Viewblock stack = new Viewblock(50,100, bets[i]);
-            stack.setId("Slots"+i);
             stack.setOnMouseClicked(e -> {
                 stack.getStyleClass().clear();
                 if(betStruct.get(val)>0){
