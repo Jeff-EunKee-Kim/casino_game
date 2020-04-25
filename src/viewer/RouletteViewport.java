@@ -47,6 +47,7 @@ public class RouletteViewport extends GridPane {
             for(int x = 0; x < 3 ;x++){
                 Viewblock stack = new Viewblock(Integer.parseInt(myResources.getString("RSIZEH")),  Integer.toString(count));
                 int val = count;
+                stack.setId("Box" + val);
                 stack.setOnMouseClicked(e -> {
                     stack.getStyleClass().clear();
                     if(betStruct.get(val)>0){

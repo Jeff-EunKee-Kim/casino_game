@@ -28,8 +28,11 @@ public class StartMenu {
     public StartMenu(Main main, Player player, ResourceBundle resources) {
         myResources = resources;
         Button roulette_btn = new Button(myResources.getString("ROULETTE"));
+        roulette_btn.setId("RouletteButton");
         Button blackjack_btn = new Button(myResources.getString("BLACKJACK"));
+        blackjack_btn.setId("BlackJackButton");
         Button slots_btn = new Button(myResources.getString("SLOTS"));
+        slots_btn.setId("SlotsButton");
         roulette_btn.setOnAction(e -> {
             main.gameStart(0);
         });
@@ -41,6 +44,7 @@ public class StartMenu {
         });
         innerbtns = new VBox();
         layout = new BorderPane();
+        layout.setId("BorderPane");
         innerbtns.setPadding(new Insets(10, 50, 50, 50));
         innerbtns.setSpacing(25);
         roulette_btn.getStyleClass().add("rect");
@@ -70,6 +74,7 @@ public class StartMenu {
         header.setPadding(new Insets(30, 0, 30, 0));
         ret.getChildren().add(header);
         Text gametitle = new Text(gameType);
+        gametitle.setId("TitleText");
         gametitle.getStyleClass().add("liltxt2");
         HBox nextline = new HBox();
         nextline.setAlignment(Pos.CENTER);

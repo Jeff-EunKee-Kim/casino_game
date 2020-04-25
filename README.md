@@ -23,6 +23,8 @@ Hours Spent: 100 hours
     - Implementing the Player class to keep track of the balance and save/load data
     - Implementing the backend functionalities of Slot machine and Roulette game
 2. Vincent Sinfuego
+    - Back-end mechanics to the game, logic and algorithms
+    - Assisting with integration between back-end and front-end
 3. Aparimeya Taneja
     - All JavaFX, front end, resource loading, UI, etc.
     - Integrating game flow with API Calls and event listeners through main
@@ -76,3 +78,9 @@ Aparimeya
 I'm glad to have teammates who were understanding and thankfully we were able to clutch this one out. Honestly 
 maybe more time for planning could have been used but other than that I believe everyone did their best and 
 helped each other. 
+
+Vincent
+- This project was particularly difficult in my opinion, not just because of the content, but the difficulty of communication. Our team members are
+all situated in different timezones, and finding times when we were all available to meet was perhaps one of the biggest challenges we encountered.
+That said, I strongly believe that given the circumstances of this final project, the team really pulled through and tried their best. There's not 
+much more I'd ask for in a team.

@@ -36,7 +36,7 @@ public class Player {
 
     /**
      * Constructor to read from a file
-     * @param file: file directory 
+     * @param file: file directory
      * @throws IOException
      * @throws ParseException
      */
