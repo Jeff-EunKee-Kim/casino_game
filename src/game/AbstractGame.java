@@ -19,7 +19,7 @@ public abstract class AbstractGame {
 
     protected void assignValues(){
         Screen screen = new Screen();
-        playerChosenValue = StartMenu.getPlayerChosenValue();
+       
         casinoChosenValue = screen.spinReels();
     }
 

@@ -1,71 +1,78 @@
 package viewer;
 
 import enums.Rank;
+import enums.Suit;
 import game.PlayBlackJack;
-import game.PlaySlotMachine;
 import blackjack.*;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import player.Player;
 import result.BlackjackResult;
-import result.SlotResult;
-
 import java.util.HashMap;
 
 public class BlackjackViewport extends GridPane {
 
-    BlackjackResult result;
-    int[][] screen;
-    PlayBlackJack game;
-    Player player;
-    int flag ;
-    Text numberref;
-    int amount;
-    HashMap<Integer,blackJackHand> betStruct;
+    private BlackjackResult result;
+    private PlayBlackJack game;
+    private Player player;
+    private int flag ;
+    private int amount;
+    private Button hit;
+    private Button stay;
+    private HashMap<Integer,blackJackHand> hands;
+
     public BlackjackViewport(PlayBlackJack game, Player player) {
         this.getStylesheets().add("Styling/Main.css");
-        betStruct = game.getHands();
         this.player = player;
         this.game = game;
+        this.hands = game.getHands();
         flag = 1;
         setup();
-
-
     }
     private void setup(){
         this.getChildren().clear();
-        Label title = new Label("amount bet :");
-        Label err = new Label("");
+        this.setHgap(10);
+        this.setVgap(10);
+
+        Label title = new Label("Amount to bet : $");
         title.getStyleClass().add("liltxt");
-        err.getStyleClass().add("liltxt");
-        this.add(title, 0, 0);
-        this.add(err, 0, 1);
-        TextField titleTextField = new TextField();
-        this.add(titleTextField, 1, 0,2,1);
+        this.add(title, 0, 0,1,1);
+
+        Label error = new Label("");
+        error.getStyleClass().add("liltxt");
+        this.add(error, 0, 1,2,1);
+
+        TextField input = new TextField();
+        this.add(input, 1, 0,1,1);
+
         Button submit = new Button("Submit");
-        submit.getStyleClass().add("rect");
+        submit.getStyleClass().add("newbtn");
+       submit.setAlignment(Pos.CENTER);
         this.add(submit,0,2,2,1);
         submit.setOnAction(e -> {
-            String exptitle = titleTextField.getText();
-            int bet = Integer.parseInt(exptitle);
-            if(player.validate(bet)){
-                amount = bet;
-                render();
+            String exptitle = input.getText();
+            try {
+                int bet = Integer.parseInt(exptitle);
+                if(player.validate(bet)){
+                    amount = bet;
+                    render();
+                }
+                else
+                    error.setText("Insufficient funds");
             }
-            else {
-                err.setText("INVALD");
+            catch (Exception er){
+                error.setText("Not a valid number");
             }
         });
     }
 
 
     private void next(){
-       betStruct = result.getMap();
+       hands = result.getMap();
        System.out.println(result.getWinStatus());
         render();
        if(result.getWinStatus()==1)
@@ -75,71 +82,54 @@ public class BlackjackViewport extends GridPane {
         else if(result.getWinStatus()==2)
             System.out.println("tie");
         if(result.getWinStatus()!=3){
-
-           Button newround = new Button("newround");
+            Button newround = new Button("newround");
+            newround.getStyleClass().add("newbtn2");
             newround.setOnMouseClicked(e -> {
                 flag =1;
-                betStruct = game.startBlackjackRound();
-                render();
+                hands = game.startBlackjackRound();
+                setup();
             });
             this.add(newround, 2 , 7  ,  2, 1);
+            this.getChildren().removeAll(hit,stay);
         }
-
-
     }
 
     private void render(){
         this.getChildren().clear();
-        int size = 10;
         Text numbere = new Text("Bal :" + player.getBalance());
+        numbere.getStyleClass().add("balbad");
         this.add(numbere,10,0,2,1);
         for (int x = 0; x < 2; x++) {
-            for (int i = 0; i < betStruct.get(x).handSize(); i++) {
-                Rectangle node = new Rectangle();
-                node.getStyleClass().add("roul");
-                node.setWidth(size * 10);
-                node.setHeight(size * 10);
-                Text number = new Text();
-                Card val = betStruct.get(x).getCard(i);
+            for (int y = 0; y < hands.get(x).handSize(); y++) {
+                Viewblock order = new Viewblock(100);
+                Card val = hands.get(x).getCard(y);
                 Rank num = val.getMyRank();
-                if(flag==1){
-                    numberref = number;
-                    number.setText("hIdden");
-                    flag++;
-                }
-                else{
-                    number.setText(num.toString());
-                }
-                System.out.println(num);
-                StackPane stack = new StackPane();
-                stack.getStyleClass().add("roul");
-                stack.getChildren().addAll(node, number);
-                stack.setOnMouseClicked(e -> {
-
-                });
-                this.add(stack, i, x, 1, 1);
+                Suit suit = val.getMySuit();
+                if(flag==1)
+                    order.setValue("Hidden");
+                else
+                    order.setValue(num.toString() +"\n"+ suit.toString());
+                flag=0;
+                this.add(order, y, x, 1, 1);
             }
         }
 
 
-        Button submit = new Button("hit");
-        submit.setOnMouseClicked(e -> {
+        hit = new Button("hit");
+        hit.getStyleClass().add("newbtn2");
+        hit.setOnMouseClicked(e -> {
+           result = game.playBlackJackRound(hands,player,0,amount);
+           next();
+        });
+        this.add(hit, 0 , 7  ,  1, 1);
 
-           result =  game.playBlackJackRound(betStruct,player,0,amount);
-            System.out.println(result);
+        stay = new Button("stay");
+        stay.getStyleClass().add("newbtn2");
+        stay.setOnMouseClicked(e -> {
+            result = game.playBlackJackRound(hands,player,1,amount);
             next();
         });
-        this.add(submit, 0 , 7  ,  2, 1);
-        Button submit2 = new Button("stay");
-        submit2.setOnMouseClicked(e -> {
-
-            result =   game.playBlackJackRound(betStruct,player,1,amount);
-            System.out.println(result);
-            next();
-
-
-        });
-        this.add(submit2, 4 , 7  ,  2, 1);
+        this.add(stay, 1 , 7  ,  1, 1);
     }
 
 }

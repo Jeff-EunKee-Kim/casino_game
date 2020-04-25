@@ -22,12 +22,13 @@
     -fx-border-color: #9400FF;
     -fx-border-width: 3px;
     -fx-padding: 2px;
-    -fx-fill: #e5ffea;
+    -fx-fill: #11071f;
 }
+
 .betted{
     -fx-border-width: 3px;
     -fx-padding: 2px;
-    -fx-fill: #e5ffea;
+    -fx-fill: #11071f;
     -fx-border-color: #ff4031;
 }
 .fixer{
@@ -61,7 +62,15 @@
 }
 .liltxt{
     -fx-font-size:  15px;
+    -fx-font-weight: 300;
+}
+.liltxt2{
+    -fx-font-size:  55px;
+    -fx-font-family: "Selznick Normal NF";
     -fx-font-weight: 100;
+    -fx-fill: #3e4465;
+    -fx-effect: dropshadow(three-pass-box, rgba(60, 61, 145, 0.67), 1,10, 1, 1);
+
 }
 .medtxt{
     -fx-font-size:  25px;
@@ -77,9 +86,45 @@
     -fx-fill: skyblue;
 
 }
+.ds{
+    -fx-fill: white;
+
+}
+.newbtn{
+     -fx-padding: 10px;
+     -fx-min-width: 120px;
+     -fx-background-color: #292929;
+     -fx-background-radius: 0px;
+     -fx-text-fill: white;
+     -fx-border-radius: 0px;
+     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.46), 13, 0, 2, 2);
+     -fx-font-weight: 100;
+     -fx-font-size:  15px;
+ }
+.newbtn2{
+    -fx-padding: 8px;
+    -fx-min-width: 100px;
+    -fx-background-color:#9400FF;
+    -fx-background-radius: 0px;
+    -fx-text-fill: white;
+    -fx-border-radius: 0px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.46), 13, 0, 2, 2);
+    -fx-font-weight: 100;
+    -fx-font-size:  15px;
+}
+.balbad{
+    -fx-font-size:  25px;
+    -fx-font-family: Montserrat;
+    -fx-font-weight: 100;
+}
 .bggg{
     -fx-background-image: url("https://www.oilpaintingfactory.com/pic/Oil%20Painting%20Styles%20on%20Canvas/Fantasy/Popular%20Fantasy/9-Casino-Last-Supper-Fantasy.jpg");
 
+}
+
+.bg-blackjack{
+    -fx-background-image: url("https://i.imgur.com/OaAtBVB.png");
+    -fx-background-size: cover;
 }
 .bggg-2 {
     -fx-padding: 10px;

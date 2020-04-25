@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.image.Image;
 import ooga.Main;
+import player.Player;
 
 import java.awt.*;
 import java.io.File;
@@ -18,12 +19,12 @@ import java.util.ArrayList;
 
 public class StartMenu {
 
-    private Text title;
     private VBox innerbtns;
     private BorderPane layout;
     //private Game game;
 
-    public StartMenu() {
+
+    public StartMenu(Main main,Player player) {
         //game = new Game();
         Button roulette_btn = new Button("Roulette");
         Button blackjack_btn = new Button("Blackjack");
@@ -31,40 +32,38 @@ public class StartMenu {
         blackjack_btn.setId("ldbtn");
         roulette_btn.setId("strbtn");
         slots_btn.setId("sltsbtn");
-        title = new Text();
-        title.setId("ttl");
-        title.setText("Amicorum Spectaculum");
-        title.getStyleClass().add("txt");
+
+
+
+
         roulette_btn.setOnAction(e -> {
-            Main.gameStart(0);
+            main.gameStart(0);
             //game.start(0);
         });
         blackjack_btn.setOnAction(e -> {
-            Main.gameStart(1);
+            main.gameStart(1);
             //game.start(1);
         });
         slots_btn.setOnAction(e -> {
-            Main.gameStart(2);
+            main.gameStart(2);
 
             //game.start(2);
         });
         innerbtns = new VBox();
         layout = new BorderPane();
-        HBox header = new HBox();
+
         innerbtns.setPadding(new Insets(10, 50, 50, 50));
         innerbtns.setSpacing(25);
         roulette_btn.getStyleClass().add("rect");
         blackjack_btn.getStyleClass().add("rect");
         slots_btn.getStyleClass().add("rect");
-        innerbtns.getChildren().addAll( roulette_btn,blackjack_btn,slots_btn);
+        Text balance = new Text("Your current balance : $"+ player.getBalance());
+        innerbtns.getChildren().addAll( roulette_btn,blackjack_btn,slots_btn, balance);
         innerbtns.setAlignment(Pos.CENTER);
         innerbtns.getStyleClass().add("bggg-2");
-        header.getChildren().add(title);
-        header.setAlignment(Pos.CENTER);
-        header.setPadding(new Insets(30, 0, 30, 0));
         layout.getStylesheets().add("Styling/Main.css");
         layout.getStyleClass().add("bggg");
-        layout.setTop(header);
+        layout.setTop(generateTitle(""));
         layout.setCenter(innerbtns);
     }
 
@@ -72,15 +71,25 @@ public class StartMenu {
         return layout;
     }
 
+    public static VBox generateTitle(String gameType){
+        HBox header = new HBox();
+        VBox ret = new VBox();
+        Text title = new Text("Amicorum Spectaculum");
+        title.getStyleClass().add("txt");
+        header.getChildren().add(title);
+        header.setAlignment(Pos.CENTER);
+        header.setPadding(new Insets(30, 0, 30, 0));
+        ret.getChildren().add(header);
+        Text gametitle = new Text(gameType);
 
-    //TODO: Complete this here or switch; method returns the combo inputted by player for Slot machine - 3 digits
-    public static int getPlayerChosenValue(){ return 0;}
+        gametitle.getStyleClass().add("liltxt2");
+        HBox nextline = new HBox();
+        nextline.setAlignment(Pos.CENTER);
+        nextline.getChildren().add(gametitle);
+        ret.getChildren().add(nextline);
 
-    //TODO: Complete this here or switch; method is for black jack and returns if player wants to Stand 'S' or Hit 'H'
-    public static char playerHitOrStand(){return 'H';}
-
-    //TODO: Complete this here or switch; method returns the number representing the bet chosen by player; 1, 2, 3, 4
-    public static int inputBetFromPlayer(){return 'H';}
+        return ret;
+    }
 
 }
 
