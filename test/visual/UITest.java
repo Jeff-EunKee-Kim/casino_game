@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class UITest extends DukeApplicationTest {
 
-    private static ResourceBundle myResources = ResourceBundle.getBundle("properties.Main");
+    private static ResourceBundle myResources;
     private Stage myStage;
     private Scene myScene;
     private Main main;
@@ -47,11 +47,13 @@ class UITest extends DukeApplicationTest {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         main = new Main();
+        myResources = ResourceBundle.getBundle("properties.Main");
         myStage = primaryStage;
         myStage.setScene(myScene);
-        myStage.setTitle(myResources.getString("WindowTitle"));
+        myStage.setTitle(myResources.getString("TITLE"));
+        player = new Player("Chiskai", 100);
         startMenu = new StartMenu(main, player, myResources);
         myScene = new Scene(startMenu.getLayout(), 950, 700);
         myStage.setScene(myScene);
