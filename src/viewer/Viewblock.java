@@ -13,11 +13,15 @@ public class Viewblock extends StackPane {
         this(size,"");
     }
     public Viewblock(int size, String text){
+        this(size,size,text);
+    }
+
+    public Viewblock(int sizeh, int sizew, String text){
         this.getStylesheets().add("Styling/Main.css");
         frame = new Rectangle();
         frame.getStyleClass().add("roul");
-        frame.setWidth(size);
-        frame.setHeight(size);
+        frame.setWidth(sizew);
+        frame.setHeight(sizeh);
         value = new Text(text);
         value.getStyleClass().add("ds");
         this.getStyleClass().add("roul");

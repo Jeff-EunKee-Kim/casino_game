@@ -51,7 +51,7 @@ public class BlackjackViewport extends GridPane {
 
         Button submit = new Button("Submit");
         submit.getStyleClass().add("newbtn");
-       submit.setAlignment(Pos.CENTER);
+        submit.setAlignment(Pos.CENTER);
         this.add(submit,0,2,2,1);
         submit.setOnAction(e -> {
             String exptitle = input.getText();

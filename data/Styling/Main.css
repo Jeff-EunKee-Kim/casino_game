@@ -126,6 +126,14 @@
     -fx-background-image: url("https://i.imgur.com/OaAtBVB.png");
     -fx-background-size: cover;
 }
+.bg-roulette{
+    -fx-background-image: url("https://i.imgur.com/mYbsi5D.png");
+    -fx-background-size: cover;
+}
+.bg-slots{
+    -fx-background-image: url("https://i.imgur.com/q2NxzAk.png");
+    -fx-background-size: cover;
+}
 .bggg-2 {
     -fx-padding: 10px;
     -fx-max-width: 400px;

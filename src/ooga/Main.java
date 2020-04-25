@@ -24,20 +24,19 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.File;
+import java.util.ResourceBundle;
 
 /**
  * Feel free to completely change this code or delete it entirely.
  */
 public class Main extends Application {
 
-
     private static Stage myStage;
-
     private StartMenu startMenu;
     private static VBox title;
     private static AbstractGame currentGame;
     private static Player player;
-
+    private static ResourceBundle myResources;
 
     public static void main(String[] args) {
         try{
@@ -48,6 +47,7 @@ public class Main extends Application {
             player = new Player("Chiskai",100);
             System.out.println(e);
         }
+        myResources = ResourceBundle.getBundle("properties.Main");
         launch(args);
     }
 
@@ -56,7 +56,7 @@ public class Main extends Application {
         myStage = primaryStage;
         myStage.setTitle("Casino Amicorum Spectaculum");
         startMenu = new StartMenu(this,player);
-        Scene firstscene = new Scene(startMenu.getLayout(),950,700);
+        Scene firstscene = new Scene(startMenu.getLayout(),950,700,myResources);
         myStage.setScene(firstscene);
         myStage.show();
     }
@@ -64,13 +64,12 @@ public class Main extends Application {
     public void gameStart(int gametype){
         BorderPane  viewport = new BorderPane();
         viewport.getStylesheets().add("Styling/Main.css");
-
         GridPane main;
-
         switch (gametype) {
            case 0 :
                currentGame = new PlayRoulette();
-               title = StartMenu.generateTitle("");
+               title = StartMenu.generateTitle("Roulette");
+               viewport.getStyleClass().add("bg-roulette");
                main = new RouletteViewport((PlayRoulette) currentGame, player);
                break;
            case 1:
@@ -81,6 +80,8 @@ public class Main extends Application {
                break;
            case 2:
                currentGame = new PlaySlotMachine();
+               title = StartMenu.generateTitle("Slots");
+               viewport.getStyleClass().add("bg-slots");
                main = new SlotsViewport((PlaySlotMachine) currentGame, player);
                break;
            default:
