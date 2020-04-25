@@ -89,7 +89,7 @@ public class Main extends Application {
                main = new GridPane();
                break;
        }
-
+        title.setId("VBox");
         main.setAlignment(Pos.CENTER);
         viewport.setCenter(main);
         viewport.setTop(title);
@@ -101,11 +101,13 @@ public class Main extends Application {
     private  HBox generateControls(){
         HBox controls = new HBox();
         Button save = new Button("Save Game");
+        save.setId("SaveButton");
         save.getStyleClass().add("newbtn");
         save.setOnAction(e -> {
             PlayerUtility.savePlayerData(player);
         });
         Button home = new Button("Go To Menu");
+        home.setId("HomeButton");
         home.getStyleClass().add("newbtn");
         home.setOnAction(e -> {
             start(myStage);
