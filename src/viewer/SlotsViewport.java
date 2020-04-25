@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import player.Player;
 
 import java.util.HashMap;
+import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public class SlotsViewport extends GridPane {
@@ -18,7 +19,9 @@ public class SlotsViewport extends GridPane {
     private PlaySlotMachine game;
     private Player player;
     private HashMap<Integer,Integer> betStruct;
-    public SlotsViewport(PlaySlotMachine game, Player player) {
+    private ResourceBundle myResources;
+    public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources) {
+        myResources = resources;
         betStruct = new HashMap<>();
         this.game = game;
         this.player = player;
@@ -40,7 +43,7 @@ public class SlotsViewport extends GridPane {
         this.getChildren().clear();
         for(int i = 0; i< 5;i++)
             betStruct.put(i,0);
-        Text numbere = new Text("Bal :" + player.getBalance());
+        Text numbere = new Text( myResources.getString("BAL") + player.getBalance());
         numbere.getStyleClass().add("balbad");
         Text sts  = new Text();
         this.add(numbere,10,0,2,1);
@@ -68,14 +71,14 @@ public class SlotsViewport extends GridPane {
             });
             this.add(stack, i, 6, 1, 1);
         }
-        Button submit = new Button("submit");
+        Button submit = new Button( myResources.getString("PLACEBET"));
         submit.getStyleClass().add("newbtn2");
         submit.setOnMouseClicked(e -> {
             result = game.playSlotsRound(betStruct,player);
             if(result.getIsValidBet())
                 next();
             else
-                sts.setText("Insufficient funds");
+                sts.setText( myResources.getString("ERROR2"));
         });
         this.add(submit, 2 , 7  ,  1, 1);
     }

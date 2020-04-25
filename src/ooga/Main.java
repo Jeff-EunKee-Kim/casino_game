@@ -54,9 +54,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         myStage = primaryStage;
-        myStage.setTitle("Casino Amicorum Spectaculum");
-        startMenu = new StartMenu(this,player);
-        Scene firstscene = new Scene(startMenu.getLayout(),950,700,myResources);
+        myStage.setTitle(myResources.getString("TITLE"));
+        startMenu = new StartMenu(this,player,myResources);
+        Scene firstscene = new Scene(startMenu.getLayout(),950,700);
         myStage.setScene(firstscene);
         myStage.show();
     }
@@ -68,21 +68,21 @@ public class Main extends Application {
         switch (gametype) {
            case 0 :
                currentGame = new PlayRoulette();
-               title = StartMenu.generateTitle("Roulette");
+               title = StartMenu.generateTitle(myResources.getString("ROULETTE"));
                viewport.getStyleClass().add("bg-roulette");
-               main = new RouletteViewport((PlayRoulette) currentGame, player);
+               main = new RouletteViewport((PlayRoulette) currentGame, player, myResources);
                break;
            case 1:
                currentGame =  new PlayBlackJack();
-               title = StartMenu.generateTitle("Black Jack");
+               title = StartMenu.generateTitle(myResources.getString("BLACKJACK"));
                viewport.getStyleClass().add("bg-blackjack");
-               main = new BlackjackViewport((PlayBlackJack) currentGame, player);
+               main = new BlackjackViewport((PlayBlackJack) currentGame, player, myResources);
                break;
            case 2:
                currentGame = new PlaySlotMachine();
-               title = StartMenu.generateTitle("Slots");
+               title = StartMenu.generateTitle(myResources.getString("SLOTS"));
                viewport.getStyleClass().add("bg-slots");
-               main = new SlotsViewport((PlaySlotMachine) currentGame, player);
+               main = new SlotsViewport((PlaySlotMachine) currentGame, player, myResources);
                break;
            default:
                System.out.println("uWu something went woopsy");

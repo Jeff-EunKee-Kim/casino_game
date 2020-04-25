@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import player.Player;
 import result.BlackjackResult;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class BlackjackViewport extends GridPane {
 
@@ -24,8 +25,10 @@ public class BlackjackViewport extends GridPane {
     private Button hit;
     private Button stay;
     private HashMap<Integer,blackJackHand> hands;
+    private static ResourceBundle myResources;
 
-    public BlackjackViewport(PlayBlackJack game, Player player) {
+    public BlackjackViewport(PlayBlackJack game,Player player, ResourceBundle resources){
+        myResources = resources;
         this.getStylesheets().add("Styling/Main.css");
         this.player = player;
         this.game = game;
@@ -38,7 +41,8 @@ public class BlackjackViewport extends GridPane {
         this.setHgap(10);
         this.setVgap(10);
 
-        Label title = new Label("Amount to bet : $");
+        Label title = new Label( myResources.getString("TOBET"));
+
         title.getStyleClass().add("liltxt");
         this.add(title, 0, 0,1,1);
 
@@ -49,7 +53,7 @@ public class BlackjackViewport extends GridPane {
         TextField input = new TextField();
         this.add(input, 1, 0,1,1);
 
-        Button submit = new Button("Submit");
+        Button submit = new Button(myResources.getString("PLACEBET"));
         submit.getStyleClass().add("newbtn");
         submit.setAlignment(Pos.CENTER);
         this.add(submit,0,2,2,1);
@@ -62,10 +66,11 @@ public class BlackjackViewport extends GridPane {
                     render();
                 }
                 else
-                    error.setText("Insufficient funds");
+                    error.setText( myResources.getString("ERROR2"));
+
             }
             catch (Exception er){
-                error.setText("Not a valid number");
+                error.setText( myResources.getString("ERROR3"));
             }
         });
     }
@@ -73,16 +78,10 @@ public class BlackjackViewport extends GridPane {
 
     private void next(){
        hands = result.getMap();
-       System.out.println(result.getWinStatus());
         render();
-       if(result.getWinStatus()==1)
-        System.out.println("win");
-        else if(result.getWinStatus()==0)
-            System.out.println("loose");
-        else if(result.getWinStatus()==2)
-            System.out.println("tie");
+
         if(result.getWinStatus()!=3){
-            Button newround = new Button("newround");
+            Button newround = new Button( myResources.getString("NEWROUND"));
             newround.getStyleClass().add("newbtn2");
             newround.setOnMouseClicked(e -> {
                 flag =1;
@@ -96,17 +95,17 @@ public class BlackjackViewport extends GridPane {
 
     private void render(){
         this.getChildren().clear();
-        Text numbere = new Text("Bal :" + player.getBalance());
+        Text numbere = new Text( myResources.getString("BAL") + player.getBalance());
         numbere.getStyleClass().add("balbad");
         this.add(numbere,10,0,2,1);
         for (int x = 0; x < 2; x++) {
             for (int y = 0; y < hands.get(x).handSize(); y++) {
-                Viewblock order = new Viewblock(100);
+                Viewblock order = new Viewblock(Integer.parseInt( myResources.getString("BSIZE")));
                 Card val = hands.get(x).getCard(y);
                 Rank num = val.getMyRank();
                 Suit suit = val.getMySuit();
                 if(flag==1)
-                    order.setValue("Hidden");
+                    order.setValue( myResources.getString("HIDDEN"));
                 else
                     order.setValue(num.toString() +"\n"+ suit.toString());
                 flag=0;

@@ -16,48 +16,37 @@ import player.Player;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class StartMenu {
 
     private VBox innerbtns;
     private BorderPane layout;
-    //private Game game;
+    private static ResourceBundle myResources;
 
 
-    public StartMenu(Main main,Player player) {
-        //game = new Game();
-        Button roulette_btn = new Button("Roulette");
-        Button blackjack_btn = new Button("Blackjack");
-        Button slots_btn = new Button("Slots");
-        blackjack_btn.setId("ldbtn");
-        roulette_btn.setId("strbtn");
-        slots_btn.setId("sltsbtn");
-
-
-
-
+    public StartMenu(Main main, Player player, ResourceBundle resources) {
+        myResources = resources;
+        Button roulette_btn = new Button(myResources.getString("ROULETTE"));
+        Button blackjack_btn = new Button(myResources.getString("BLACKJACK"));
+        Button slots_btn = new Button(myResources.getString("SLOTS"));
         roulette_btn.setOnAction(e -> {
             main.gameStart(0);
-            //game.start(0);
         });
         blackjack_btn.setOnAction(e -> {
             main.gameStart(1);
-            //game.start(1);
         });
         slots_btn.setOnAction(e -> {
             main.gameStart(2);
-
-            //game.start(2);
         });
         innerbtns = new VBox();
         layout = new BorderPane();
-
         innerbtns.setPadding(new Insets(10, 50, 50, 50));
         innerbtns.setSpacing(25);
         roulette_btn.getStyleClass().add("rect");
         blackjack_btn.getStyleClass().add("rect");
         slots_btn.getStyleClass().add("rect");
-        Text balance = new Text("Your current balance : $"+ player.getBalance());
+        Text balance = new Text( myResources.getString("YOUR-CURRENT-BALANCE") + player.getBalance());
         innerbtns.getChildren().addAll( roulette_btn,blackjack_btn,slots_btn, balance);
         innerbtns.setAlignment(Pos.CENTER);
         innerbtns.getStyleClass().add("bggg-2");
@@ -74,14 +63,13 @@ public class StartMenu {
     public static VBox generateTitle(String gameType){
         HBox header = new HBox();
         VBox ret = new VBox();
-        Text title = new Text("Amicorum Spectaculum");
+        Text title = new Text(myResources.getString("TITLE"));
         title.getStyleClass().add("txt");
         header.getChildren().add(title);
         header.setAlignment(Pos.CENTER);
         header.setPadding(new Insets(30, 0, 30, 0));
         ret.getChildren().add(header);
         Text gametitle = new Text(gameType);
-
         gametitle.getStyleClass().add("liltxt2");
         HBox nextline = new HBox();
         nextline.setAlignment(Pos.CENTER);

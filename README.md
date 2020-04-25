@@ -24,6 +24,8 @@ Hours Spent: 100 hours
     - Implementing the backend functionalities of Slot machine and Roulette game
 2. Vincent Sinfuego
 3. Aparimeya Taneja
+    - All JavaFX, front end, resource loading, UI, etc.
+    - Integrating game flow with API Calls and event listeners through main
 4. Celine Murugi
 
 ### Resources Used
@@ -57,6 +59,7 @@ Assumptions or Simplifications:
 Interesting data files:
 
 Known Bugs:
+Custom title font is only visible on one local machine
 
 Extra credit:
 
@@ -67,3 +70,9 @@ Jeff
 and utilized online communications effectively to make it work. I realized how important to set up the API documents as thoroughly as possible 
 for the development cycle to be smooth, including the functionality of the API, input types, and output types. If the API documents are 
 well-written, we barely even need human to human communications. 
+
+Aparimeya 
+- It was quite rough for me personally due to COVID as I have been quite personally affected. Despite all that
+I'm glad to have teammates who were understanding and thankfully we were able to clutch this one out. Honestly 
+maybe more time for planning could have been used but other than that I believe everyone did their best and 
+helped each other. 

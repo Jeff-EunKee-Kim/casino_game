@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import player.Player;
 
 import java.util.HashMap;
+import java.util.ResourceBundle;
 
 public class RouletteViewport extends GridPane {
     private RouletteResult result;
@@ -17,8 +18,10 @@ public class RouletteViewport extends GridPane {
     private Player player;
     private HashMap<Integer,Integer> betStruct;
     private Text Ball;
+    private ResourceBundle myResources;
 
-    public RouletteViewport(PlayRoulette game, Player player){
+    public RouletteViewport(PlayRoulette game, Player player, ResourceBundle resources){
+        myResources = resources;
         Ball = new Text("");
         Ball.getStyleClass().add("balbad");
         this.game = game;
@@ -36,13 +39,13 @@ public class RouletteViewport extends GridPane {
             betStruct.put(i,0);
         this.getChildren().clear();
         int count = 1;
-        Text numbere = new Text("Bal :" + player.getBalance());
+        Text numbere = new Text( myResources.getString("BAL") + player.getBalance());
         numbere.getStyleClass().add("balbad");
         this.add(numbere,18,0,2,1);
         this.add(Ball,18,1,2,2);
         for (int y = 0; y < 12 ; y++){
             for(int x = 0; x < 3 ;x++){
-                Viewblock stack = new Viewblock(40,  Integer.toString(count));
+                Viewblock stack = new Viewblock(Integer.parseInt(myResources.getString("RSIZEH")),  Integer.toString(count));
                 int val = count;
                 stack.setOnMouseClicked(e -> {
                     stack.getStyleClass().clear();
@@ -65,7 +68,7 @@ public class RouletteViewport extends GridPane {
             Viewblock stack;
             if(count==41) {
                 val = 0;
-                stack = new Viewblock(40,90,  Integer.toString(val));
+                stack = new Viewblock(Integer.parseInt(myResources.getString("RSIZEH")), Integer.parseInt(myResources.getString("RSIZEW")),  Integer.toString(val));
             }
             else {
                 val = count;
@@ -79,7 +82,7 @@ public class RouletteViewport extends GridPane {
                     betStruct.put(val,0);
                 }
                 else{
-                    betStruct.put(val,5);
+                    betStruct.put(val,Integer.parseInt(myResources.getString("BETAMOUNT")));
                     stack.getStyleClass().add("betted");
                 }
             });
@@ -88,7 +91,7 @@ public class RouletteViewport extends GridPane {
         }
 
 
-        Button submit = new Button("Place Bet");
+        Button submit = new Button(myResources.getString("PLACEBET"));
         submit.getStyleClass().add("newbtn2");
         submit.setOnMouseClicked(e -> {
             result =  game.playRouletteRound(betStruct,player);
@@ -98,7 +101,7 @@ public class RouletteViewport extends GridPane {
                 next();
             }
             else
-                Ball.setText("Insufficient Funds\nOr No Bet");
+                Ball.setText( myResources.getString("ERROR1"));
         });
         this.add(submit, 0 , 7  ,  2, 1);
     }
