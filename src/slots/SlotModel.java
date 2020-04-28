@@ -1,9 +1,7 @@
 package slots;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * This class represents the screen of a 3x3 slot machine. The number of lines bet changes how each screen will be scored.
@@ -12,12 +10,25 @@ import java.util.Random;
 public class SlotModel {
 
     private Column[] reels;
-    private int[][] screen = new int[3][3];
+    private int[][] screen;
     private Random r = new Random();
-    private int[] winnings = {50, 50, 100, 100, 150, 150, 10000};
+    private int[] winnings;
+    private ResourceBundle slotRules;
+    private int size;
+
 
     public SlotModel(){
-        reels = new Column[]{new Column(), new Column(), new Column()};
+        slotRules = ResourceBundle.getBundle("properties.Slot");
+        this.size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
+        String[] tempWinnings = slotRules.getString("WINNINGS").split(",");
+
+        reels = new Column[size];
+        winnings = Stream.of(slotRules.getString("WINNINGS").split(",")).mapToInt(Integer::parseInt).toArray();
+
+        for (int i = 0; i< size; i++) {
+            reels[i] = new Column();
+        }
+        screen = new int[size][size];
         updateScreen();
     }
 
@@ -41,77 +52,72 @@ public class SlotModel {
     }
 
     private void updateScreen(){
-        for (int k = 0; k < 3; k++){
-            for (int j = 0; j < 3; j++){
+        for (int k = 0; k < size; k++){
+            for (int j = 0; j < size; j++){
                 screen[j][k] = reels[k].getReel().get(j);
             }
         }
     }
 
     /**
-     * Check if top line matches
+     * Check if line matches
      * @return Boolean
      */
-    public boolean checkTopLine() {
-        return screen[0][0] == screen[0][1] && screen[0][1] == screen[0][2];
+    public boolean checkHorizontalLine(int row) {
+        for (int i = 0; i < size-1; i++) {
+            if (screen[row][i] != screen[row][i+1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
-     * Check if middle line matches
+     * Check if diagonal lines match
      * @return Boolean
      */
-    public boolean checkMiddleLine() {
-        return screen[1][0] == screen[1][1] && screen[1][1] == screen[1][2];
-    }
-
-    /**
-     * Check if bottom line matches
-     * @return Boolean
-     */
-    public boolean checkBottomLine() {
-        return screen[2][0] == screen[2][1] && screen[2][1] == screen[2][2];
-    }
-
-    /**
-     * Check if top left - bottom right diagonal line matches
-     * @return Boolean
-     */
-    public boolean checkTLBRLine() {
-        return screen[0][0] == screen[1][1] && screen[1][1] == screen[2][2];
-    }
-
-    /**
-     * Check if bottom left - top right diagonal line matches
-     * @return Boolean
-     */
-    public boolean checkBLTRLine() {
-        return screen[2][0] == screen[1][1] && screen[1][1] == screen[0][2];
+    public boolean checkDiagonalLine(int row) {
+        if (row == 0) {
+            for (int i = 0; i < size-1; i++) {
+                if (screen[row][i] != screen[row+1][i+1]) {
+                    return false;
+                }
+                row++;
+            }
+            return true;
+        } else if (row == size-1) {
+            for (int i = 0; i < size-1; i++) {
+                if (screen[row][i] != screen[row-1][i+1]) {
+                    return false;
+                }
+                row--;
+            }
+            return true;
+        }
+        return false;
     }
 
     public int calculateWinAmount(Map<Integer, Integer> lines) {
         int winAmount = 0;
+
+
         for (int line : lines.keySet()) {
-            if (line == 0 && checkTopLine()) {
-                winAmount += winnings[screen[0][0]];
-            } else if (line == 1 && checkMiddleLine()) {
-                winAmount += winnings[screen[1][0]];
-            } else if (line == 2 && checkBottomLine()) {
-                winAmount += winnings[screen[2][0]];
-            } else if (line == 3 && checkTLBRLine()) {
-                winAmount += winnings[screen[0][0]];
-            } else if (line == 4 && checkBLTRLine()) {
-                winAmount += winnings[screen[2][0]];
+            System.out.println(lines.get(line));
+            if (line == -1 && lines.get(line) != 0) {
+                if (checkDiagonalLine(0)) {
+                    winAmount += winnings[screen[0][0]];
+                }
+            } else if (line == -2 && lines.get(line) != 0) {
+                if (checkDiagonalLine(size - 1)) {
+                    winAmount += winnings[screen[size - 1][0]];
+                }
+            } else if (lines.get(line) != 0) {
+                if (checkHorizontalLine(line)) {
+                    winAmount += winnings[screen[line][0]];
+                }
             }
         }
         return winAmount;
-    }
-
-    public int returnMiddleLine(){
-        return screen[1][0] * 100 + screen[1][1] * 10 + screen[1][2];
-    }
-
-    public int getCell(int x, int y){
-        return screen[x][y];
     }
 
     public int[][] getScreen() {

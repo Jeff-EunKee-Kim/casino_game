@@ -3,6 +3,8 @@ package result;
 /**
  * @author Jeff Kim
  * started 4/24/20
+ * Abstract class that defines the basic template of the data type we will be sending back and forth to the frontend.
+ * Each game will inherit this method to define additional features that needs to be included.
  */
 public abstract class GameResult {
     private boolean isValidBet;

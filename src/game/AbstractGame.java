@@ -2,6 +2,7 @@ package game;
 
 /**
  * @author Celine Murugi, Jeff Kim
+ * Abstract game class that all the other games will inherit from
  */
 
 import player.Player;

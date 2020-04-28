@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 /**
  * @author Jeff Kim, Celine Murugi, Vincent Sinfuego
- * started 4/24/20
+ * Blackjack result time that will be sent to the frontend
  */
 public class BlackjackResult extends GameResult {
     private HashMap<Integer, blackJackHand> map;

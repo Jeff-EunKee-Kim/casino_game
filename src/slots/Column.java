@@ -8,9 +8,9 @@ import java.util.List;
  * @author Vincent Sinfeugo, Jeff Kim
  */
 public class Column {
-    private final int NUMBER_OF_ICONS = 7;
+    private final int NUMBER_OF_ICONS = 5;
     List<Integer> myReel;
-    private final int[] frequency = {40, 40, 20, 20, 10, 7, 3};
+    private final int[] frequency = {40, 40, 20, 20, 3};
 
 
     public Column(){

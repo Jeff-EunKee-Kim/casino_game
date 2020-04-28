@@ -39,6 +39,7 @@ Hours Spent: 100 hours
     - Project Settings -> Libraries -> from maven -> 
         - com.googlecode.json-simple:json-simple:1.1.1
         - org.junit.vintage:junit-vintage-engine:5.2.0
+        - org.testfx:testfx-junit5:4.0.16-alpha (For testing)
 2. Run Main class from ooga package
 
 Data files needed: 
