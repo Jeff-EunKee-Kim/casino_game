@@ -18,7 +18,7 @@ public class SlotModel {
 
 
     public SlotModel(){
-        slotRules = ResourceBundle.getBundle("properties.Slot");
+        slotRules = ResourceBundle.getBundle("DataFilesSlots.properties.Slot");
         this.size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
         String[] tempWinnings = slotRules.getString("WINNINGS").split(",");
 

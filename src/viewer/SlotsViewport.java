@@ -20,16 +20,20 @@ public class SlotsViewport extends GridPane {
     private Player player;
     private HashMap<Integer,Integer> betStruct;
     private ResourceBundle myResources;
+    private  ResourceBundle slotRules;
+    private int size;
     public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources) {
+        slotRules = ResourceBundle.getBundle("DataFilesSlots.Slot");
+        size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
         myResources = resources;
         betStruct = new HashMap<>();
         this.game = game;
         this.player = player;
         this.getStylesheets().add("Styling/Main.css");
-        screen = new int[3][3];
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                int rand =  (int) (Math.random() * 7);
+        screen = new int[size][size];
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                int rand =  (int) (Math.random() * 5);
                 screen[x][y] = rand;
             }
         }
@@ -41,23 +45,26 @@ public class SlotsViewport extends GridPane {
     }
     private void render(){
         this.getChildren().clear();
-        for(int i = 0; i< 5;i++)
+        for(int i = -2; i< size;i++)
             betStruct.put(i,0);
         Text numbere = new Text( myResources.getString("BAL") + player.getBalance());
         numbere.getStyleClass().add("balbad");
         Text sts  = new Text();
         this.add(numbere,10,0,2,1);
         this.add(sts,10,1,2,1);
-        for (int x = 0; x < 3; x++) {
-            for (int i = 0; i < 3; i++) {
+        for (int x = 0; x < size; x++) {
+            for (int i = 0; i < size; i++) {
                Viewblock stack = new Viewblock(50,100,   Integer.toString(screen[x][i]));
                 this.add(stack, 1 + i, x, 1, 1);
             }
         }
-        String[] bets = {"Top","Mid","Btm","L-R","R-L"};
-        for(int i = 0; i < 5; i++){
+        String[] bets = {"L-R","R-L", "Top","Mid","Btm"};
+        for(int i = -2; i < size - 2; i++){
             int val = i;
-            Viewblock stack = new Viewblock(50,100, bets[i]);
+            in
+            String title = "Row ";
+
+            Viewblock stack = new Viewblock(50,100, bets[i+2]);
             stack.setOnMouseClicked(e -> {
                 stack.getStyleClass().clear();
                 if(betStruct.get(val)>0){
@@ -69,7 +76,7 @@ public class SlotsViewport extends GridPane {
                     stack.getStyleClass().add("betted");
                 }
             });
-            this.add(stack, i, 6, 1, 1);
+            this.add(stack, i+2, 6, 1, 1);
         }
         Button submit = new Button( myResources.getString("PLACEBET"));
         submit.getStyleClass().add("newbtn2");
