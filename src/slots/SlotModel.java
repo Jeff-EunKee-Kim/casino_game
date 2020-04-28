@@ -17,10 +17,10 @@ public class SlotModel {
     private int size;
 
 
-    public SlotModel(String properties){
-        slotRules = ResourceBundle.getBundle(properties);
-        this.size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
 
+    public SlotModel(){
+        slotRules = ResourceBundle.getBundle("DataFilesSlots.properties.Slot");
+        this.size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
         reels = new Column[size];
         winnings = Stream.of(slotRules.getString("WINNINGS").split(",")).mapToInt(Integer::parseInt).toArray();
 
