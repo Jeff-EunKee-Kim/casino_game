@@ -3,6 +3,8 @@ package slots;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
 /**
  * @author Vincent Sinfeugo, Jeff Kim
@@ -10,10 +12,14 @@ import java.util.List;
 public class Column {
     private final int NUMBER_OF_ICONS = 5;
     List<Integer> myReel;
-    private final int[] frequency = {40, 40, 20, 20, 3};
+    private final int[] frequency;
+    private ResourceBundle slotRules;
 
 
-    public Column(){
+    public Column(String properties){
+        slotRules = ResourceBundle.getBundle(properties);
+        frequency = Stream.of(slotRules.getString("FREQUENCIES").split(",")).mapToInt(Integer::parseInt).toArray();
+
         myReel = new ArrayList<>();
         generateReelProbability();
         Collections.shuffle(myReel);
@@ -28,10 +34,6 @@ public class Column {
                 myReel.add(i);
             }
         }
-    }
-
-    public Column(List<Integer> list){
-        myReel = list;
     }
 
     public List<Integer> getReel(){

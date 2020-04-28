@@ -17,16 +17,15 @@ public class SlotModel {
     private int size;
 
 
+
     public SlotModel(){
         slotRules = ResourceBundle.getBundle("DataFilesSlots.properties.Slot");
         this.size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
-        String[] tempWinnings = slotRules.getString("WINNINGS").split(",");
-
         reels = new Column[size];
         winnings = Stream.of(slotRules.getString("WINNINGS").split(",")).mapToInt(Integer::parseInt).toArray();
 
         for (int i = 0; i< size; i++) {
-            reels[i] = new Column();
+            reels[i] = new Column(properties);
         }
         screen = new int[size][size];
         updateScreen();
@@ -65,6 +64,8 @@ public class SlotModel {
      */
     public boolean checkHorizontalLine(int row) {
         for (int i = 0; i < size-1; i++) {
+            System.out.println("Row: " + row);
+            System.out.println("i: " + i);
             if (screen[row][i] != screen[row][i+1]) {
                 return false;
             }
@@ -99,7 +100,6 @@ public class SlotModel {
 
     public int calculateWinAmount(Map<Integer, Integer> lines) {
         int winAmount = 0;
-
 
         for (int line : lines.keySet()) {
             System.out.println(lines.get(line));
