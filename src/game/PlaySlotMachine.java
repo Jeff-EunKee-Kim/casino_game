@@ -24,7 +24,7 @@ public class PlaySlotMachine extends AbstractGame{
      * @param lines : key is line, value is betting
      * @return SlotResult class that contains win status, amountwon, player balance, and screen after game
      */
-    public SlotResult playSlotsRound(Map<Integer, Integer> lines, Player p) {
+    public SlotResult playSlotsRound(Map<Integer, Integer> lines, Player p, String properties) {
         int totalBetCost = 0;
         for (int line : lines.keySet()) {
             totalBetCost += lines.get(line) * lineCost;
@@ -34,7 +34,7 @@ public class PlaySlotMachine extends AbstractGame{
             return new SlotResult(false, 0, 0, 0, new int[3][3]);
         }
 
-        SlotModel slotModel = new SlotModel();
+        SlotModel slotModel = new SlotModel(properties);
         slotModel.spinReels();
 
         int amountWon = slotModel.calculateWinAmount(lines);
