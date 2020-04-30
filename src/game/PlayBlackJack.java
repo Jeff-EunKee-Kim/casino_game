@@ -19,20 +19,32 @@ import roulette.WheelSlice;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
 public class PlayBlackJack extends AbstractGame{
 
+    public static final int LOSE = 0;
+    public static final int WIN = 1;
+    public static final int TIE = 2;
+    public static final int UNDECIDED = 3;
     private Deck myDeck;
     private blackJackHand myHand;
     private blackJackHand dealerHand;
     private HashMap<Integer,blackJackHand> hands;
+    private ResourceBundle gameResources;
+    private int victory;
+    private int dealerStop;
+
     /**
      * Constructor for black jack. Calling it from the front end starts
      * the black jack game
      */
-    public PlayBlackJack(){
-    hands = startBlackjackRound();
+    public PlayBlackJack(ResourceBundle resources){
+        hands = startBlackjackRound();
+        gameResources = resources;
+        victory = Integer.parseInt(gameResources.getString("VictoryNum"));
+        dealerStop = Integer.parseInt(gameResources.getString("DealerStopNum"));
     }
 
     public HashMap<Integer, blackJackHand> getHands() {
@@ -56,74 +68,74 @@ public class PlayBlackJack extends AbstractGame{
     }
 
     public BlackjackResult playBlackJackRound(HashMap<Integer,blackJackHand> hands, Player p, int hitOrMiss, int amount) {
-        int winStatus = 3;
+        int winStatus = UNDECIDED;
         int cashEarned = 0;
         boolean playerBust = false;
         boolean dealerBust = false;
         if (hitOrMiss == 0){
             myHand.addCard(myDeck.dealTopCard());
-            if (myHand.getPoints() > 21){
+            if (myHand.getPoints() > victory){
                 playerBust = true;
             }
-            if (dealerHand.getPoints() < 17){
+            if (dealerHand.getPoints() < dealerStop){
                 dealerHand.addCard(myDeck.dealTopCard());
-                if (dealerHand.getPoints() > 21){
+                if (dealerHand.getPoints() > victory){
                     dealerBust = true;
                 }
             }
             if (playerBust == true && dealerBust == true){
-                winStatus = 2;
+                winStatus = TIE;
             }
             else if (playerBust == true && dealerBust == false){
-                winStatus = 0;
+                winStatus = LOSE;
             }
             else if (playerBust == false && dealerBust == true){
-                winStatus = 1;
+                winStatus = WIN;
             }
             else{
-                winStatus = 3;
+                winStatus = UNDECIDED;
             }
         }
         else{
-            if (dealerHand.getPoints() < 17){
+            if (dealerHand.getPoints() < dealerStop){
                 dealerHand.addCard(myDeck.dealTopCard());
-                if (dealerHand.getPoints() > 21){
-                    winStatus = 1;
+                if (dealerHand.getPoints() > victory){
+                    winStatus = WIN;
                 }
                 else{
-                    if (dealerHand.getPoints() < 17){
-                        winStatus = 3;
+                    if (dealerHand.getPoints() < dealerStop){
+                        winStatus = UNDECIDED;
                     }
                     else{
                         if (myHand.getPoints() < dealerHand.getPoints()){
-                            winStatus = 0;
+                            winStatus = LOSE;
                         }
                         else if (myHand.getPoints() > dealerHand.getPoints()){
-                            winStatus = 1;
+                            winStatus = WIN;
                         }
                         else if (myHand.getPoints() == dealerHand.getPoints()) {
-                            winStatus = 2;
+                            winStatus = TIE;
                         }
                     }
                 }
             }
             else{
                 if (myHand.getPoints() < dealerHand.getPoints()){
-                    winStatus = 0;
+                    winStatus = LOSE;
                 }
                 else if (myHand.getPoints() > dealerHand.getPoints()){
-                    winStatus = 1;
+                    winStatus = WIN;
                 }
                 else if (myHand.getPoints() == dealerHand.getPoints()) {
-                    winStatus = 2;
+                    winStatus = TIE;
                 }
             }
         }
-        if (winStatus == 1){
+        if (winStatus == WIN){
             cashEarned = amount;
             p.addBalance(cashEarned);
         }
-        else if (winStatus == 0){
+        else if (winStatus == LOSE){
             p.subtractBalance(amount);
         }
         return new BlackjackResult(true, winStatus, cashEarned, p.getBalance(), myHand, dealerHand);

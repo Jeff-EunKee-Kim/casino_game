@@ -37,6 +37,7 @@ public class Main extends Application {
     private static AbstractGame currentGame;
     private static Player player;
     private static ResourceBundle myResources;
+    private static ResourceBundle gameResources = ResourceBundle.getBundle("properties.Blackjack");
 
     public static void main(String[] args) {
         try{
@@ -73,7 +74,7 @@ public class Main extends Application {
                main = new RouletteViewport((PlayRoulette) currentGame, player, myResources);
                break;
            case 1:
-               currentGame =  new PlayBlackJack();
+               currentGame =  new PlayBlackJack(gameResources);
                title = StartMenu.generateTitle(myResources.getString("BLACKJACK"));
                viewport.getStyleClass().add("bg-blackjack");
                main = new BlackjackViewport((PlayBlackJack) currentGame, player, myResources);
