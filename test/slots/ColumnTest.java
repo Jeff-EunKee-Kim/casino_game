@@ -13,7 +13,7 @@ class ColumnTest {
 
     @Test
     void generateReelProbability() {
-        Column c = new Column();
+        Column c = new Column("properties.NormalSlot");
 
         int count0 = 0;
         int count1 = 0;

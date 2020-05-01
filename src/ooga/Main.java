@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -38,7 +39,7 @@ public class Main extends Application {
     private static Player player;
     private static ResourceBundle myResources;
     private static ResourceBundle gameResources = ResourceBundle.getBundle("properties.Blackjack");
-
+    private VBox layout;
     public static void main(String[] args) {
         try{
             File testFile = new File("./data/playerData/player.json");
@@ -91,10 +92,12 @@ public class Main extends Application {
                break;
        }
         main.setAlignment(Pos.CENTER);
-        viewport.setCenter(main);
+        selectionMenu("src/properties");
+        viewport.setCenter(layout);
         viewport.setTop(title);
         viewport.setBottom(generateControls());
         Scene mains = new Scene(viewport,950 ,700);
+
         myStage.setScene(mains);
 
     }
@@ -117,4 +120,44 @@ public class Main extends Application {
         return controls;
     }
 
+    private void selectionMenu(String path){
+        layout = new VBox();
+        File folder = new File(path);
+        File[] listOfFiles = folder.listFiles();
+        ArrayList<HBox> files = new ArrayList<>();
+        int size = listOfFiles.length;
+        files.add(new HBox());
+        if (size>4) {
+            size=size/4;
+            for (int i = 0; i <size;i++){
+                files.add(new HBox());
+            }
+        }
+        ArrayList<Button> options = new ArrayList<>();
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                String filename = file.getName();
+                Button toAdd = new Button(filename.split("\\.")[0]);
+                toAdd.getStyleClass().add("rect");
+                toAdd.setOnAction(e -> {
+                   layout.getChildren().clear();
+                //    Main.initSimulation(path+"/"+filename);
+                });
+                options.add(toAdd);
+            }
+        }
+        int iter = 0;
+        int total = options.size();
+        int flag = 0;
+        if (total%4!=0) flag = 1;
+        int cont = 4;
+        for(HBox row : files){
+            if (flag == 1&&total<4) cont = total;
+            for(int i = iter ;i < iter +cont;i++)
+                row.getChildren().add(options.get(i));
+            iter+=4; total-=4;
+            row.setAlignment(Pos.CENTER); row.setSpacing(20);
+            layout.getChildren().add(row);
+        }
+    }
 }

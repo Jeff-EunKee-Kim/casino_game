@@ -23,7 +23,7 @@ public class SlotsViewport extends GridPane {
     private  ResourceBundle slotRules;
     private int size;
     public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources) {
-        slotRules = ResourceBundle.getBundle("DataFilesSlots.Slot");
+        slotRules = ResourceBundle.getBundle("properties.NormalSlot");
         size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
         myResources = resources;
         betStruct = new HashMap<>();
@@ -58,13 +58,13 @@ public class SlotsViewport extends GridPane {
                 this.add(stack, 1 + i, x, 1, 1);
             }
         }
-        String[] bets = {"L-R","R-L", "Top","Mid","Btm"};
-        for(int i = -2; i < size - 2; i++){
+        String[] bets = {"L-R","R-L"};
+        for(int i = -2; i < size ; i++){
             int val = i;
-            in
-            String title = "Row ";
-
-            Viewblock stack = new Viewblock(50,100, bets[i+2]);
+            String title = "Row " + i;
+            if(i<0)
+                title = bets[i+2];
+            Viewblock stack = new Viewblock(50,100, title);
             stack.setOnMouseClicked(e -> {
                 stack.getStyleClass().clear();
                 if(betStruct.get(val)>0){
@@ -81,7 +81,7 @@ public class SlotsViewport extends GridPane {
         Button submit = new Button( myResources.getString("PLACEBET"));
         submit.getStyleClass().add("newbtn2");
         submit.setOnMouseClicked(e -> {
-            result = game.playSlotsRound(betStruct,player);
+            result = game.playSlotsRound(betStruct,player,"properties.NormalSlot");
             if(result.getIsValidBet())
                 next();
             else

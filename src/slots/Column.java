@@ -25,6 +25,8 @@ public class Column {
         Collections.shuffle(myReel);
     }
 
+
+
     /**
      * Generating the probability for each number to appear
      */
