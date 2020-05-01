@@ -21,9 +21,11 @@ public class SlotsViewport extends GridPane {
     private HashMap<Integer,Integer> betStruct;
     private ResourceBundle myResources;
     private  ResourceBundle slotRules;
+    private String gamefile;
     private int size;
-    public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources, String gameFile) {
 
+    public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources, String gameFile) {
+ gamefile = gameFile;
         slotRules = ResourceBundle.getBundle(gameFile);
         size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
         myResources = resources;
@@ -82,7 +84,7 @@ public class SlotsViewport extends GridPane {
         Button submit = new Button( myResources.getString("PLACEBET"));
         submit.getStyleClass().add("newbtn2");
         submit.setOnMouseClicked(e -> {
-            result = game.playSlotsRound(betStruct,player,"properties.NormalSlot");
+            result = game.playSlotsRound(betStruct,player,gamefile);
             if(result.getIsValidBet())
                 next();
             else
