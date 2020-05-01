@@ -72,23 +72,21 @@ public class Main extends Application {
 
         switch (gametype) {
            case 0 :
-               currentGame = new PlayRoulette();
+               SM = new SelectionMenu("DataFilesRoulette",0,this);
                title = StartMenu.generateTitle(myResources.getString("ROULETTE"));
                viewport.getStyleClass().add("bg-roulette");
                main = new RouletteViewport((PlayRoulette) currentGame, player, myResources);
                break;
            case 1:
-               currentGame =  new PlayBlackJack(gameResources);
+               SM = new SelectionMenu("DataFilesBlackJack",1,this);
                title = StartMenu.generateTitle(myResources.getString("BLACKJACK"));
                viewport.getStyleClass().add("bg-blackjack");
-               main = new BlackjackViewport((PlayBlackJack) currentGame, player, myResources);
                break;
            case 2:
                SM = new SelectionMenu("DataFilesSlots",2,this);
-               currentGame = new PlaySlotMachine();
+
                title = StartMenu.generateTitle(myResources.getString("SLOTS"));
                viewport.getStyleClass().add("bg-slots");
-             //
                break;
            default:
                System.out.println("uWu something went woopsy");
@@ -124,12 +122,15 @@ public class Main extends Application {
     public void buildView(String file, int type){
         switch (type) {
             case 0 :
-               // main = new RouletteViewport((PlayRoulette) currentGame, player, myResources, file);
+                currentGame = new PlayRoulette(file);
+                main = new RouletteViewport((PlayRoulette) currentGame, player, myResources);
                 break;
             case 1:
-                //main = new BlackjackViewport((PlayBlackJack) currentGame, player, myResources, file);
+                currentGame =  new PlayBlackJack(file);
+                main = new BlackjackViewport((PlayBlackJack) currentGame, player, myResources);
                 break;
             case 2:
+                currentGame = new PlaySlotMachine();
                 main = new SlotsViewport((PlaySlotMachine) currentGame, player, myResources,file);
                 break;
             default:

@@ -25,7 +25,7 @@ public class SlotsViewport extends GridPane {
     private int size;
 
     public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources, String gameFile) {
- gamefile = gameFile;
+            gamefile = gameFile;
         slotRules = ResourceBundle.getBundle(gameFile);
         size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
         myResources = resources;
