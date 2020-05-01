@@ -72,7 +72,7 @@ public class Main extends Application {
 
         switch (gametype) {
            case 0 :
-
+               SM = new SelectionMenu("DataFilesRoulette",0,this);
                title = StartMenu.generateTitle(myResources.getString("ROULETTE"));
                viewport.getStyleClass().add("bg-roulette");
                main = new RouletteViewport((PlayRoulette) currentGame, player, myResources);
