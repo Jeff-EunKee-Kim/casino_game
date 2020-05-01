@@ -82,7 +82,7 @@ public class RouletteViewport extends GridPane {
                     betStruct.put(val,0);
                 }
                 else{
-                    betStruct.put(val,Integer.parseInt(myResources.getString("BETAMOUNT")));
+                    betStruct.put(val,1);
                     stack.getStyleClass().add("betted");
                 }
             });

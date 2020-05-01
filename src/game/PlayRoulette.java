@@ -14,22 +14,31 @@ import roulette.WheelSlice;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 
 public class PlayRoulette extends AbstractGame{
 
+    private ResourceBundle gameResources;
+    private int betAmount;
 
     /**
      * Constructor for roulette. Calling it from the front end starts
      * the roulette game
      */
-    public PlayRoulette() {
+    public PlayRoulette(String file) {
+        gameResources = ResourceBundle.getBundle(file);
+        betAmount = Integer.parseInt(gameResources.getString("BETAMOUNT"));
     }
 
     public RouletteResult playRouletteRound(Map<Integer,Integer> bets, Player player) {
         int totalBet = 0;
-        for (int bet : bets.keySet()) {
-            totalBet += bets.get(bet);
+        Map<Integer,Integer> numbersBet = bets;
+        for (int bet : numbersBet.keySet()) {
+            if (numbersBet.get(bet) > 0){
+                totalBet += betAmount;
+                numbersBet.put(bet, betAmount);
+            }
         }
 
         if (totalBet > player.getBalance() || totalBet == 0) {
@@ -39,7 +48,7 @@ public class PlayRoulette extends AbstractGame{
         WheelModel wheelModel = new WheelModel();
         wheelModel.spin();
 
-        int amountWon = wheelModel.calculateWinAmount(bets);
+        int amountWon = wheelModel.calculateWinAmount(numbersBet);
         boolean winStatus = amountWon != 0;
 
         player.subtractBalance(totalBet);
