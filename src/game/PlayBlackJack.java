@@ -40,9 +40,9 @@ public class PlayBlackJack extends AbstractGame{
      * Constructor for black jack. Calling it from the front end starts
      * the black jack game
      */
-    public PlayBlackJack(ResourceBundle resources){
+    public PlayBlackJack(String file){
         hands = startBlackjackRound();
-        gameResources = resources;
+        gameResources = ResourceBundle.getBundle(file);
         victory = Integer.parseInt(gameResources.getString("VictoryNum"));
         dealerStop = Integer.parseInt(gameResources.getString("DealerStopNum"));
     }
