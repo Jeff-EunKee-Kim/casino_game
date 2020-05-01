@@ -22,8 +22,9 @@ public class SlotsViewport extends GridPane {
     private ResourceBundle myResources;
     private  ResourceBundle slotRules;
     private int size;
-    public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources) {
-        slotRules = ResourceBundle.getBundle("properties.NormalSlot");
+    public SlotsViewport(PlaySlotMachine game, Player player, ResourceBundle resources, String gameFile) {
+
+        slotRules = ResourceBundle.getBundle(gameFile);
         size = Integer.parseInt(slotRules.getString("SLOT_SIZE"));
         myResources = resources;
         betStruct = new HashMap<>();
@@ -61,7 +62,7 @@ public class SlotsViewport extends GridPane {
         String[] bets = {"L-R","R-L"};
         for(int i = -2; i < size ; i++){
             int val = i;
-            String title = "Row " + i;
+            String title = "Row " + (i + 1);
             if(i<0)
                 title = bets[i+2];
             Viewblock stack = new Viewblock(50,100, title);
