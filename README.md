@@ -1,22 +1,13 @@
-final
+# Casino Game
 ====
 
-This project implements a player for multiple related games.
+Casino games including Blackjack, Roulette, and Slot machines
 
-Names: \
+## Members \
 Jeff Kim \
 Vincent Sinfuego \
 Aparimeya Taneja \
 Celine Murugi \
-
-
-### Timeline
-
-Start Date: April 1st, 2020
-
-Finish Date: April 24th, 2020
-
-Hours Spent: 100 hours 
 
 ### Primary Roles
 1. Jeff Kim
@@ -52,19 +43,6 @@ Features implemented:
 4. Play Slot machine Game
 5. Place bets and win/lose money based on the game results 
 6. Keep track of the player balance throughout the game 
-
-
-### Notes/Assumptions
-
-Assumptions or Simplifications:
-- Instead of having animations, we treat each round as a step and update each round when the user plays the round. 
-
-Interesting data files:
-
-Known Bugs:
-Custom title font is only visible on one local machine
-
-Extra credit:
 
 
 ### Impressions
